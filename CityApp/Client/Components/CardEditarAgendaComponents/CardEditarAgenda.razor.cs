@@ -27,7 +27,7 @@ namespace CityApp.Client.Components.CardEditarAgendaComponents
         private List<string> Archivos = new List<string>();
 
         private string titulo = "";
-        private string hora = "";
+        private TimeSpan hora = TimeSpan.Zero;
         private string lugar = "";
         private string descripcion = "";
         private DateTime fecha = DateTime.Now;
@@ -157,12 +157,12 @@ namespace CityApp.Client.Components.CardEditarAgendaComponents
 
         private void TxtHora(ChangeEventArgs args)
         {
-            hora = args.Value.ToString();
-            if (hora != "")
+            hora = TimeSpan.Parse(args.Value.ToString());
+            if (hora != TimeSpan.Zero)
             {
                 horaError = "";
                 StateHasChanged();
-                if (Validaciones.ValidarCaracteres(hora))
+                if (Validaciones.ValidarCaracteres(hora.ToString()))
                 {
                     horaError = "";
                     Agenda.Hora = hora;
@@ -170,7 +170,7 @@ namespace CityApp.Client.Components.CardEditarAgendaComponents
                 else
                 {
                     horaError = "NoCaracteresEspeciales";
-                    hora = "";
+                    hora = TimeSpan.Zero;
                 }
             }
             StateHasChanged();
@@ -249,7 +249,7 @@ namespace CityApp.Client.Components.CardEditarAgendaComponents
         {
             Agenda = new Agenda();
             titulo = "";
-            hora = "";
+            hora = TimeSpan.Zero;
             lugar = "";
             descripcion = "";
             fecha = Fecha.GetFechaMx();

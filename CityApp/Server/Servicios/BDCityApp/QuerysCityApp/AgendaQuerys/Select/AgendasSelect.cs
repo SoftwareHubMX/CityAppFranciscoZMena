@@ -61,7 +61,7 @@ namespace CityApp.Server.Servicios.BDCityApp.QuerysCityApp.AgendaQuerys.Select
                     response.Data = response.Data.Where(d => d.Titulo == filtroAgendas.Titulo);
                 }
 
-                if (filtroAgendas.Horario != "NA")
+                if (filtroAgendas.Horario != TimeSpan.Zero)
                 {
                     response.Data = response.Data.Where(d => d.Hora == filtroAgendas.Horario);
                 }

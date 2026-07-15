@@ -17,7 +17,7 @@ namespace CityApp.Shared.Entities.BDSqlServerCityApp
         public string Titulo { get; set; } = "NA";
         public string Texto { get; set; } = "NA";
         public DateTime FechaPublicacion { get; set; } = Fecha.GetFechaMx();
-        public string Hora { get; set; } = "NA";
+        public TimeSpan Hora { get; set; } = DateTime.Now.TimeOfDay;
         public string Lugar { get; set; } = "NA";
         public string EnlaceWeb { get; set; } = "NA";
 

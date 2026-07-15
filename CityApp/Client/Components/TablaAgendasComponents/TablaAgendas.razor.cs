@@ -31,7 +31,7 @@ namespace CityApp.Client.Components.TablaAgendasComponents
 
         private string titulo = "";
         private string busqueda = "";
-        private string horario = "";
+        private TimeSpan horario = TimeSpan.Zero;
         private string lugar = "";
         private DateTime fechaFija = DateTime.Now;
         private DateTime fechaInicio = DateTime.Now;
@@ -175,12 +175,12 @@ namespace CityApp.Client.Components.TablaAgendasComponents
 
         private void TxtHorario(ChangeEventArgs args)
         {
-            horario = args.Value.ToString();
-            if (horario != "")
+            horario = TimeSpan.Parse(args.Value.ToString());
+            if (horario != TimeSpan.Zero)
             {
                 horarioError = "";
                 StateHasChanged();
-                if (Validaciones.ValidarCaracteres(horario))
+                if (Validaciones.ValidarCaracteres(horario.ToString()))
                 {
                     horarioError = "";
                     FiltroAgendas.Horario = horario;
@@ -188,7 +188,7 @@ namespace CityApp.Client.Components.TablaAgendasComponents
                 else
                 {
                     horarioError = "NoCaracteresEspeciales";
-                    horario = "";
+                    horario = TimeSpan.Zero;
                 }
             }
             ConsultarAgendas();
@@ -307,7 +307,7 @@ namespace CityApp.Client.Components.TablaAgendasComponents
                 {
                     paginas.Add(i);
                 }
-                await FormateadorHora();
+                //await FormateadorHora();
                 //await DescargarImagenesAgendas();
             }
             else
@@ -318,35 +318,35 @@ namespace CityApp.Client.Components.TablaAgendasComponents
             StateHasChanged();
         }
 
-        private async Task FormateadorHora()
-        {
-            for(int i = 0; i < Agendas.Count; i++)
-            {
-                String[] horasMin = Agendas[i].Hora.Split(":");
-                if(int.Parse(horasMin[0]) > 12)
-                {
-                    if(int.Parse(horasMin[0]) == 24)
-                    {
-                        Agendas[i].Hora = "00:" + horasMin[1] + " a.m.";
-                    }
-                    else
-                    {
-                        Agendas[i].Hora = (int.Parse(horasMin[0]) - 12) + ":" + horasMin[1] + " p.m.";
-                    }
-                }
-                else
-                {
-                    if(int.Parse(horasMin[0]) == 12)
-                    {
-                        Agendas[i].Hora = horasMin[0] + ":" + horasMin[1] + " p.m.";
-                    }
-                    else
-                    {
-                        Agendas[i].Hora = horasMin[0] + ":" + horasMin[1] + " a.m.";
-                    }
-                }
-            }
-        }
+        //private async Task FormateadorHora()
+        //{
+        //    for(int i = 0; i < Agendas.Count; i++)
+        //    {
+        //        String[] horasMin = Agendas[i].Hora.Split(":");
+        //        if(int.Parse(horasMin[0]) > 12)
+        //        {
+        //            if(int.Parse(horasMin[0]) == 24)
+        //            {
+        //                Agendas[i].Hora = "00:" + horasMin[1] + " a.m.";
+        //            }
+        //            else
+        //            {
+        //                Agendas[i].Hora = (int.Parse(horasMin[0]) - 12) + ":" + horasMin[1] + " p.m.";
+        //            }
+        //        }
+        //        else
+        //        {
+        //            if(int.Parse(horasMin[0]) == 12)
+        //            {
+        //                Agendas[i].Hora = horasMin[0] + ":" + horasMin[1] + " p.m.";
+        //            }
+        //            else
+        //            {
+        //                Agendas[i].Hora = horasMin[0] + ":" + horasMin[1] + " a.m.";
+        //            }
+        //        }
+        //    }
+        //}
 
         private async void CambiarPaginaActual(int page)
         {
@@ -397,7 +397,7 @@ namespace CityApp.Client.Components.TablaAgendasComponents
             busqueda = "";
             titulo = "";
             lugar = "";
-            horario = "";
+            horario = TimeSpan.Zero;
             Agendas = new List<Agenda>();
             FiltroAgendas = new FiltroAgenda();
             FiltroAgendas.Pagina = 1;

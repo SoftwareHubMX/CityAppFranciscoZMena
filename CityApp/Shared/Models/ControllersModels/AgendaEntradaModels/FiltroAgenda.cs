@@ -11,7 +11,7 @@ namespace CityApp.Shared.Models.ControllersModels.AgendaEntradaModels
     {
         public string Titulo { get; set; } = "NA";
         public string Busqueda { get; set; } = "NA";
-        public string Horario { get; set; } = "NA";
+        public TimeSpan Horario { get; set; } = TimeSpan.Zero;
         public string Lugar { get; set; } = "NA";
         public int Orden { get; set; } = 0;
         // 0 Fecha desc
