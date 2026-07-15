@@ -1,0 +1,81 @@
+﻿<div class="content_table">
+    <div class="content_title">
+        <h2 class="title">@ViewString.Keys["EditNoticias"]</h2>
+    </div>
+    <div class="content_grid_form">
+        <div class="content_relative">
+            <labal class="text_plano">Título:</labal>
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Titulo"]" value="@titulo" @onchange="TxtTitulo"/>
+            @if(tituloError != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[tituloError]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative">
+            <labal class="text_plano">Fecha:</labal>
+            <input type="date" class="input_form" value="@fecha.ToString("yyyy-MM-dd")" @onchange="TxtFecha"/>
+            @if(fechaError != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[fechaError]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative">
+            <labal class="text_plano">Url Facebook:</labal>
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Autor"]" value="@autor" @onchange="TxtAutor" />
+            @if(autorError != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[autorError]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative">
+            <labal class="text_plano">Url Instagram:</labal>
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Fuente"]" value="@fuente" @onchange="TxtFuente"/>
+            @if(fuenteError != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[fuenteError]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative span_2">
+            <labal class="text_plano">Descripción:</labal>
+            <textarea rows="5" class="input_form" placeholder="@ViewString.Keys["Descripcion"]" value="@descripcion" @onchange="TxtDescripcion"/>
+            @if(descripcionError != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[descripcionError]</p>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="content_carrusel">
+        <labal class="text_plano">Imágenes:</labal>
+        <div class="grid_3 span_2">
+            @if(Archivos != null)
+            {
+                @foreach(var archivo in Archivos)
+                {
+                    <img class="img_archivo" src="data:image/png;base64, @archivo" />
+                }
+            }
+        </div>
+        <div class="content_relative">
+            <button class="button_sumit" onclick="document.getElementById('input1').click()">
+                <span>Cargar</span>
+            </button>
+        </div>
+        <div class="content_relative">
+            <button class="button_sumit" @onclick="ActualizarNoticia">
+                <span>Guardar</span>
+            </button>
+        </div>
+    </div>
+</div>
+@* <CityApp.Client.Shared.Modals.ModalCropper GuardarImagen="saveImage"></CityApp.Client.Shared.Modals.ModalCropper> *@
+<CityApp.Client.Shared.Modals.ModalCropperCompleto GuardarImagen="saveImage"></CityApp.Client.Shared.Modals.ModalCropperCompleto>

@@ -1,0 +1,115 @@
+﻿<div class="content_table">
+    <div class="content_title">
+        <h2 class="title">@ViewString.Keys["Historico"]</h2>
+    </div>
+    <div class="content_grid_tabla">
+        <div class="content_grid_tabla_header">
+            <div class="col_grid displa_flex">
+                <span>ID</span>
+            </div>
+            <div class="col_grid displa_flex">
+                <span>Fecha</span>
+            </div>
+            <div class="col_grid displa_flex">
+                <span>Empresa</span>
+            </div>
+            <div class="col_grid displa_flex">
+                <span>Contacto</span>
+            </div>
+            <div class="col_grid displa_flex">
+                <span>Direccion</span>
+            </div>
+            <div class="col_grid displa_flex">
+                <span>Telefono</span>
+            </div>
+            <div class="col_grid displa_flex">
+                <span>Correo</span>
+            </div>
+        </div>
+        @if (banderaLoader)
+        {
+            @if (BolsaTrabajosInactiva != null)
+            {
+                @if (BolsaTrabajosInactiva.Count > 0)
+                {
+                    <div class="content_grid_tabla_boddy">
+                        @foreach (var BolsaTrabajosInactiva in BolsaTrabajosInactiva)
+                        {
+                            <div class="col_grid">
+                                <p class="txt_plano">@BolsaTrabajosInactiva.IdBolsaTrabajo</p>
+                            </div>
+                            <div class="col_grid">
+                                <p class="txt_plano">@BolsaTrabajosInactiva.FechaPublicacion.ToString("dd/MM/yyyy")</p>
+                            </div>
+                            <div class="col_grid">
+                                <p class="txt_plano">@BolsaTrabajosInactiva.Empresa</p>
+                            </div>
+                            <div class="col_grid">
+                                <p class="txt_plano">@BolsaTrabajosInactiva.Contacto</p>
+                            </div>
+                            <div class="col_grid">
+                                <p class="txt_plano">
+                                    @BolsaTrabajosInactiva.Calle
+                                    @BolsaTrabajosInactiva.Numero
+                                    @BolsaTrabajosInactiva.Colonia
+                                    @BolsaTrabajosInactiva.CodigoPostal
+                                    @BolsaTrabajosInactiva.Localidad
+                                </p>
+                            </div>  
+                            <div class="col_grid">
+                                <p class="txt_plano">@BolsaTrabajosInactiva.Telefono1</p>
+                            </div>
+                            <div class="col_grid">
+                                <p class="txt_plano">@BolsaTrabajosInactiva.Correo</p>
+                            </div>
+                        }
+                    </div>
+                    <div class="content_paginado">
+                        @foreach (int i in paginas)
+                        {
+                            <div class="pagina" @onclick="(() => CambiarPaginaActual(i))">
+                                @if (i == paginaActual)
+                                {
+                                    <span class="selected">@i</span>
+                                }
+                                else
+                                {
+                                    <span>@i</span>
+                                }
+                            </div>
+                        }
+                    </div>
+                }
+                else
+                {
+                    @if (alerta != "")
+                    {
+                        <h2 class="no_data">No hay Rutas</h2>
+                    }
+                    else
+                    {
+                        <div class="loader"></div>
+                    }
+                }
+            }
+            else
+            {
+                @if (alerta != "")
+                {
+                    <h2 class="no_data">No hay histórico</h2>
+                }
+                else
+                {
+                    <h2 class="no_data">@alerta</h2>
+                }
+            }
+        }
+        else
+        {
+            <div class="loader"></div>
+        }
+    </div>
+</div>
+
+
+

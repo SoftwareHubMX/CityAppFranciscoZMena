@@ -1,0 +1,116 @@
+﻿.content_page {
+    width: 100%;
+    min-height: 90vh;
+    position: relative;
+    display: flex;
+}
+
+.content_table {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    width: 100%;
+    padding: 1vw;
+}
+
+.content_title {
+    width: 100%;
+    margin: 1vw auto;
+    background-color: #e8e8e8;
+    text-align: center;
+    padding: 1vw;
+    display: flex;
+}
+
+.title {
+    font-size: 2vw;
+    font-weight: 600;
+    margin: auto;
+}
+
+.content_grid_3 {
+    width: 70%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1vw;
+}
+
+.col_grid {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border: .2vw solid #1753A3;
+    padding: 1vw;
+    border-radius: 2vw;
+    z-index: 1;
+    box-shadow: .4vw .4vw .8vw #16161693;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all .3s ease-in-out;
+    background-color: #fff;
+}
+
+/*.col_grid:after {
+        position: absolute;
+        content: " ";
+        width: 110%;
+        height: 110%;
+        top: -5%;
+        left: -5%;
+        background-color: #007C5E;
+        border-radius: 2vw;
+        z-index: 2;
+        transform: scale(0);
+        transition: all .3s ease-in-out;
+    }
+
+    .col_grid:hover:after {
+        top: -5%;
+        left: -5%;
+        transform: scale(1);
+    }*/
+
+.icono_menu {
+    position: relative;
+    width: 50%;
+    margin: 1vw auto;
+    z-index: 3;
+    width: 3vw;
+    margin: auto;
+    /*color: #6E1D3A;*/
+    background-color: white;
+    border: 20px solid #1753A3;
+    border-radius: 90%;
+    width: 15vw;
+    height: 15vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.col_grid i {
+    position: relative;
+    font-size: 8vw;
+    font-weight: 600;
+    text-align: center;
+    margin: 0 auto;
+    color: #6D6D6D;
+    z-index: 3;
+}
+
+.col_grid span {
+    position: relative;
+    font-size: 1.2vw;
+    font-weight: 600;
+    text-align: center;
+    margin: 0 auto;
+    color: #6D6D6D;
+    z-index: 3;
+}
+
+/*.col_grid:hover span {
+    color: #fff;
+}*/

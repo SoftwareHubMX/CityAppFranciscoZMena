@@ -1,0 +1,265 @@
+﻿<div class="content_table">
+    <div class="content_title">
+        <h2 class="title">@ViewString.Keys["Predios"]</h2>
+    </div>
+    <div class="content_filtros">
+        <div class="content_relative">
+                <label class="subtityulo">Acciones de  plantilla</label>
+        </div>
+        <div class="content_relative">
+            <button class="button_sumit" @onclick="OpenCloseModal">
+                <span>Cargar Excel</span>
+            </button>
+        </div>
+        <div class="content_relative">
+            <button class="button_sumit" @onclick="DescargarPlantilla">
+                <span>Descargar plantilla</span>
+            </button>
+        </div>
+    </div>
+    @*<div class="content_filtros">
+        <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Clave"]" value="@clave" @onchange="TxtClave"/>
+            @if(claveError != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[claveError]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["ClaveCatastral"]" value="@claveCatastral" @onchange="TxtClaveCatastral"/>
+            @if(claveCatastralError != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[claveCatastralError]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Propietario"]" value="@usuario" @onchange="TxtUsuario"/>
+            @if(usuarioError != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[usuarioError]</p>
+                </div>
+            }
+        </div>
+
+        <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Calle"]" value="@calle" @onchange="TxtCalle"/>
+            @if(calleError != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[calleError]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Colonia"]" value="@colonia" @onchange="TxtColonia"/>
+            @if(coloniaError != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[coloniaError]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Poblacion"]" value="@poblacion" @onchange="TxtPoblacion"/>
+            @if(poblacionError != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[poblacionError]</p>
+                </div>
+            }
+        </div>
+
+        <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Ciudad"]" value="@ciudad" @onchange="TxtCiudad"/>
+            @if(ciudadError != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[ciudadError]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Estado"]" value="@estado" @onchange="TxtEstado"/>
+            @if(estadoError != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[estadoError]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["CodigoPostal"]" value="@codigoPostal" @onchange="TxtCodigoPostal"/>
+            @if(codigoPostalError != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[codigoPostal]</p>
+                </div>
+            }
+        </div>
+
+        <button class="button_sumit" @onclick="limpiarFiltro">
+            <span>Limpiar</span>
+        </button>
+    </div>*@
+    <div class="content_grid_tabla">
+        <div class="content_grid_tabla_header">
+            <div class="col_grid displa_flex" @onclick="(() => CambioOrden(1))">
+                <span>ID</span>
+                @if(FiltroPredios.Orden == 1)
+                {
+                    <i class="fas fa-sort-amount-up-alt"></i>
+                }
+                else
+                {
+                    <i class="fas fa-sort-amount-down-alt"></i>
+                }
+            </div>
+            <div class="col_grid displa_flex" @onclick="(() => CambioOrden(2))">
+                <span>Clave</span>
+                @if(FiltroPredios.Orden == 3)
+                {
+                    <i class="fas fa-sort-amount-up-alt"></i>
+                }
+                else
+                {
+                    <i class="fas fa-sort-amount-down-alt"></i>
+                }
+            </div>
+            <div class="col_grid displa_flex" @onclick="(() => CambioOrden(3))">
+                <span>Clave catastral</span>
+                @if(FiltroPredios.Orden == 5)
+                {
+                    <i class="fas fa-sort-amount-up-alt"></i>
+                }
+                else
+                {
+                    <i class="fas fa-sort-amount-down-alt"></i>
+                }
+            </div>
+            <div class="col_grid displa_flex" @onclick="(() => CambioOrden(4))">
+                <span>Domicilio</span>
+                @if(FiltroPredios.Orden == 7)
+                {
+                    <i class="fas fa-sort-amount-up-alt"></i>
+                }
+                else
+                {
+                    <i class="fas fa-sort-amount-down-alt"></i>
+                }
+            </div>
+            <div class="col_grid displa_flex" @onclick="(() => CambioOrden(5))">
+                <span>Propietario</span>
+                @if(FiltroPredios.Orden == 9)
+                {
+                    <i class="fas fa-sort-amount-up-alt"></i>
+                }
+                else
+                {
+                    <i class="fas fa-sort-amount-down-alt"></i>
+                }
+            </div>
+            <div class="col_grid">
+                <span>Acciones</span>
+            </div>
+        </div>
+        @if (banderaLoader)
+        {
+            @if(Predios != null)
+            {
+                @if(Predios.Count > 0)
+                {
+                    <div class="content_grid_tabla_boddy">
+                        @foreach(var predio in Predios)
+                        {
+                            <div class="col_grid">
+                                <p class="txt_plano">@predio.IdPredio</p>
+                            </div>
+                            <div class="col_grid">
+                                <p class="txt_plano">@predio.Clave</p>
+                            </div>
+                            <div class="col_grid">
+                                <p class="txt_plano">@predio.ClaveCatastral</p>
+                            </div>
+                            <div class="col_grid">
+                                    <p class="txt_plano">@predio.Direccion, @predio.Poblacion, @predio.Ciudad, @predio.Estado CP:@predio.CodigoPostal</p>
+                            </div>
+                            <div class="col_grid">
+                                @if(predio.Propietario != null)
+                                {
+                                    <p class="txt_plano">@predio.Propietario</p>
+                                }
+                                else
+                                {
+                                    <p class="txt_plano">---</p>
+                                }
+                            </div>
+                            <div class="col_grid">
+                                <div class="content_flex">
+                                    <button class="btn_edit">
+                                        <i class="far fa-edit"></i>
+                                        <span>Editar</span>
+                                    </button>
+                                    <button class="btn_delete">
+                                        <i class="far fa-trash-alt"></i>
+                                        <span>Eliminar</span>
+                                    </button>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div class="content_paginado">
+                        @foreach(int i in paginas)
+                        {
+                            <div class="pagina" @onclick="(() => CambiarPaginaActual(i))">
+                                @if(i == paginaActual)
+                                {
+                                    <span class="selected">@i</span>
+                                }
+                                else
+                                {
+                                    <span>@i</span>
+                                }
+                            </div>
+                        }
+                    </div>
+                }
+                else
+                {
+                    @if(alerta != "")
+                    {
+                        <h2 class="no_data">No hay predios</h2>
+                    }
+                    else
+                    {
+                        <div class="loader"></div>
+                    }
+                }
+            }
+            else
+            {
+                @if(alerta != "")
+                {
+                    <h2 class="no_data">No hay predios</h2>
+                }
+                else
+                {
+                    <h2 class="no_data">@alerta</h2>
+                }
+            }
+        }
+        else
+        {
+            <div class="loader"></div>
+        }
+
+    </div>
+</div>
+
+@if(modal){
+    <CityApp.Client.Components.ModalCargaExcelPredioComponents.ModalCargaExcelPredio OpenCloseModal="OpenCloseModal" TokenSesion="@Sesion.TokenAcceso"></CityApp.Client.Components.ModalCargaExcelPredioComponents.ModalCargaExcelPredio>
+}

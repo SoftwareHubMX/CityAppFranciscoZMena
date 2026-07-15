@@ -1,0 +1,26 @@
+﻿<div class="content_view">
+	<div class="content_title">
+		<h1 class="title">@Agenda.Titulo.ToUpper()</h1>
+	</div>
+	<MudCarousel Class="mud-width-full" @ref="_carousel" ItemsSource="@Archivos" @bind-SelectedIndex="selectedIndex" Style="height:400px;" ShowArrows="false" ShowBullets="true" AutoCycle="true">
+		<ItemTemplate>
+			<div class="d-flex flex-column flex-column justify-center" style="height:100%">
+				<img class="img_Agenda" src="data:image/png;base64, @context" @onclick="(() => openModal(context))">
+			</div>
+		</ItemTemplate>
+	</MudCarousel>
+	<div class="content_parrafo">
+		<p class="text_fecha"> Lugar: @Agenda.Lugar</p>
+		<p class="text_fecha"> Hecha: @Agenda.FechaPublicacion.ToString("dd/MM/yyyy")</p>
+		<p class="text_fecha"> Horario: @Agenda.Hora</p>
+		<p class="text_plano">@Agenda.Texto</p>
+	</div>
+</div>
+
+@if (modal)
+{
+	<div class="content_modal">
+		<i class="fas fa-times icono_x" @onclick="CloseModal"></i>
+		<img class="img_noticia_modal" src="data:image/png;base64, @archivoVista" />
+	</div>
+}

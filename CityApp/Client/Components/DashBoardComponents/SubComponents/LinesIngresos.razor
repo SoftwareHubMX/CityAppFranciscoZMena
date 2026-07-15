@@ -1,0 +1,53 @@
+﻿<div class="col_grid span_2">
+    @if (!banderaCarga)
+    {
+        <h3 class="title_section">Ingresos: $@Series[0].Data.Sum().ToString()</h3>
+        @if (alerta == "")
+        {
+            <div class="content_carrusel">
+                <div class="content_relative">
+                    <select value="@year" class="from-control input_form" @onchange="SelectYear">
+                        <option value="0">Seleccione...</option>
+                        @for (int i = 2021; i <= DateTime.UtcNow.AddHours(-6).Year; i++)
+                        {
+                            <option value="@i">@i</option>
+                        }
+                    </select>
+                    @if (yearError != "")
+                    {
+                        <div class="alert_input">
+                            <p class="text_alert">@yearError</p>
+                        </div>
+                    }
+                </div>
+                <div class="content_relative">
+                    <select value="@year2" class="from-control input_form" @onchange="SelectYear2">
+                        <option value="0">Seleccione...</option>
+                        @for (int i = 2021; i <= DateTime.UtcNow.AddHours(-6).Year; i++)
+                        {
+                            <option value="@i">@i</option>
+                        }
+                    </select>
+                    @if (year2Error != "")
+                    {
+                        <div class="alert_input">
+                            <p class="text_alert">@year2Error</p>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="content_center">
+                <MudChart ChartType="ChartType.Line" ChartSeries="@Series" @bind-SelectedIndex="Index" XAxisLabels="@XAxisLabels" Width="100%" Height="50vh" ChartOptions="options" ></MudChart>
+            </div>
+        }
+        else
+        {
+            <p class="alerta">@alerta</p>
+        }
+    }
+    else
+    {
+        <h3 class="title_section">Ingresos: $----</h3>
+        <div class="loader"></div>
+    }
+</div>

@@ -1,0 +1,55 @@
+﻿<div class="content_table">
+    <div class="content_title">
+        <h2 class="title">@ViewString.Keys["NewCuentaChofer"]</h2>
+    </div>
+    @if (alerta != "")
+    {
+        <p class="text_alerta">@ViewString.Keys[alerta]</p>
+    }
+    <div class="content_section">
+        <div class="content_grid_form">
+            <div class="content_relative">
+                <input type="text" class="input_form" placeholder="@ViewString.Keys["Usuario"]" value="@registroUsusario" @oninput="TxtUsuarioRegistro" />
+                @if (registroUsusarioError != "")
+                {
+                    <div class="alert_input">
+                        <p class="text_alert">@ViewString.Keys[registroUsusarioError]</p>
+                    </div>
+                }
+            </div>
+            <div class="content_relative">
+                <input type="text" class="input_form" placeholder="@ViewString.Keys["Pass"]" value="@registroPassword" @oninput="TxtPasswordRegistro" />
+                @if (registroPasswordError != "")
+                {
+                    <div class="alert_input">
+                        <p class="text_alert">@ViewString.Keys[registroPasswordError]</p>
+                    </div>
+                }
+            </div>
+            <div class="content_relative">
+                <input type="text" class="input_form" placeholder="@ViewString.Keys["ConfirmarPass"]" value="@confirmacionPassword" @oninput="TxtPasswordConfirmacionRegistro" />
+                @if (confirmacionPasswordError != "")
+                {
+                    <div class="alert_input">
+                        <p class="text_alert">@ViewString.Keys[confirmacionPasswordError]</p>
+                    </div>
+                }
+            </div>
+            <button class="button_sumit" @onclick="Registrar">
+                @if (btn_registro == "carga")
+                {
+                    <span>
+                        <div class="loader"></div>
+                    </span>
+                }
+                else
+                {
+                    <span>@ViewString.Keys["Registrar"]</span>
+                }
+            </button>
+        </div>
+    </div>
+</div>
+
+
+

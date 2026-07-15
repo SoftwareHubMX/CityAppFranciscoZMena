@@ -1,0 +1,37 @@
+﻿<div class="content_modal">
+    <i class="fas fa-times icon_x" @onclick="(() => OpenCloseModal.InvokeAsync())"></i>
+    <div class="card_modal">
+        <div class="content_title">
+            <h2 class="title">Detalles Lugar Turistico</h2>
+        </div>
+
+        @if (banderaCargaInfo)
+        {
+            <div class="content_detalles">
+                <div class="grid_3">
+                    <div class="col_grid">
+                         <p class="text_labal">Lugar Turistico</p>
+                        <p class="text_plano">@LugarTuristico.Nombre</p>
+                    </div>
+                     <div class="col_grid">
+                         <p class="text_labal">Telefono</p>
+                        <p class="text_plano">@LugarTuristico.Telefono</p>
+                    </div>
+                     <div class="col_grid text_estilo">
+                         <p class="text_labal">Url</p>
+                        <p class="text_plano">@LugarTuristico.UrlWebFacebook</p>
+                    </div>
+                </div>
+
+            </div>
+
+        }
+        else
+        {
+            <div class="loader"></div>
+        }
+
+
+    </div>
+</div>
+

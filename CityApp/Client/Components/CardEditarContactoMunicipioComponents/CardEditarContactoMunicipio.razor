@@ -1,0 +1,87 @@
+﻿<div class="content_table">
+    <div class="content_title">
+        <h2 class="title">@ViewString.Keys["EditContactoMunicipio"]</h2>
+    </div>
+    <div class="content_grid_form">
+        <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["DireccionPalacio"]" value="@direccion" @onchange="TxtDireccion" />
+            @if (direccionError != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[direccionError]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Telefono"]" value="@telefono" @onchange="TxtTelefono" />
+            @if (telefonoError != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[telefonoError]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["web"]" value="@web" @onchange="TxtWeb" />
+            @if (webError != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[webError]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Horario"]" value="@horario" @onchange="TxtHorario" />
+            @if (horarioError != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[horarioError]</p>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="content_relative">
+        <button class="button_sumit" @onclick="ActualizarContacto">
+            <span>Guardar</span>
+        </button>
+    </div>
+    <div class="content_grid_form_3">
+        <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["UsuarioRed"]" value="@usuarioRed" @onchange="TxtUsuariRed" />
+            @if (usuarioRedError != "")
+            {
+                    <div class="alert_input">
+                        <p class="text_alert">@ViewString.Keys[usuarioRedError]</p>
+                    </div>
+            }
+        </div>
+        <div class="content_relative">
+            <select value="@idTipoRedSocial" class="from-control input_form" @onchange="TxtIdTipoRedSocial">
+                <option value="0">@ViewString.Keys["TiposRedSocial"]...</option>
+                @for (int i = 0; i < TiposRedesSociales.Count; i++)
+                {
+                        <option value="@TiposRedesSociales[i].IdTipoRedSocial">@TiposRedesSociales[i].RedSocial</option>
+                }
+            </select>
+            @if (idTipoRedSocialError != "")
+            {
+                    <div class="alert_input">
+                        <p class="text_alert">@ViewString.Keys[idTipoRedSocialError]</p>
+                    </div>
+            }
+        </div>
+        <div class="content_relative">
+            <button class="button_sumit" @onclick="saveRedSocial">
+                <span>Agregar</span>
+            </button>
+        </div>
+        @foreach (var red in RedesSocialesMunicipio)
+        {
+                <div class="card_carac">
+                    <i class="fab fa-@red.TipoRedSocial.RedSocial.ToLower() icon_col"></i>
+                    <label class="text_plano">@red.Ruta</label>
+                    <i class="fas fa-times icono_delete" @onclick="(() => EliminarRed(red.IdRedSocialMunicipio))"></i>
+                </div>
+        }
+    </div>
+</div>

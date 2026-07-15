@@ -1,0 +1,28 @@
+﻿<div class="content_view">
+	<div class="content_title">
+		<h1 class="title">@Noticia.Titulo.ToUpper()</h1>
+		<div class="content_autor_fecha">
+			<p class="text_fecha">@Noticia.Autor</p>
+			<p class="text_autor">@Noticia.FechaPublicacion</p>
+		</div>
+	</div>
+	<MudCarousel Class="mud-width-full" @ref="_carousel" ItemsSource="@Archivos" @bind-SelectedIndex="selectedIndex" Style="height:400px;" ShowArrows="false" ShowBullets="true" AutoCycle="true">
+		<ItemTemplate>
+			<div class="d-flex flex-column flex-column justify-center" style="height:100%">
+				<img class="img_noticia" src="data:image/png;base64, @context" @onclick="(() => openModal(context))">
+			</div>
+		</ItemTemplate>
+	</MudCarousel>
+	<div class="content_parrafo">
+		<p class="text_plano">@Noticia.Texto</p>
+	</div>
+	<p class="text_fuent">@Noticia.Fuente</p>
+</div>
+
+@if (modal)
+{
+	<div class="content_modal">
+		<i class="fas fa-times icono_x" @onclick="CloseModal"></i>
+		<img class="img_noticia_modal" src="data:image/png;base64, @archivoVista" />
+	</div>
+}

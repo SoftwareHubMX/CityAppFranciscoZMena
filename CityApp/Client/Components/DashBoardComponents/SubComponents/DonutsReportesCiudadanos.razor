@@ -1,0 +1,63 @@
+﻿<div class="col_grid span_2">
+    <h3 class="title_section">Reportes ciudadanos</h3>
+    @if (!banderaCarga)
+    {
+        <div class="content_carrusel">
+            <div class="content_relative">
+                <select value="@year" class="from-control input_form" @onchange="SelectYear">
+                    <option value="0">Seleccione...</option>
+                    @for (int i = 2021; i <= DateTime.UtcNow.AddHours(-6).Year; i++)
+                    {
+                        <option value="@i">@i</option>
+                    }
+                </select>
+                @if (yearError != "")
+                {
+                    <div class="alert_input">
+                        <p class="text_alert">@yearError</p>
+                    </div>
+                }
+            </div>
+            <div class="content_relative">
+                <select value="@mes" class="from-control input_form" @onchange="SelectMonth">
+                    <option value="0">Seleccione...</option>
+                    <option value="1">Enero</option>
+                    <option value="2">Febrero</option>
+                    <option value="3">Marzo</option>
+                    <option value="4">Abril</option>
+                    <option value="5">Mayo</option>
+                    <option value="6">Junio</option>
+                    <option value="7">Julio</option>
+                    <option value="8">Agosto</option>
+                    <option value="9">Septiembre</option>
+                    <option value="10">Octubre</option>
+                    <option value="11">Noviembre</option>
+                    <option value="12">Diciembre</option>
+                </select>
+                @if (mesError != "")
+                {
+                    <div class="alert_input">
+                        <p class="text_alert">@mesError</p>
+                    </div>
+                }
+            </div>
+        </div>
+        @if (alerta == "")
+        {
+            <MudChart ChartType="ChartType.Donut" LegendPosition="Position.Right" Width="40%" Height="auto" InputData="@data" InputLabels="@labels">
+                <CustomGraphics>
+                    <text class="donut-inner-text" x="50%" y="45%" dominant-baseline="middle" text-anchor="middle" fill="black" font-family="Helvetica" font-size="3">Total</text>
+                    <text class="donut-inner-text" x="50%" y="60%" dominant-baseline="middle" text-anchor="middle" fill="black" font-family="Helvetica" font-size="7">@data.Sum().ToString()</text>
+                </CustomGraphics>
+            </MudChart>
+        }
+        else
+        {
+            <p class="alerta">@alerta</p>
+        }
+    }
+    else
+    {
+        <div class="loader"></div>
+    }
+</div>

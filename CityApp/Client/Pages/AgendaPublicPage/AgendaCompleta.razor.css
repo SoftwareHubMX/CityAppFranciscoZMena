@@ -1,0 +1,43 @@
+﻿.content_page {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.fondo_1 {
+    position: fixed;
+    background-color: #1a54a2;
+    width: 50vw;
+    height: 20vw;
+    bottom: 0;
+    right: -29vw;
+    transform: rotateZ(-70deg);
+    z-index: 2;
+    box-shadow: -.4vw -.4vw 1vw #6b6b6b92;
+}
+
+.fondo_2 {
+    position: fixed;
+    background-color: #4A7AB7;
+    width: 50vw;
+    height: 20vw;
+    bottom: -10vw;
+    left: -24vw;
+    transform: rotateZ(35deg);
+    z-index: 2;
+    box-shadow: -.4vw -.4vw 1vw #6b6b6b92;
+}
+
+.fondo_3 {
+    position: fixed;
+    background-color: #002E7F;
+    width: 70vw;
+    height: 20vw;
+    bottom: 25vw;
+    right: -40vw;
+    transform: rotateZ(80deg);
+    z-index: 1;
+    box-shadow: .4vw .4vw 1vw #6b6b6b92;
+}

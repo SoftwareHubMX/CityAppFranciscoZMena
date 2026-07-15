@@ -1,0 +1,321 @@
+﻿<div class="content_table">
+    <div class="content_title">
+        <h2 class="title">@ViewString.Keys["EditBolsaTrabajo"]</h2>
+    </div>
+    @if(alerta != ""){
+        <p class="text_alerta">@ViewString.Keys[alerta]</p>
+    }
+    @*Seccion1*@
+    <hr class="line_styls"/>
+        <p>Datos de la Empresa</p>
+    <div class="content_grid_form">
+       <div class="content_relative">
+            <select value="@idGiros" class="from-control input_form" @onchange="TxtIdGiro">
+                <option value="0">@ViewString.Keys["Giro"]...</option>
+               @for (int i = 0; i < Giros.Count; i++)
+                {
+                    <option value="@Giros[i].IdGiro">@Giros[i].TipoGiro</option>
+                }
+            </select>
+            @if (errorIdGiro != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[errorIdGiro]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Empresa"]" value="@empresa" @onchange="TxtEmpresa" />
+            @if (errorEmpresa != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[errorEmpresa]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Rfc"]" value="@rfc" @onchange="TxtRfc" />
+            @if (errorRfc != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[errorRfc]</p>
+                </div>
+            }
+        </div>
+    </div>
+
+    @*Seccion2*@
+    
+    <hr class="line_styls"/>
+    <p>Requisitos</p>
+    <div class="content_grid_form">
+        <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Edad"]" value="@edad" @onchange="TxtEdad" />
+            @if (errorEdad != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[errorEdad]</p>
+                </div>
+            }
+        </div>
+         <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Sexo"]" value="@sexo" @onchange="TxtSexo" />
+            @if (errorSexo != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[errorSexo]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["PuestoBolsa"]" value="@puesto" @onchange="TxtPuesto" />
+            @if (errorPuesto != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[errorPuesto]</p>
+                </div>
+            }
+        </div>
+         
+         <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Escolaridad"]" value="@escolaridad" @onchange="TxtEscolaridad" />
+            @if (errorEscolaridad != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[errorEscolaridad]</p>
+                </div>
+            }
+        </div>
+         <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Especialidad"]" value="@especialidad" @onchange="TxtEspecialidad" />
+            @if (errorEspecialidad != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[errorEspecialidad]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Experiencia"]" value="@experiencia" @onchange="TxtExperiencia" />
+            @if (errorExperiencia != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[errorExperiencia]</p>
+                </div>
+            }
+        </div>
+         <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Conocimiento"]" value="@conocimientos" @onchange="TxtConocimientos" />
+            @if (errorConocimientos != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[errorConocimientos]</p>
+                </div>
+            }
+        </div>
+         <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Habilidades"]" value="@habilidades" @onchange="TxtHabilidades" />
+            @if (errorHabilidades != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[errorHabilidades]</p>
+                </div>
+            }
+        </div>       
+    </div>
+    
+    @*Seccion3*@
+         
+         <hr class="line_styls"/>
+    <p>Descripción</p>
+         <div class="content_grid_form">
+         <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Funciones"]" value="@funciones" @onchange="TxtFuciones" />
+            @if (errorFunciones != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[errorFunciones]</p>
+                </div>
+            }
+        </div>
+         <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Jornada"]" value="@jornada" @onchange="TxtJornada" />
+            @if (errorJornada != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[errorJornada]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Plaza"]" value="@plaza" @onchange="TxtPlaza" />
+            @if (errorPlaza != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[errorPlaza]</p>
+                </div>
+            }
+        </div>
+         <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Sueldo"]" value="@sueldo" @onchange="TxtSueldo" />
+            @if (errorSueldo != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[errorSueldo]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Prestaciones"]" value="@prestaciones" @onchange="TxtPrestaciones" />
+            @if (errorPrestaciones != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[errorPrestaciones]</p>
+                </div>
+            }
+        </div>
+         <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["OtrasPrestaciones"]" value="@otrasPrestaciones" @onchange="TxtOtrasPrestaciones" />
+            @if (errorOtrasPrestaciones != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[errorOtrasPrestaciones]</p>
+                </div>
+            }
+        </div>
+    </div>
+
+         @*Seccion4*@
+        
+        <hr class="line_styls"/>
+        <p>Seccion 4</p>
+        <div class="content_grid_form">        
+         <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Requisitos"]" value="@requisitos" @onchange="TxtRequisitos" />
+            @if (errorRequisitos != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[errorRequisitos]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Entrevisata"]" value="@entrevista" @onchange="TxtEntrevista" />
+            @if (errorEntrevista != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[errorEntrevista]</p>
+                </div>
+            }
+        </div>
+         <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Contacto"]" value="@contacto" @onchange="TxtContacto" />
+            @if (errorContacto != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[errorContacto]</p>
+                </div>
+            }
+        </div>
+         <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Telefono1"]" value="@telefono1" @onchange="TxtTelefono1" />
+            @if (errorTelefono1 != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[errorTelefono1]</p>
+                </div>
+            }
+        </div>
+         <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Telefono2"]" value="@telefono2" @onchange="TxtTelefono2" />
+            @if (errorTelefono2 != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[errorTelefono2]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Correo"]" value="@correo" @onchange="TxtCorreo" />
+            @if (errorCorreo != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[errorCorreo]</p>
+                </div>
+            }
+        </div>
+         <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["ActividadPrincipal"]" value="@actividadPrincipal" @onchange="TxtActividadPrincipal" />
+            @if (errorActividadPrincipal != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[errorActividadPrincipal]</p>
+                </div>
+            }
+        </div>
+    </div>   
+        @*Seccion5*@
+        
+        <hr class="line_styls"/>
+    <p>Dirección</p>
+        <div class="content_grid_form">
+         <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Calle"]" value="@calle" @onchange="TxtCalle" />
+            @if (errorCalle != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[errorCalle]</p>
+                </div>
+            }
+        </div>
+         <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["NumeroInt"]" value="@numero" @onchange="TxtNumero" />
+            @if (errorNumero != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[errorNumero]</p>
+                </div>
+            }
+        </div>
+         <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Colonia"]" value="@colonia" @onchange="TxtColonia" />
+            @if (errorColonia != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[errorColonia]</p>
+                </div>
+            }
+        </div>
+         <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Localidad"]" value="@localidad" @onchange="TxtLocalidad" />
+            @if (errorLocalidad != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[errorLocalidad]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["CodigoPostal"]" value="@codigoPostal" @onchange="TxtCodigoPostal" />
+            @if (errorCodigoPostal != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[errorCodigoPostal]</p>
+                </div>
+            }
+        </div>
+    </div>     
+        <div class="content_btn span_2">
+            <div class="content_relative span_3">
+                <button class="button_sumit" @onclick="ActualizarBolsaTrabajo">
+                    @if(banderaBoton){
+                        <div class="loader"></div>
+                    }
+                    else{
+                        <span>Actualizar</span>
+                    }
+                </button>
+            </div>
+        </div>
+</div>
+

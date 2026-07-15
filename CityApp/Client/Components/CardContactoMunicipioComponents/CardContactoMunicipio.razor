@@ -1,0 +1,66 @@
+﻿<div class="content_table">
+    <div class="content_title">
+        <h2 class="title">@ViewString.Keys["ContactoMunicipio"]</h2>
+        @if(ContactoMunicipio == null || ContactoMunicipio.IdContactoMunicipio == 0)
+        {
+            <div class="btn_cirquel" @onclick="IrNuevoContacto">
+                <i class="fas fa-plus"></i>
+            </div>
+        }
+        else{
+            <div class="btn_cirquel" @onclick="(() => IrEditarContactoMunicipio(ContactoMunicipio.IdContactoMunicipio))">
+                <i class="fas fa-edit"></i>
+            </div>
+        }
+    </div>
+    <div class="card_contacto">
+        <h2 class="title_card">Chilapa de Álvarez, Guerrero.</h2>
+            @if(banderaLoader)
+            {
+                @if(alerta == "")
+                {
+                    <h3 class="text_plano">@ContactoMunicipio.Direccion</h3>
+                    <div class="grid_3">
+                        <div class="col_grid">
+                            <i class="far fa-clock icon_col"></i>
+                            <label class="text_plano">@ContactoMunicipio.Horario</label>
+                        </div>
+                        <div class="col_grid">
+                            <i class="fas fa-phone-alt icon_col"></i>
+                            <label class="text_plano">@ContactoMunicipio.Telefono</label>
+                        </div>
+                        <div class="col_grid">
+                            <i class="fas fa-at icon_col"></i>
+                            <label class="text_plano">@ContactoMunicipio.Web</label>
+                        </div>
+                        @if(ContactoMunicipio.RedesSocialesMunicipio != null)
+                        {
+                            @foreach (var red in ContactoMunicipio.RedesSocialesMunicipio)
+                            {
+                                <div class="col_grid">
+                                    <a href="@red.Ruta" class="action_base" target="_blank">
+                                        <i class="fab fa-@red.TipoRedSocial.RedSocial.ToLower() icon_col"></i>
+                                    </a>
+                                </div>
+                            }
+                        }
+                    </div>
+                }
+                else
+                {
+                    @if (alerta != "")
+                    {
+                        <h2 class="no_data">No hay Pagos</h2>
+                    }
+                    else
+                    {
+                        <h2 class="no_data">@alerta</h2>
+                    }
+                }
+            }
+            else
+            {
+                <div class="loader"></div>
+            }
+    </div>
+</div>

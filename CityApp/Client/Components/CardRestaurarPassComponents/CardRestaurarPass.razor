@@ -1,0 +1,41 @@
+﻿<div class="content_card">
+    <h1 class="tittle">@ViewString.Keys["RestaurarPass"]</h1>
+    <div class="anim_password animation"></div>
+    <p class="text">@ViewString.Keys["NewRestaurarPass"]</p>
+    <div class="content_relative">
+        <input type="password" class="input_form" placeholder="@ViewString.Keys["Pass"]" value="@password" @oninput="TxtRegistro"/>
+        @if(passwordError != "")
+        {
+            <div class="alert_input">
+                <p class="text_alert">@ViewString.Keys[passwordError]</p>
+            </div>
+        }
+    </div>
+    <div class="content_relative">
+        <input type="password" class="input_form" placeholder="@ViewString.Keys["ConfirmarPass"]" value="@confirmacionPassword" @oninput="TxtPasswordConfirmacion"/>
+        @if(confirmacionPasswordError != "")
+        {
+            <div class="alert_input">
+                <p class="text_alert">@ViewString.Keys[confirmacionPasswordError]</p>
+            </div>
+        }
+    </div>
+    <button class="button_sumit" @onclick="Enviar">
+        @if(btn_enviar == "carga")
+        {
+            <span>
+                <div class="loader"></div>
+            </span>
+        }
+        else
+        {
+            <span>@ViewString.Keys[btn_enviar]</span>
+        }
+    </button>
+    @if(alerta != "")
+    {
+        <div class="alert_bottom">
+            <p class="text_alert">@ViewString.Keys[alerta]</p>
+        </div>
+    }
+</div>

@@ -1,0 +1,58 @@
+﻿<div class="content_table">
+    <div class="content_title">
+        <h2 class="title">@ViewString.Keys["NewContactoSeguridadPublica"]</h2>
+    </div>
+    @if (alerta != "")
+    {
+        <p class="text_alerta">@ViewString.Keys[alerta]</p>
+    }
+    <div class="content_grid_form">
+        <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["MediContacto"]" value="@medio" @onchange="TxtMedio" />
+            @if (medioError != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[medioError]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Descripcion"]" value="@descripcion" @onchange="TxtDescripcion" />
+            @if (descripcionError != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[descripcionError]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative">
+            <select value="@idTipoAtencion" class="from-control input_form" @onchange="TxtIdTipoAtencion">
+                <option value="0">@ViewString.Keys["TiposAtenciones"]...</option>
+                @for (int i = 0; i < TiposAtencionesContacto.Count; i++)
+                {
+                    <option value="@TiposAtencionesContacto[i].IdTipoAtencionContacto">@TiposAtencionesContacto[i].TipoAtencion</option>
+                }
+            </select>
+            @if (idTipoAtencionError != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[idTipoAtencionError]</p>
+                </div>
+            }
+        </div>
+        <div class="content_btn span_3">
+            <div class="content_relative span_3">
+                <button class="button_sumit" @onclick="Crear">
+                    @if (banderaBoton)
+                    {
+                        <div class="loader"></div>
+                    }
+                    else
+                    {
+                        <span>Siguiente</span>
+                    }
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

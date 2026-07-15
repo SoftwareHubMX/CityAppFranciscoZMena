@@ -1,0 +1,103 @@
+﻿<div class="content_modal">
+    <i class="fas fa-times icon_x" @onclick="(() => OpenCloseModal.InvokeAsync())"></i>
+    <div class="card_modal">
+        <div class="content_title">
+            <h2 class="title">Detalle Trámite</h2>
+        </div>
+        @if(banderaCargaInfo)
+        {
+            <div class="content_detalles">
+                <div class="grid_3">
+                    <div class="col_grid">
+                        <p class="text_labal">Concepto</p>
+                        @if(Tramite.Concepto != null)
+                        {
+                            <p class="text_plano">@Tramite.Concepto</p>
+                        }
+                        else
+                        {
+                            <p class="text_plano">0</p>
+                        }
+                    </div>
+                    <div class="col_grid">
+                        <p class="text_labal">Descripción</p>
+                        @if(Tramite.Descripcion != null)
+                        {
+                            <p class="text_plano">@Tramite.Descripcion</p>
+                        }
+                        else
+                        {
+                            <p class="text_plano">---</p>
+                        }
+                    </div>
+                    @*<div class="col_grid">
+                        <p class="text_labal">Dependencia</p>
+                        @if(Tramite.Dependencia.NombreDependencia != null)
+                        {
+                            <p class="text_plano">@Tramite.Dependencia.NombreDependencia</p>
+                        }
+                        else
+                        {
+                            <p class="text_plano">---</p>
+                        }
+                    </div>*@
+                    <div class="col_grid">
+                        <p class="text_labal">Dirección</p>
+                        @if(Tramite.Direccion != null)
+                        {
+                            <p class="text_plano">
+                                @Tramite.Direccion
+                                @Tramite.Latitud
+                                @Tramite.Longitud
+                            </p>
+                        }
+                        else
+                        {
+                            <p class="text_plano">0</p>
+                        }
+                    </div>
+                    <div class="col_grid">
+                        <p class="text_labal">Costo</p>
+                        @if(Tramite.Costo != null)
+                        {
+                            <p class="text_plano">@Tramite.Costo</p>
+                        }
+                        else
+                        {
+                            <p class="text_plano">0</p>
+                        }
+                    </div>
+                    <div class="col_grid">
+                        <p class="text_labal">Requisitos</p>
+                        @if(Tramite.Requisitos != null)
+                        {
+                            <p class="text_plano">@Tramite.Requisitos</p>
+                        }
+                        else
+                        {
+                            <p class="text_plano">0</p>
+                        }
+                    </div>
+                    <div class="col_grid">
+                        <p class="text_labal">Teléfono</p>
+                        @if(Tramite.Telefono != null)
+                        {
+                            <p class="text_plano">@Tramite.Telefono</p>
+                        }
+                        else
+                        {
+                            <p class="text_plano">0</p>
+                        }
+                    </div>              
+                    @*<div class="col_grid">
+                        <p class="text_plano">@Tramite.TipoTramite</p>
+                    </div>*@
+                </div>          
+            </div>
+        }
+        else
+        {
+            <div class="loader"></div>
+        }
+    </div>
+</div>

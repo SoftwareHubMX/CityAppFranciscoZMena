@@ -1,0 +1,63 @@
+﻿<div class="content_table">
+    <div class="content_title">
+        <h2 class="title">@ViewString.Keys["NewAnuncio"]</h2>
+    </div>
+    @if(alerta != ""){
+        <p class="text_alerta">@ViewString.Keys[alerta]</p>
+    }
+    <div class="content_grid_form @section1">
+        <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Titulo"]" value="@titulo" @onchange="TxtTitulo" />
+            @if (errorTitulo != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[errorTitulo]</p>
+                </div>
+            }
+        </div>
+         <div class="content_relative">
+            <input type="date" class="input_form" value="@fecha.ToString("yyyy-MM-dd")" @onchange="TxtFecha"/>
+            @if(errorFecha != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[errorFecha]</p>
+                </div>
+            }
+        </div>
+        
+        <div class="content_relative ">
+            <button class="button_sumit" @onclick="AgregarAnuncio">
+                <span>Siguiente</span>
+            </button>
+        </div>
+    </div>
+    <div class="content_carrusel @section2">
+          <div class="grid_3 span_2">
+            @if (Archivos != null)
+            {
+                @foreach (var archivo in Archivos)
+                {
+                    <img class="img_archivo" src="data:image/png;base64, @archivo" />
+                }
+            }
+        </div>
+        <div class="content_relative">
+            <button class="button_sumit" onclick="document.getElementById('input1').click()">
+                <span>Cargar</span>
+            </button>
+        </div>
+          <div class="content_relative">
+            <button class="button_sumit" @onclick="Guardar">
+                <span>Guardar</span>
+            </button>
+        </div>
+        @if (alerta != "")
+        {
+            <div class="alert_bottom">
+                <p class="text_alert">@ViewString.Keys[alerta]</p>
+            </div>
+        }
+    </div>
+</div>
+@* <CityApp.Client.Shared.Modals.ModalCropper GuardarImagen="saveImage"></CityApp.Client.Shared.Modals.ModalCropper> *@
+<CityApp.Client.Shared.Modals.ModalCropperCompleto GuardarImagen="saveImage"></CityApp.Client.Shared.Modals.ModalCropperCompleto>

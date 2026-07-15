@@ -1,0 +1,142 @@
+﻿<div class="content_table">
+    <div class="content_title">
+        <h2 class="title">@ViewString.Keys["BolsaTrabajoList"]</h2>
+        <div class="btn_cirquel" @onclick="IrNuevaBolsaTrabajos">
+            <i class="fas fa-plus"></i>
+        </div>
+    </div>
+    <div class="btn_cirquel" @onclick="IrHistoricoBolsaTrabajos">
+        <i class="fa fa-archive"></i>
+        @*<span>Historico</span>*@
+    </div>
+    <div class="content_grid">
+        @if (banderaLoader)
+        {
+            @if (BolsaTrabajos != null)
+            {
+                @if (BolsaTrabajos.Count > 0)
+                {
+                    @foreach (var bolsaTrabajos in BolsaTrabajos)
+                    {
+                        <div class="card_Slider">
+                            <div class="content_info">
+                                <h5 class="title_card">@bolsaTrabajos.Empresa.ToUpper()</h5>
+                                <p class="card-text">
+                                    <span class="text-label">Rfc: </span>@bolsaTrabajos.Rfc.ToUpper()
+                                </p>
+                                <p class="card-fecha">
+                                    <span class="text-label card-fecha">Fecha y Hora: </span>@bolsaTrabajos.FechaPublicacion
+                                </p>
+                                <p class="card-text">
+                                    <span class="text-label">Puesto: </span>@bolsaTrabajos.Puesto
+                                </p>
+                                <p class="card-text">
+                                    <span class="text-label">Edad: </span>@bolsaTrabajos.Edad
+                                    <span class="text-label espacio">Sexo: </span>@bolsaTrabajos.Sexo
+                                </p>
+                                <p class="card-text">
+                                    <span class="text-label">Escolaridad: </span>@bolsaTrabajos.Escolaridad
+                                    <span class="text-label espacio">Especialidad: </span>@bolsaTrabajos.Especialidad
+                                    <span class="text-label espacio">Experiencia: </span>@bolsaTrabajos.Experiencia
+                                    <span class="text-label espacio">Conocimientos: </span>@bolsaTrabajos.Conocimiento
+                                    <span class="text-label espacio">Habilidades: </span>@bolsaTrabajos.Habilidades
+                                    <span class="text-label espacio">Funciones: </span>@bolsaTrabajos.Funciones
+                                    <span class="text-label espacio">Requisitos: </span>@bolsaTrabajos.Requisitos
+                                    <span class="text-label espacio">Acividades Principales </span>@bolsaTrabajos.ActividadPrincipal
+                                </p>
+                                <p class="card-text">
+                                    <span class="text-label">Jornada Laboral: </span>@bolsaTrabajos.Jornada
+                                    <span class="text-label espacion">Sueldo: </span>@bolsaTrabajos.Sueldo
+                                </p>
+                                <p class="card-text">
+                                    <span class="text-label">Escolaridad: </span>@bolsaTrabajos.Contacto
+                                    <span class="text-label espacio">Entrevista: </span>@bolsaTrabajos.Entrevisata
+                                    <span class="text-label espacio">Prestaciones: </span>@bolsaTrabajos.Prestaciones
+                                    <span class="text-label espacio">Otras Prestaciones: </span>@bolsaTrabajos.OtrasPrestaciones
+                                </p>
+                                <p class="card-text1">
+                                    <span class="text-label1">Dirección: </span>
+                                    @bolsaTrabajos.Calle
+                                    @bolsaTrabajos.Numero
+                                    @bolsaTrabajos.Colonia
+                                    @bolsaTrabajos.Localidad
+                                    @bolsaTrabajos.CodigoPostal
+                                </p>
+                                @*Acciones*@
+                                <div class="col_grid">
+                                    <div class="content_flex">
+                                        <button class="btn_edit" @onclick="(() => IrEditarBolsaTrabajos(bolsaTrabajos.IdBolsaTrabajo))">
+                                            <i class="far fa-edit"></i>
+                                            <span>Editar</span>
+                                        </button>
+                                        <button class="btn_delete" @onclick="(() => EliminarBolsaTrabajos(bolsaTrabajos.IdBolsaTrabajo))">
+                                            <i class="far fa-trash-alt"></i>
+                                            <span>Eliminar</span>
+                                        </button>
+                                        <button class="btn_edit" @onclick="(() => CambiarStatusBolsa(bolsaTrabajos))">
+                                            @if (bolsaTrabajos.EstatuaBolsa)
+                                            {
+                                                <i class="oi oi-lock-unlocked"></i>
+                                                <span>Activa</span>
+                                            }
+                                            else
+                                            {
+                                                <i class="oi oi-lock-locked"></i>
+                                                <span>Inactiva</span>
+                                            }
+
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+
+                }
+                else
+                {
+                    @if (alerta != "")
+                    {
+                        <h2 class="no_data">No hay bolsas de trabajo</h2>
+                    }
+                    else
+                    {
+                        <div class="loader"></div>
+                    }
+                }
+            }
+            else
+            {
+                @if (alerta != "")
+                {
+                    <h2 class="no_data">No hay bolsas de trabajo</h2>
+                }
+                else
+                {
+                    <h2 class="no_data">@alerta</h2>
+                }
+            }
+        }
+        else
+        {
+            <div class="loader"></div>
+        }
+    </div>
+
+    <div class="content_paginado">
+        @foreach (int i in paginas)
+        {
+            <div class="pagina" @onclick="(() => CambiarPaginaActual(i))">
+                @if (i == paginaActual)
+                {
+                    <span class="selected">@i</span>
+                }
+                else
+                {
+                    <span>@i</span>
+                }
+            </div>
+        }
+    </div>
+</div>

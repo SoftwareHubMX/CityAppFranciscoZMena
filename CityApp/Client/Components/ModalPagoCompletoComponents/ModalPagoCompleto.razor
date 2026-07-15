@@ -1,0 +1,112 @@
+﻿<div class="content_modal">
+    <div class="card_modal">
+        <button class="btn_edit icono_absolut" @onclick="(() => OpenCloseModal.InvokeAsync(0))">
+            <i class="far fa-times-circle"></i>
+            <span>Cerrar</span>
+        </button>
+        <button class="btn_delete icono_absolut" @onclick="Eliminar">
+            <i class="far fa-trash-alt"></i>
+            <span>Eliminar</span>
+        </button>
+        <h2 class="title">Pago</h2>
+        @if(alerta2 != ""){
+            <label class="alerta">@alerta2</label>
+        }
+        @if(!loader){
+            @if(alerta == ""){
+                <div class="content_info">
+                    <div class="display_flex">
+                        <label class="text_realse">Fecha del pago:</label>
+                        <label class="text_plano">@pago.FechaPago.ToString("dd/MM/yy HH:mm:ss")</label>
+                        <label class="text_realse">Referencia:</label>
+                        <label class="text_plano">@pago.Referencia</label>
+                    </div>
+                    <div class="display_felx">
+                        <label class="text_realse">Monto del pago:</label>
+                        <label class="text_plano">@pago.Total</label>
+                    </div>
+                    <div class="display_felx">
+                        <label class="text_realse">Referencia:</label>
+                        <label class="text_plano">@pago.Referencia</label>
+                    </div>
+                    <div class="display_felx">
+                        <label class="text_realse">Concepto del pago:</label>
+                        @if (pago.TipoPago != null)
+                        {
+                            <label class="text_plano">@pago.TipoPago.Pago</label>
+                        }
+                        else
+                        {
+                            <label class="text_plano">----</label>
+                        }
+                    </div>
+                    @if (pago.Cuenta != null)
+                    {
+
+                        <div class="display_felx">
+                            <label class="text_realse">Pago a nombre de:</label>
+                            @if (pago.Cuenta.Usuario != null)
+                            {
+                                @if (pago.Cuenta.Usuario.Nombre != "NA")
+                                {
+                                    <label class="text_plano">@pago.Cuenta.Usuario.Nombre @pago.Cuenta.Usuario.Apellidos</label>
+                                }
+                                else
+                                {
+                                    <label class="text_plano">@pago.Cuenta.NombreUsuario</label>
+                                }
+                            }
+                            else
+                            {
+                                <label class="text_plano">@pago.Cuenta.NombreUsuario</label>
+                            }
+                        </div>
+                        @if (pago.Cuenta.Contacto != null)
+                        {
+                            <div class="display_felx">
+                                <label class="text_realse">correo de contacto:</label>
+                                <label class="text_plano">@pago.Cuenta.Contacto.Correo</label>
+                            </div>
+                            <div class="display_felx">
+                                <label class="text_realse">Télefono de contacto:</label>
+                                <label class="text_plano">@((pago.Cuenta.Contacto.TelefonoOpcion1 != "NA") ? pago.Cuenta.Contacto.TelefonoOpcion1 : pago.Cuenta.Contacto.TelefonoOpcion2)</label>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="display_felx">
+                                <label class="text_realse">correo de contacto:</label>
+                                <label class="text_plano">----</label>
+                            </div>
+                            <div class="display_felx">
+                                <label class="text_realse">Télefono de contacto:</label>
+                                <label class="text_plano">----</label>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <div class="display_felx">
+                            <label class="text_realse">Pago a nombre de:</label>
+                            <label class="text_plano">----</label>
+                        </div>
+                        <div class="display_felx">
+                            <label class="text_realse">correo de contacto:</label>
+                            <label class="text_plano">----</label>
+                        </div>
+                        <div class="display_felx">
+                            <label class="text_realse">Télefono de contacto:</label>
+                            <label class="text_plano">----</label>
+                        </div>
+                    }
+                </div>
+            }
+            else{
+                <label class="alerta">@alerta</label>
+            }
+        }
+        else{
+            <div class="loader"></div>
+        }
+    </div>
+</div>

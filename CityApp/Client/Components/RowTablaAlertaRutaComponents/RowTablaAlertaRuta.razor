@@ -1,0 +1,35 @@
+﻿<div class="col_grid">
+    <p class="txt_plano">@alertaRuta.IdAlertaRuta</p>
+</div>
+<div class="col_grid">
+    <p class="txt_plano">@alertaRuta.Descripcion</p>
+</div>
+<div class="col_grid">
+    <p class="txt_plano">@alertaRuta.FechaAlerta</p>
+</div>
+<div class="col_grid">
+    @if (alertaRuta.TiposAlertaRuta != null)
+    {
+        <p class="txt_plano">@alertaRuta.TiposAlertaRuta.TipoAlerta</p>
+    }
+    else
+    {
+        <p class="txt_plano">---</p>
+    }
+</div>
+<div class="col_grid">
+    <select value="@idStatusAlertaRuta" class="from-control input_form" @onchange="SelectIdStatusAlertaRuta">
+        <option value="0">Seleccione...</option>
+        @foreach (var status in statusAlertasRutas)
+        {
+            <option value="@status.IdStatusAlertaRuta">@status.StatusAlerta</option>
+        }
+    </select>
+    @if (idStatusAlertaRutaError != "")
+    {
+        <div class="alert_input">
+            <p class="text_alert">@idStatusAlertaRutaError</p>
+        </div>
+    }
+</div>
+

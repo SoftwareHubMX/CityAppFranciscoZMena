@@ -1,0 +1,184 @@
+﻿<div class="content_modal">
+    <i class="fas fa-times icon_x" @onclick="(() => OpenCloseModal.InvokeAsync())"></i>
+    <div class="card_modal">
+        <div class="content_title">
+            <h2 class="title">Detalles reporte ciudadano</h2>
+        </div>
+        @if (banderaCargaInfo)
+        {
+            <div class="content_detalles">
+                <div class="grid_3">
+                    <div class="col_grid">
+                        <p class="text_labal">Reportes</p>
+                        @if (ReporteCiudadano.VercionesReporteCiudadano != null)
+                        {
+                            <p class="text_plano">@ReporteCiudadano.VercionesReporteCiudadano.Count</p>
+                        }
+                        else
+                        {
+                            <p class="text_plano">0</p>
+                        }
+                    </div>
+                    <div class="col_grid">
+                        <p class="text_labal">Tipo de reporte</p>
+                        @if (ReporteCiudadano.TipoReporteCiudadano != null)
+                        {
+                            <p class="text_plano">@ReporteCiudadano.TipoReporteCiudadano.TipoReporte</p>
+                        }
+                        else
+                        {
+                            <p class="text_plano">---</p>
+                        }
+                    </div>
+                    <div class="col_grid">
+                        <p class="text_labal">Estatus</p>
+                        @if (ReporteCiudadano.EstatusReporteCiudadano != null)
+                        {
+                            <p class="text_plano">@ReporteCiudadano.EstatusReporteCiudadano.Estatus</p>
+                        }
+                        else
+                        {
+                            <p class="text_plano">---</p>
+                        }
+                    </div>
+                    <div class="col_grid">
+                        <p class="text_labal">Evidencias de solución</p>
+                        <div class="grid_5">
+                            @if (ReporteCiudadano.EvidenciasSolucionReporteCiudadano != null && ReporteCiudadano.EvidenciasSolucionReporteCiudadano.Count > 0)
+                            {
+                                @foreach (var archivo in ReporteCiudadano.EvidenciasSolucionReporteCiudadano)
+                                {
+                                    <div class="col_grid">
+                                        <img class="img_modal" src="data:image/png;base64, @archivo.Ruta" />
+                                    </div>
+                                }
+                            }
+                        </div>
+                    </div>
+                    <div class="col_grid">
+                        <input type="text" class="input_form" placeholder="@ViewString.Keys["Respuesta"]" value="@observaciones" @onchange="TxtObservaciones" />
+                        @if (ErrorObservaciones != "")
+                        {
+                            <div class="alert_input">
+                                <p class="text_alert">@ViewString.Keys[ErrorObservaciones]</p>
+                            </div>
+                        }
+                    </div>
+                    <div class="col_grid">
+                        <button class="button_sumit" @onclick="ActualizarObservaciones">
+                            <span>Guardar</span>
+                        </button>
+                    </div>
+                    @* <div class="col_grid">
+                        <p class="text_labal">Observaciones</p>
+                        @if (ReporteCiudadano.EvidenciasSolucionReporteCiudadano != null && ReporteCiudadano.EvidenciasSolucionReporteCiudadano.Count > 0)
+                        {
+                        <p class="text_plano">@ReporteCiudadano.EvidenciasSolucionReporteCiudadano[0].Observaciones</p>
+                        }
+                        else
+                        {
+                        <p class="text_plano">---</p>
+                        }
+                        </div>*@
+                    <div class="col_grid">
+                        <p class="text_plano">@ReporteCiudadano.FechaPrimerReporte</p>
+                    </div>
+                </div>
+                <p class="text_labal">Reportes de los usuarios</p>
+                <div class="content_verciones">
+                    @if (ReporteCiudadano.VercionesReporteCiudadano != null)
+                    {
+                        @foreach (var reporte in ReporteCiudadano.VercionesReporteCiudadano)
+                        {
+                            <div class="content_card_repo">
+                                @* <div class="display_flex">
+                                    @if (reporte.Cuenta != null)
+                                    {
+                                        <p class="text_plano margi_null">@reporte.Cuenta.NombreUsuario</p>
+                                    }
+                                    else
+                                    {
+                                        <p class="text_plano">---</p>
+                                    }
+                                    <p class="text_plano margi_null margin_left">@reporte.FechaReporte</p>
+                                </div> *@
+                                <div class="display_flex">
+                                    @if (reporte.Cuenta.Usuario != null)
+                                    {
+                                        <p class="text_plano">
+                                            <span class="text-labels">Nombre/Usuario:</span>
+                                            @($"{reporte.Cuenta.Usuario.Nombre} {reporte.Cuenta.Usuario.Apellidos} - @{reporte.Cuenta.NombreUsuario}")
+                                        </p>
+                                    }
+                                    else
+                                    {
+                                        <p class="text_plano">---</p>
+                                    }
+                                    <p class="text_plano margi_null margin_left">
+                                        <span class="text-labels">Fecha:</span>
+                                        @reporte.FechaReporte
+                                    </p>
+                                </div>
+                                <div class="display_flex">
+                                    @if (reporte.Cuenta.Usuario != null)
+                                    {
+                                        <p class="text_plano margi_null">
+                                            <span class="text-labels">Teléfono:</span>
+                                            @reporte.Cuenta.Usuario.Telefono
+                                        </p>
+                                    }
+                                    else
+                                    {
+                                        <p class="text_plano">---</p>
+                                    }
+                                </div>
+                                <div class="display_flex">
+                                    @if (reporte.Cuenta.Contacto != null)
+                                    {
+                                        <p class="text_plano margi_null">
+                                            <span class="text-labels">Email:</span>
+                                            @reporte.Cuenta.Contacto.Correo
+                                        </p>
+                                    }
+                                    else
+                                    {
+                                        <p class="text_plano">---</p>
+                                    }
+                                </div>
+                                <div class="display_flex">
+                                    @if (reporte.Cuenta.Usuario != null)
+                                    {
+                                        <p class="text_plano margi_null">
+                                            <span class="text-labels">Dirección:</span>
+                                            @reporte.Cuenta.Usuario.Direccion
+                                        </p>
+                                    }
+                                    else
+                                    {
+                                        <p class="text_plano">---</p>
+                                    }
+                                </div>
+                                <p class="text_plano">@reporte.Descripcion</p>
+                                <div class="grid_5">
+                                    @if (reporte.EvidenciasReporteCiudadano != null && reporte.EvidenciasReporteCiudadano.Count > 0)
+                                    {
+                                        @foreach (var archivo in reporte.EvidenciasReporteCiudadano)
+                                        {
+                                            <div class="col_grid">
+                                                <img class="img_modal" src="data:image/png;base64, @archivo.Ruta" />
+                                            </div>
+                                        }
+                                    }
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="loader"></div>
+        }
+    </div>
+</div>

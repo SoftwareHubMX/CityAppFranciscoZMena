@@ -1,0 +1,122 @@
+﻿<div class="content_table">
+    <div class="content_title">
+        <h2 class="title">@ViewString.Keys["Postulacion"]</h2>
+    </div>
+    <div class="content_grid_tabla">
+        <div class="content_grid_tabla_header">           
+            <div class="col_grid displa_flex">
+                <span>Id</span>
+            </div>
+            <div class="col_grid displa_flex">
+                <span>Nombre del Postulante</span>
+            </div>            
+            <div class="col_grid displa_flex">
+                <span>Sexo</span>
+            </div>
+            <div class="col_grid displa_flex">
+                <span>Método de Contacto</span>
+            </div>
+            <div class="col_grid displa_flex">
+                <span>Dirección</span>
+            </div>
+            @*<div class="col_grid">
+                <span>Acciones</span>
+            </div>*@
+        </div>
+        @if (banderaLoader)
+        {
+            @if (Postulaciones != null)
+            {
+                @if (Postulaciones.Count > 0)
+                {
+                    <div class="content_grid_tabla_boddy">
+                        @foreach (var postulacion in Postulaciones)
+                        {
+                            <div class="col_grid">
+                                <p class="txt_plano">@postulacion.IdPostulacion</p>
+                            </div>
+                             <div class="col_grid">
+                                <p class="txt_plano">
+                                    @postulacion.ApellidoPaterno 
+                                    @postulacion.ApellidoMaterno 
+                                    @postulacion.NombrePostulante
+                                </p>
+                            </div>                            
+                            <div class="col_grid">
+                                <p class="txt_plano">@postulacion.Sexo</p>
+                            </div>
+                             <div class="col_grid">
+                                <p class="txt_plano">
+                                    @postulacion.Telefono1 
+                                    @postulacion.Telefono2
+                                    @postulacion.Correo
+                                </p>
+                            </div>
+                            <div class="col_grid">
+                                <p class="txt_plano">
+                                    @postulacion.Domicilio 
+                                    @postulacion.Colonia
+                                    @postulacion.Municipio
+                                </p>
+                            </div>
+                           @* <div class="col_grid">
+                                <div class="content_flex">
+                                    <button class="btn_edit" @onclick="(() => IrEditarSecretaria(secretaria.IdSecretaria))">
+                                        <i class="far fa-edit"></i>
+                                        <span>Editar</span>
+                                    </button>
+                                    <button class="btn_delete" @onclick="(() => EliminarSecretaria(secretaria.IdSecretaria))">
+                                        <i class="far fa-trash-alt"></i>
+                                        <span>Eliminar</span>
+                                    </button>
+                                </div>
+                            </div>*@
+                        }
+                    </div>
+                    <div class="content_paginado">
+                        @foreach (int i in paginas)
+                        {
+                            <div class="pagina" @onclick="(() => CambiarPaginaActual(i))">
+                                @if (i == paginaActual)
+                                {
+                                    <span class="selected">@i</span>
+                                }
+                                else
+                                {
+                                    <span>@i</span>
+                                }
+                            </div>
+                        }
+                    </div>
+                }
+                else
+                {
+                    @if (alerta != "")
+                    {
+                        <h2 class="no_data">No hay Postulaciones</h2>
+                    }
+                    else
+                    {
+                        <div class="loader"></div>
+                    }
+                }
+            }
+            else
+            {
+                @if (alerta != "")
+                {
+                    <h2 class="no_data">No hay Postulaciones</h2>
+                }
+                else
+                {
+                    <h2 class="no_data">@alerta</h2>
+                }
+            }
+        }
+        else
+        {
+            <div class="loader"></div>
+        }
+    </div>
+</div>
+

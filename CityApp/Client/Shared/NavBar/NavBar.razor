@@ -1,0 +1,38 @@
+﻿<nav class="nav_bar">
+    <div class="content_user">
+        @*<img src="Imagenes/SharedImagenes/logo_CityApp_Claro.png" alt="CityApp_logo" title="CityApp_logo" class="img_logo" @onclick="IrDashBoard"/>*@
+        <img src="Imagenes/LogosMunicipios/Chilapa/ic_chilapa_long_blanco.svg" alt="CityApp_logo" title="CityApp_logo" class="img_logo" @onclick="IrDashBoard" />
+        <h2 class="text_name">@Usuario / </h2>
+        <span class="text_rol">@Rol.NombreRol</span>
+    </div>
+
+    
+
+    <div class="content_buttons">
+        <div class="btn_container" @onclick="openSubMenu">
+            <i class="fas fa-cog icon_btn"></i>
+            <label class="text_btn">Configuración</label>
+        </div>
+        <div class="btn_container" @onclick="SalirSesion">
+            <i class="fas fa-door-open icon_btn"></i>
+            <label class="text_btn">Salir</label>
+        </div>
+    </div>
+</nav>
+
+<div class="content_submenu @submenu">
+    <ul>
+        <li>
+            <a href="/Cuentas">
+                <div class="icon"><i class="fa-solid fa-user"></i></div>
+                <span>Usuarios</span>
+            </a>
+        </li>
+        <li>
+            <a href="/Upss">
+                <div class="icon"><i class="fa-solid fa-location-dot"></i></div>
+                <span>Catalogos</span>
+            </a>
+        </li>
+    </ul>
+</div>

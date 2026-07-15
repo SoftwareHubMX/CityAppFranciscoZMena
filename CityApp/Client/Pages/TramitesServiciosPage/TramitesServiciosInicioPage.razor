@@ -1,0 +1,29 @@
+﻿@page "/TramitesServicios"
+
+<CityApp.Client.Shared.NavBar.NavBar></CityApp.Client.Shared.NavBar.NavBar>
+
+<div class="content_page">
+    <CityApp.Client.Shared.BarMenu.BarMenu></CityApp.Client.Shared.BarMenu.BarMenu>
+    <div class="content_table">
+        <div class="content_title">
+            <h2 class="title">Trámites y Servicios</h2>
+        </div>
+        <div class="content_grid_3">
+            <div class="col_grid" @onclick="(() => IrMenu(0))">
+                <i class="fa-solid fa-city icono_menu"></i>
+                @*<img class="icono_menu" src="Iconografia/tramitesSecretarias.svg" />*@
+                <span>Secretarias</span>
+            </div>
+            <div class="col_grid" @onclick="(() => IrMenu(1))">
+                <i class="fa-solid fa-building icono_menu"></i>
+                @*<img class="icono_menu" src="Iconografia/tramitesDependencia.svg" />*@
+                <span>Dependencias</span>
+            </div>
+            <div class="col_grid" @onclick="(() => IrMenu(2))">
+                 <i class="fa-solid fa-clipboard-list icono_menu"></i>
+                @*<img class="icono_menu" src="Iconografia/tramitesTramites.svg" />*@
+                <span>Trámites</span>
+            </div>
+        </div>
+    </div>
+</div>

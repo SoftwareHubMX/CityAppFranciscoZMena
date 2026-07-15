@@ -1,0 +1,74 @@
+﻿<div class="content_grid_tabla_boddy">
+    <div class="col_grid">
+        <p class="txt_plano">@reporte.IdReporteCiudadano</p>
+    </div>
+    <div class="col_grid">
+        <p class="txt_plano">@reporte.TipoReporteCiudadano.TipoReporte</p>
+    </div>
+    <div class="col_grid">
+        <p class="txt_plano">@reporte.VercionesReporteCiudadano[0].Descripcion</p>
+    </div>
+    <div class="col_grid">
+        <p class="txt_plano">@reporte.FechaPrimerReporte.ToString("dd/MM/yyyy")</p>
+    </div>
+    <div class="col_grid">
+        @if(reporte.VercionesReporteCiudadano[0].EvidenciasReporteCiudadano != null)
+        {
+            <img class="img_tabla" src="data:image/png;base64, @reporte.VercionesReporteCiudadano[0].EvidenciasReporteCiudadano[0].Ruta" @onclick="(() => PasarDatoImg(reporte.VercionesReporteCiudadano[0].EvidenciasReporteCiudadano[0].Ruta))"/>
+        }
+    </div>
+    <div class="col_grid">
+        @if(reporte.EvidenciasSolucionReporteCiudadano != null)
+        {
+            @if (modalEvidenciasSolucion)
+            {
+                <CityApp.Client.Components.ModalEcidenciasSolucionReporteCiudadanoComponents.ModalEcidenciasSolucionReporteCiudadano Archivos="@ArchivosModalEvidencias" Sesion="@Sesion" IdReporteCiudadano="@IdReporteCiudadanoModal" OpenCloseModal="openModalEvidenciasSolucion"></CityApp.Client.Components.ModalEcidenciasSolucionReporteCiudadanoComponents.ModalEcidenciasSolucionReporteCiudadano>
+            }
+            <img class="img_tabla" src="data:image/png;base64, @reporte.EvidenciasSolucionReporteCiudadano[0].Ruta" />
+            <div class="popper_hover">
+                <button class="btn_edit" @onclick="(() => openModalEvidenciasSolucion(reporte.IdReporteCiudadano))">
+                    <i class="far fa-images"></i>
+                    <span>Evidencias</span>
+                </button>
+            </div>
+        }
+        else
+        {
+            <button class="btn_edit" onclick="document.getElementById(@idBtnCroper).click()">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <span>Cargar evidencia</span>
+            </button>
+        }
+    </div>
+    <div class="col_grid">
+        <p class="txt_plano">@reporte.VercionesReporteCiudadano[0].DireccionReporteCiudadano.CodigoPostal - @reporte.VercionesReporteCiudadano[0].DireccionReporteCiudadano.Colonia, @reporte.VercionesReporteCiudadano[0].DireccionReporteCiudadano.Calle</p>
+    </div>
+    <div class="col_grid">
+        <p class="txt_plano">@reporte.VercionesReporteCiudadano.Count</p>
+    </div>
+    <div class="col_grid">
+        <button class="btn_edit" @onclick="(() => openModalDetalles.InvokeAsync(reporte.IdReporteCiudadano))">
+            <i class="fas fa-list-ul"></i>
+            <span>Detalles</span>
+        </button>
+    </div>
+    <div class="col_grid">
+        <div class="content_relative">
+            <select value="@idEstatusReporteCiudadano" class="from-control input_form" @onchange="SelectidEstatusReporteCiudadano">
+                <option value="0-0">Seleccione...</option>
+                @if(EstatusReporteCiudadanos != null)
+                {
+                    @foreach(var estatus in EstatusReporteCiudadanos)
+                    {
+                        <option value="@estatus.IdEstatusReporteCiudadano">@estatus.Estatus</option>
+                    }
+                }
+            </select>
+        </div>
+    </div>
+</div>
+<CityApp.Client.Shared.Modals.ModalCropper GuardarImagen="saveImage" Id="reporte.IdReporteCiudadano"></CityApp.Client.Shared.Modals.ModalCropper>
+
+@if(modalcarusel){
+    <CityApp.Client.Components.ModalCarruselImagesComponents.ModalCarruselImages OpenCloseModal="openModalCarusel" Archivo="@imgModal" Archivos="@ArchivosModal"></CityApp.Client.Components.ModalCarruselImagesComponents.ModalCarruselImages>
+}

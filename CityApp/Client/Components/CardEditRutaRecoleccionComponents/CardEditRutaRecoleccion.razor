@@ -1,0 +1,175 @@
+﻿<div class="content_table">
+    <div class="content_title">
+        <h2 class="title">@ViewString.Keys["EditRuta"]</h2>
+    </div>
+    @if (alerta != "")
+    {
+        <p class="text_alerta">@ViewString.Keys[alerta]</p>
+    }
+    <div class="content_section @carrusel2">
+        <div class="content_grid_form">
+            <div class="content_relative">
+                <select value="@idColonia" class="from-control input_form" @onchange="SelectColonia">
+                    <option value="0">@ViewString.Keys["SelectColonia"]...</option>
+                    @foreach (var coloniaRutaRecoleccion in Colonias)
+                    {
+                        <option value="@coloniaRutaRecoleccion.IdColonia">@coloniaRutaRecoleccion.NombreColonia</option>
+                    }
+                </select>
+                @if (errorIdColonia != "")
+                {
+                    <div class="alert_input">
+                        <p class="text_alert">@ViewString.Keys[errorIdColonia]</p>
+                    </div>
+                }
+            </div>
+            <div class="displa_flex">
+                <button class="button_sumit" @onclick="AgregarColonia">
+                    <span>Agregar Colonia</span>
+                </button>
+            </div>
+            <div class="content_card span_2">
+                @if (ColoniaRutaRecoleccions != null && ColoniaRutaRecoleccions.Count > 0)
+                {
+                    <div class="colonias_container">
+                        @foreach (var g in ColoniaRutaRecoleccions)
+                        {
+                            <div class="card_giro">
+                                <i class="oi oi-x delete_icon" @onclick="(() => EliminarColoniaRutaRecoleccion(g))"></i>
+                                <span class="texto">@g.Colonia?.NombreColonia</span>
+                            </div>
+                        }
+                    </div>
+                }
+                else
+                {
+                    <div class="no_contenido alert alert-warning">
+                        No hay colonias agregadas aún.
+                    </div>
+                }
+            </div>
+
+            <div class="content_relative">
+                <select value="@idDiaRuta" class="from-control input_form" @onchange="SelectDia">
+                    <option value="0">Selecciona un día</option>
+                    <option value="1">Domingo </option>
+                    <option value="2">Lunes </option>
+                    <option value="3">Martes </option>
+                    <option value="4">Miércoles </option>
+                    <option value="5">Jueves </option>
+                    <option value="6">Viernes </option>
+                    <option value="7">Sabado </option>
+                </select>
+                @if (errorIdDiaRuta != "")
+                {
+                    <div class="alert_input">
+                        <p class="text_alert">@ViewString.Keys[errorIdDiaRuta]</p>
+                    </div>
+                }
+            </div>
+            <div class="displa_flex">
+                <button class="button_sumit" @onclick="AgregarDia">
+                    <span>Agregar Dia</span>
+                </button>
+            </div>
+            <div class="content_card span_2">
+                @if (DiasRuta != null && DiasRuta.Count > 0)
+                {
+                    <div class="colonias_container">
+                        @foreach (var dia in DiasRuta)
+                        {
+                            <div class="card_giro">
+                                <i class="oi oi-x delete_icon" @onclick="(() => EliminarDia(dia))"></i>
+                                <span class="texto">@dia.Dias</span>
+                            </div>
+                        }
+                    </div>
+                }
+                else
+                {
+                    <div class="no_contenido alert alert-warning">
+                        No hay días agregados aún.
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="displa_flex_save">
+            <button class="button_sumit" @onclick="Siguiente">
+                <span>Guardar</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="content_section @carrusel1">
+        <div class="content_grid_form">
+            <div class="content_relative">
+                <select value="@idCuenta" class="from-control input_form" @onchange="SelectCuenta">
+                    <option value="0">@ViewString.Keys["SelectCuenta"]...</option>
+                    @foreach (var cuenta in Cuentas)
+                    {
+                        <option value="@cuenta.IdCuenta">@cuenta.NombreUsuario</option>
+                    }
+                </select>
+                @if (idCuentaError != "")
+                {
+                    <div class="alert_input">
+                        <p class="text_alert">@ViewString.Keys[idCuentaError]</p>
+                    </div>
+                }
+            </div>
+            <div class="content_relative">
+                <input type="text" class="input_form" placeholder="@ViewString.Keys["Concesionario"]" value="@concesionario" @onchange="TxtConcesionario" />
+                @if (errorConcesionario != "")
+                {
+                    <div class="alert_input">
+                        <p class="text_alert">@ViewString.Keys[errorConcesionario]</p>
+                    </div>
+                }
+            </div>
+            <div class="content_relative">
+                <input type="text" class="input_form" placeholder="@ViewString.Keys["Descipcion"]" value="@descripcion" @onchange="TxtDescripcion" />
+                @if (errorDescripcion != "")
+                {
+                    <div class="alert_input">
+                        <p class="text_alert">@ViewString.Keys[errorDescripcion]</p>
+                    </div>
+                }
+            </div>
+            <div class="content_relative">
+                <input type="text" class="input_form" placeholder="@ViewString.Keys["Ruta"]" value="@nombreRuta" @onchange="TxtNombreRuta" />
+                @if (errorNombreRuta != "")
+                {
+                    <div class="alert_input">
+                        <p class="text_alert">@ViewString.Keys[errorNombreRuta]</p>
+                    </div>
+                }
+            </div>
+            <div class="content_relative">
+                <input type="tel" class="input_form" placeholder="@ViewString.Keys["Horario"]" value="@horario" @onchange="TxtHorario" />
+                @if (errorHorario != "")
+                {
+                    <div class="alert_input">
+                        <p class="text_alert">@ViewString.Keys[errorHorario]</p>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="content_btn span_2">
+            <div class="content_relative span_3">
+                <button class="button_sumit" @onclick="ActualizarRuta">
+                    @if (banderaBoton)
+                    {
+                        <div class="loader"></div>
+                    }
+                    else
+                    {
+                        <span>Siguiente</span>
+                    }
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

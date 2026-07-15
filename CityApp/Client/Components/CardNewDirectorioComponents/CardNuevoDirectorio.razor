@@ -1,0 +1,85 @@
+﻿<div class="content_table">
+    <div class="content_title">
+        <h2 class="title">@ViewString.Keys["NewDirectorio"]</h2>
+    </div>
+    @if(alerta != ""){
+        <p class="text_alerta">@ViewString.Keys[alerta]</p>
+    }
+    <div class="content_grid_form @section1">
+        <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["NomDirectorio"]" value="@nombreDirectorio" @onchange="TxtNombreDirectorio" />
+            @if (errorDirectorio != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[errorDirectorio]</p>
+                </div>
+            }
+        </div>
+         <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Puesto"]" value="@puesto" @onchange="TxtPuesto" />
+            @if (errorPuesto != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[errorPuesto]</p>
+                </div>
+            }
+        </div>
+         <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["MetdoCon"]" value="@metodoContacto" @onchange="TxtMetodoContacto" />
+            @if (errorMetodoCon != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[errorMetodoCon]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative">
+            <select value="@idTiposDirectorio" class="from-control input_form" @onchange="TxtIdTipoDirectorio">
+                <option value="0">@ViewString.Keys["TipoDirectorio"]...</option>
+               @for (int i = 0; i < TiposDirectorio.Count; i++)
+                {
+                    <option value="@TiposDirectorio[i].IdTipoDirectorio">@TiposDirectorio[i].Directorio</option>
+                }
+            </select>
+            @if (errorIdTipoDirectorio != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[errorIdTipoDirectorio]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative ">
+            <button class="button_sumit" @onclick="AgregarDirectorio">
+                <span>Siguiente</span>
+            </button>
+        </div>
+    </div>
+    <div class="content_carrusel @section2">
+          <div class="grid_3 span_2">
+            @if (Archivos != null)
+            {
+                @foreach (var archivo in Archivos)
+                {
+                    <img class="img_archivo" src="data:image/png;base64, @archivo" />
+                }
+            }
+        </div>
+        <div class="content_relative">
+            <button class="button_sumit" onclick="document.getElementById('input1').click()">
+                <span>Cargar</span>
+            </button>
+        </div>
+          <div class="content_relative">
+            <button class="button_sumit" @onclick="Guardar">
+                <span>Guardar</span>
+            </button>
+        </div>
+        @if (alerta != "")
+        {
+            <div class="alert_bottom">
+                <p class="text_alert">@ViewString.Keys[alerta]</p>
+            </div>
+        }
+    </div>
+</div>
+<CityApp.Client.Shared.Modals.ModalCropper GuardarImagen="saveImage"></CityApp.Client.Shared.Modals.ModalCropper>

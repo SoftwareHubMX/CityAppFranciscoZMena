@@ -1,0 +1,176 @@
+﻿<div class="content_table">
+    <div class="content_title">
+        <h2 class="title">@ViewString.Keys["Noticias"]</h2>
+    </div>
+    <div class="content_filtros">
+        <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Buscar"]" value="@busqueda" @onchange="TxtBusqueda"/>
+            @if(busquedaError != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[busquedaError]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Autor"]" value="@autor" @onchange="TxtAutor"/>
+            @if(autorError != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[autorError]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Fuente"]" value="@fuente" @onchange="TxtFuente"/>
+            @if(fuenteError != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[fuenteError]</p>
+                </div>
+            }
+        </div>
+        <div class="content_filtro_option span_2">
+            <div class="content_buttons_sections">
+                <h2 class="label_section @section1" @onclick="(() => CambioSection(0))">@ViewString.Keys["FechaPublicacion"]</h2>
+                <h2 class="label_section @section2" @onclick="(() => CambioSection(1))">@ViewString.Keys["RangoFecha"]</h2>
+                <h2 class="label_section @section3" @onclick="(() => CambioSection(2))">@ViewString.Keys["FechaEspecifica"]</h2>
+            </div>
+            <div class="content_carrusel @carrusel1">
+                <div class="content_relative">
+                    <input type="date" class="input_form" value="@fechaFija.ToString("yyyy-MM-dd")" @onchange="TxtFechaFija"/>
+                    @if(fechaFijaError != "")
+                    {
+                        <div class="alert_input">
+                            <p class="text_alert">@ViewString.Keys[fechaFijaError]</p>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="content_carrusel @carrusel2">
+                <div class="content_relative">
+                    <input type="date" class="input_form" value="@fechaInicio.ToString("yyyy-MM-dd")" @onchange="TxtFechaInicio"/>
+                    @if(fechaInicioError != "")
+                    {
+                        <div class="alert_input">
+                            <p class="text_alert">@ViewString.Keys[fechaInicioError]</p>
+                        </div>
+                    }
+                </div>
+                <div class="content_relative">
+                    <input type="date" class="input_form" value="@fechaFin.ToString("yyyy-MM-dd")" @onchange="TxtFechaFin"/>
+                    @if(fechaFinError != "")
+                    {
+                        <div class="alert_input">
+                            <p class="text_alert">@ViewString.Keys[fechaFinError]</p>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="content_carrusel @carrusel3">
+                <div class="content_relative">
+                    <select value="@year" class="from-control input_form" @onchange="SelectYear">
+                        <option value="0">Seleccione...</option>
+                        @for(int i = 2022; i <= DateTime.UtcNow.AddHours(-6).Year; i++)
+                        {
+                            <option value="@i">@i</option>
+                        }
+                    </select>
+                    @if(yearError != "")
+                    {
+                        <div class="alert_input">
+                            <p class="text_alert">@ViewString.Keys[yearError]</p>
+                        </div>
+                    }
+                </div>
+                <div class="content_relative">
+                    <select value="@month" class="from-control input_form" @onchange="SelectMonth">
+                        <option value="0">Seleccione...</option>
+                        <option value="1">Enero</option>
+                        <option value="2">Febrero</option>
+                        <option value="3">Marzo</option>
+                        <option value="4">Abril</option>
+                        <option value="5">Mayo</option>
+                        <option value="6">Junio</option>
+                        <option value="7">Julio</option>
+                        <option value="8">Agosto</option>
+                        <option value="9">Septiembre</option>
+                        <option value="10">Octubre</option>
+                        <option value="11">Noviembre</option>
+                        <option value="12">Diciembre</option>
+                    </select>
+                    @if(monthError != "")
+                    {
+                        <div class="alert_input">
+                            <p class="text_alert">@ViewString.Keys[monthError]</p>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <button class="button_sumit" @onclick="limpiarFiltro">
+            <span>Limpiar</span>
+        </button>
+    </div>
+    <div class="content_grid_tabla">
+        @if(Noticias != null)
+        {
+            @if(Noticias.Count > 0)
+            {
+                <div class="content_grid_tabla_boddy">
+                    @foreach(var noticia in Noticias)
+                    {
+                        <div class="col_grid" @onclick="(() => irNoticia(noticia.IdNoticia))">
+                            <div class="content_relative content_card_noticia">
+                                <h3 class="txt_plano_titulo">@noticia.Titulo</h3>
+                                <p class="txt_plano_fecha">@noticia.FechaPublicacion.ToString("dd/MM/yyyy")</p>
+                            </div>
+                            @if(noticia.ArchivosNoticia != null)
+                            {
+                                <img class="img_noticia" src="data:image/png;base64, @noticia.ArchivosNoticia[0].Ruta">
+                            }
+                        </div>
+                    }
+                </div>
+                <div class="content_paginado">
+                    @foreach(int i in paginas)
+                    {
+                        <div class="pagina" @onclick="(() => CambiarPaginaActual(i))">
+                            @if(i == paginaActual)
+                            {
+                                <span class="selected">@i</span>
+                            }
+                            else
+                            {
+                                <span>@i</span>
+                            }
+                        </div>
+                    }
+                </div>
+            }
+            else
+            {
+                @if(alerta != "")
+                {
+                    <h2 class="no_data">No hay noticias</h2>
+                }
+                else
+                {
+                    <div class="loader"></div>
+                }
+            }
+        }
+        else
+        {
+            @if(alerta != "")
+                {
+                    <h2 class="no_data">No hay noticias</h2>
+                }
+                else
+                {
+                    <div class="loader"></div>
+                }
+        }
+
+    </div>
+</div>

@@ -1,0 +1,27 @@
+﻿<div class="content_modal">
+    <i class="fas fa-times icon_x" @onclick="(() => OpenCloseModal.InvokeAsync())"></i>
+    <div class="content_carusel">
+        @if(Archivo != null && Archivo != "")
+        {
+            <img class="img_modal span_3" src="data:image/png;base64, @Archivo" />
+        }
+        else if(Archivos != null && Archivos.Count > 0)
+        {
+            <div class="grid_carusel">
+                <div class="col_grid" @onclick="(() => NextBackImage(0))">
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+                <div class="col_grid">
+                    <img class="img_modal" src="data:image/png;base64, @ArchivoView" />
+                </div>
+                <div class="col_grid" @onclick="(() => NextBackImage(1))">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="loader"></div>
+        }
+    </div>
+</div>

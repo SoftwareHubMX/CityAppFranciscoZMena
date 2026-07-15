@@ -1,0 +1,60 @@
+﻿<div class="content_modal">
+    <div class="card_modal">
+        <button class="btn_edit icono_absolut" @onclick="CancelarProceso">
+            <i class="far fa-times-circle"></i>
+            <span>Cerrar</span>
+        </button>
+        @*<button class="btn_delete icono_absolut" @onclick="Eliminar">
+            <i class="far fa-trash-alt"></i>
+            <span>Eliminar</span>
+        </button>*@
+        <h2 class="title">Pago</h2>
+        @if (alerta != "")
+        {
+            <label class="alerta">@alerta</label>
+        }
+        <div class="content_section @section1">
+            <div class="content_relative">
+                <labal class="text_plano">Nota de la actualización:</labal>
+                <input type="text" class="input_form" placeholder="Nota de la actualización" value="@notaActualizacion" @onchange="TxtNotaActualizacion" />
+                @if (notaActualizacionError != "")
+                {
+                    <div class="alert_input">
+                        <p class="text_alert">@notaActualizacionError</p>
+                    </div>
+                }
+            </div>
+            <div class="display_flex">
+                <button class="btn_delete btn_opc" @onclick="CancelarProceso">
+                    <span>Cancelar</span>
+                    <i class="far fa-trash-alt"></i>
+                </button>
+                <button class="btn_edit btn_opc color_after_secundario" @onclick="CrearHistorico">
+                    <span>Siguiente</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+        <div class="content_section @section2">
+            <div class="btn_file" onclick="document.getElementById('File-excel').click()">
+                <span class="btn_file_label">@((Archivo != "")? Archivo : "Seleccionar Archivo")</span>
+                <button class="btn_file_btn">
+                    Selected
+                </button>
+                <div class="no_view_file">
+                    <InputFile class="no_view_file" id="File-excel" OnChange="SelectExcel"></InputFile>
+                </div>
+            </div>
+            <div class="display_flex">
+                <button class="btn_delete btn_opc" @onclick="CancelarProceso">
+                    <span>Cancelar</span>
+                    <i class="far fa-trash-alt"></i>
+                </button>
+                <button class="btn_edit btn_opc color_after_secundario" @onclick="Guardar">
+                    <span>Guardar</span>
+                    <i class="fas fa-save"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

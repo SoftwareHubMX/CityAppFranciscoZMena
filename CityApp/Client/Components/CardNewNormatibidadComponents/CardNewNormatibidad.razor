@@ -1,0 +1,60 @@
+﻿<div class="content_table">
+    <div class="content_title">
+        <h2 class="title">@ViewString.Keys["NewNormatividad"]</h2>
+    </div>
+    @if (alerta != "")
+    {
+        <p class="text_alerta">@ViewString.Keys[alerta]</p>
+    }
+    <div class="content_grid_form">
+        <div class="content_relative span_2">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Titulo"]" value="@titulo" @onchange="TxtTitulo" />
+            @if (errortitulo != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[errortitulo]</p>
+                </div>
+            }
+        </div>
+        @if(archivoCarga == ""){
+            <div class="content_relative span_2">
+                <div class="content_relative">
+                    <button class="button_sumit" onclick="document.getElementById('input1').click()">
+                        <span>Cargar</span>
+                    </button>
+                </div>
+                @if (errorArchivo != "")
+                {
+                    <div class="alert_input">
+                        <p class="text_alert">@ViewString.Keys[errorArchivo]</p>
+                    </div>
+                }
+            </div>
+        }
+
+        <div class="content_btn span_2">
+            <div class="content_relative span_3">
+                <button class="button_sumit" @onclick="Crear">
+                    @if (banderaBoton)
+                    {
+                        <div class="loader"></div>
+                    }
+                    else
+                    {
+                        <span>Siguiente</span>
+                    }
+                </button>
+            </div>
+        </div>
+
+        @if(archivoCarga != ""){
+            <div class="content_relative span_2">
+                <iframe src="https://docs.google.com/gview?url=https://www.cityapp.mx/@archivoCarga&embedded=true" style="width:70%; height:80vh; margin: 1vw auto;" frameborder="0"></iframe>
+            </div>
+        }
+
+    </div>
+</div>
+<div class="file_oculto">
+    <InputFile id="input1" OnChange="CargarArchivo" accept=".pdf"></InputFile>
+</div>

@@ -1,0 +1,47 @@
+﻿<div class="content_table">
+    <div class="content_title">
+        <h2 class="title">@ViewString.Keys["NewDependencia"]</h2>
+    </div>
+    @if(alerta != ""){
+        <p class="text_alerta">@ViewString.Keys[alerta]</p>
+    }
+    <div class="content_grid_form">
+       <div class="content_relative">
+            <select value="@idSecretarias" class="from-control input_form" @onchange="TxtIdSecretaria">
+                <option value="0">@ViewString.Keys["secr"]...</option>
+               @for (int i = 0; i < Secretarias.Count; i++)
+                {
+                    <option value="@Secretarias[i].IdSecretaria">@Secretarias[i].NombreSecretaria</option>
+                }
+            </select>
+            @if (errorIdSecretaria != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[errorIdSecretaria]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Dependencia"]" value="@nombreDependencia" @onchange="TxtNombreDependencia" />
+            @if (errorNombreDependencia != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[errorNombreDependencia]</p>
+                </div>
+            }
+        </div>
+
+        <div class="content_btn span_2">
+            <div class="content_relative span_3">
+                <button class="button_sumit" @onclick="AgregarDependencia">
+                    @if(banderaBoton){
+                        <div class="loader"></div>
+                    }
+                    else{
+                        <span>Guardar</span>
+                    }
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

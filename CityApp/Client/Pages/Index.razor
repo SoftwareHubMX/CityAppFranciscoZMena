@@ -1,0 +1,140 @@
+﻿@page "/"
+@page "/Index"
+
+<PageTitle>CityApp | Home</PageTitle>
+<header id="Nav-bar">
+    <div class="nav__items">
+        <a href="#" class="nav__items-logo">
+            <img src="Imagenes/SharedImagenes/logo_CityApp_Claro.png" />
+        </a>
+        <i class="fas fa-chevron-@arrow" @onclick="OpenClosOpcions"></i>
+        
+        <nav class="nav__items-list @OpcionNav">
+            <a id="btn_servicios" @onclick="OpenClosOpcions">Servicios</a>
+            <a id="btn_modulos" @onclick="OpenClosOpcions">Módulos</a>
+            <a id="btn_turismo" @onclick="OpenClosOpcions">Turismo</a>
+            <a id="btn_colaboradores" @onclick="OpenClosOpcions">Colaboradores</a>
+            <a id="btn_contacto" @onclick="OpenClosOpcions">Contacto</a>
+        </nav>
+    </div>
+</header>
+<div class="content__layut">
+    <section id="main" class="content__video">
+        <div class="forma__1"></div>
+        <div class="forma__2"></div>
+        <video class="video__main" src="Imagenes/Index/videomain.mov" autoplay muted loop>
+        </video>
+        <div class="content__mask">
+            <span>¡La ciudad al alcance de tus manos!</span>
+        </div>
+    </section>
+
+    <section id="Nosotros">
+        <div class="content__flex">
+            <h2 class="title_section anim2">¿Qué es "CityApp"?</h2>
+            <div class="content__nosotros">
+                <div class="anim_nosotros anim"></div>
+            </div>
+            <div class="content__nosotros">
+                <h2 class="title_section anim1">¿Qué es "CityApp"?</h2>
+                <h3>¡Tu ciudad en la palma de tu mano!</h3>
+                <p>Es una aplicación móvil que concentra diversas tecnologías para integrar los servicios de una ciudad y/o municipio, generando así una interacción directa con el ayuntamiento a través de la participación ciudadana.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="Modulos">
+        <h2 class="title_section">Nuestros módulos</h2>
+        <div class="content__flex pocition_central">
+            @if (Colecciones != null && Colecciones.Count > 0)
+            {
+                @foreach (var colc in Colecciones)
+                {
+                    <div class="card__modulo">
+                        <i class="@colc.Item1"></i>
+                        <span>@colc.Item2</span>
+                        <div class="content__hover">
+                            <span>@colc.Item3</span>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </section>
+
+    <section id="Turismo">
+        <h2 class="title_section">Turismo</h2>
+        <h3>City App también puede ser una excelente herramienta, generando derrama económica, mostrando tus sitios y actividades de interes a través de nuestro módulo de turismo</h3>
+        <div class="content__turismo-imagenes">
+            <div class="img__turismo turismo-1">
+                <span>¡Descubre los encantos de la naturaleza en los pueblos de tu país!</span>
+            </div>
+            <div class="img__turismo turismo-2">
+                <span>¡Crea experiencia al aire libre! Como: escalar, senderismo, acampar y mucho más</span>
+            </div>
+            <div class="img__turismo turismo-3">
+                <span>¡Explora los lugares más emblemáticos de los pueblos y ciudades con City App!</span>
+            </div>
+            <div class="img__turismo turismo-4">
+                <span>¡Descubre la historia de México a través de sus ruinas y monumentos prehispánicos!</span>
+            </div>
+            <div class="img__turismo turismo-5">
+                <span>¡Descubre las delicias culinarias que ofrecen los pueblos a través de la cocina tradicional!</span>
+            </div>
+            <div class="img__turismo turismo-6">
+                <span>¡Empápate de la cultura local asistiendo a ferias, bailes y demás tradiciones de la región!</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="Colaboradores" class="section_paralax background_1">
+        <span class="aparecer">¡La APP del ciudadano!</span>
+    </section>
+
+    <section id="Contacto" class="section_contacto">
+        <div class="content__flex-contacto">
+            <div class="col__flex contactocto_content">
+                <h2 class="title_section">Envíanos un mensaje para mas información</h2>
+                <div class="grid__2">
+                    <div class="col__grid">
+                        <input type="text" class="input_form" placeholder="Nombre" />
+                        <input type="email" class="input_form" placeholder="E-mail" />
+                        <input type="tel" class="input_form" placeholder="Télefono" />
+                    </div>
+                    <div class="col__grid">
+                        <textarea placeholder="Mensaje" class="input_form area" rows="7"></textarea>
+                    </div>
+                </div>
+                <button class="button_sumit">
+                    <span>Enviar</span>
+                </button>
+            </div>
+            <div class="col__flex contactocto_content">
+                <a class="btn__map" href="https://goo.gl/maps/WrkJpZWwUB3W9Xtf9" target="_blank">
+                    <img src="Imagenes/Index/map.svg" />
+                    <h2 class="title_section">Ó encuéntranos en maps</h2>
+                </a>
+            </div>
+        </div>
+        <div class="content__btns__soscial-media">
+            <a href="https://www.facebook.com/CityAppSH?mibextid=LQQJ4d" target="_blank" class="content__btn-sm">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com/cityapp_by_sh/?igshid=YmMyMTA2M2Y%3D" target="_blank" class="content__btn-sm">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </div>
+    </section>
+
+    <section class="footer">
+        <div class="content__footer">
+            <div class="content__footer">
+                <p>&copy; <a href="">2023 Software Hub de México</a>  &middot;<a href="">Aviso de Privacidad</a> &middot; <a href="">Términos Legales</a></p>
+            </div>
+        </div>
+    </section>
+
+    <a class="btn__whatsapp" href="https://api.whatsapp.com/send?phone=5217712209606&text=Podria%20proporcionarme%20más%20información" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+</div>

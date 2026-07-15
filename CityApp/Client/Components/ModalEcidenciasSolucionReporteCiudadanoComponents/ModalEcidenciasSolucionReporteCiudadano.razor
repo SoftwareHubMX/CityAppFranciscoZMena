@@ -1,0 +1,29 @@
+﻿<div class="content_modal">
+    <i class="fas fa-times icon_x" @onclick="(() => OpenCloseModal.InvokeAsync(0))"></i>
+    <div class="card_modal">
+        <div class="content_title">
+            <h2 class="title">Evidencias de solucion reporte ciudadano</h2>
+        </div>
+        @if(Archivos != null)
+        {
+            <div class="content_detalles">
+                <div class="grid_5">
+                    @foreach(var archivo in Archivos)
+                    {
+                        <div class="col_grid">
+                            <img class="img_modal" src="data:image/png;base64, @archivo" />
+                        </div>   
+                    }
+                </div>
+                <button class="btn_edit" onclick="document.getElementById(@idBtnCropper).click()">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <span>Cargar evidencia</span>
+                </button>
+            </div>
+        }
+        else
+        {
+            <div class="loader"></div>
+        }
+    </div>
+</div>

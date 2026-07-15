@@ -1,0 +1,11 @@
+﻿<div class="content_card">
+    <h1 class="tittle">@ViewString.Keys["ValidarCorreo"]</h1>
+    <div class="anim_carga_mail animation"></div>
+    <p class="text">@ViewString.Keys["ValidandoCorreo"]</p>
+    @if(alerta != "")
+    {
+        <div class="alert_bottom">
+            <p class="text_alert">@ViewString.Keys[alerta]</p>
+        </div>
+    }
+</div>

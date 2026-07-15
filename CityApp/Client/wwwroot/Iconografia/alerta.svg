@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="512px" height="512px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+<radialGradient id="SVGID_1_" cx="256" cy="256.0005" r="250.3469" gradientUnits="userSpaceOnUse">
+	<stop  offset="0" style="stop-color:#5B813C"/>
+	<stop  offset="0.4389" style="stop-color:#5B823E"/>
+	<stop  offset="0.597" style="stop-color:#598444"/>
+	<stop  offset="0.7097" style="stop-color:#56874F"/>
+	<stop  offset="0.8008" style="stop-color:#528C5C"/>
+	<stop  offset="0.8789" style="stop-color:#4B926C"/>
+	<stop  offset="0.9467" style="stop-color:#40987E"/>
+	<stop  offset="1" style="stop-color:#2F9C90"/>
+</radialGradient>
+<circle fill="none" stroke="url(#SVGID_1_)" stroke-width="40" stroke-miterlimit="10" cx="256" cy="256" r="230.347"/>
+<g>
+	<path fill="#319186" d="M249.233,135.314h13.546v32.525h-13.546V135.314z"/>
+	<path fill="#319186" d="M282.25,170.374l12.1-30.184l12.57,5.039l-12.1,30.184L282.25,170.374z"/>
+	<path fill="#319186" d="M310.653,186.118l21.922-24.036l10.01,9.129l-21.921,24.036L310.653,186.118z"/>
+	<path fill="#319186" d="M205.104,145.148l12.57-5.039l12.1,30.183l-12.57,5.039L205.104,145.148z"/>
+	<path fill="#319186" d="M169.485,171.206l10.01-9.13l21.922,24.036l-10.01,9.13L169.485,171.206z"/>
+	<path fill="#319186" d="M194.598,299.672h122.817v16.255H194.598V299.672z"/>
+	<path fill="#319186" d="M320.65,329.473H191.362c-6.919,3.563-11.665,10.774-11.665,19.077v17.948h152.617V348.55
+		C332.314,340.247,327.569,333.035,320.65,329.473L320.65,329.473z"/>
+	<path fill="#319186" d="M317.415,250.906c0-33.86-27.548-61.408-61.409-61.408s-61.408,27.548-61.408,61.408v35.22h122.817V250.906
+		z M262.779,269.108h-13.546v-13.546h13.546V269.108z M262.779,246.231h-13.546v-36.725h13.546V246.231z"/>
+</g>
+</svg>

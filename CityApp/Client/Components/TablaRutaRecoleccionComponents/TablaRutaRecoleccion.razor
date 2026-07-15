@@ -1,0 +1,177 @@
+﻿<div class="content_table">
+    <div class="content_title">
+        <h2 class="title">@ViewString.Keys["NewRutaList"]</h2>
+        <div class="btn_cirquel" @onclick="IrNuevaRuta">
+            <i class="fas fa-plus"></i>
+        </div>
+        <div class="btn_cirquel" @onclick="IrNuevaCuentaChofer">
+            <i class="fa fa-truck"></i>
+        </div>
+    </div>
+    <div class="content_filtros">
+        <div class="content_relative">
+            <select value="@idColonia" class="from-control input_form" @onchange="SelectIdColonia">
+                <option value="0">@ViewString.Keys["Colonia"]...</option>
+                @for (int i = 0; i < Colonias.Count; i++)
+                {
+                    <option value="@Colonias[i].IdColonia">@Colonias[i].NombreColonia</option>
+                }
+            </select>
+            @if (errorIdColonia != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[errorIdColonia]</p>
+                </div>
+            }
+        </div>
+        <button class="button_sumit" @onclick="limpiarFiltro">
+            <span>Limpiar</span>
+        </button>
+    </div>
+    <div class="content_grid_tabla">
+        <div class="content_grid_tabla_header">
+            <div class="col_grid displa_flex">
+                <span>ID</span>
+            </div>
+            <div class="col_grid displa_flex">
+                <span>Ruta</span>
+            </div>
+            <div class="col_grid displa_flex">
+                <span>Descripción</span>
+            </div>
+            <div class="col_grid displa_flex">
+                <span>Horarios</span>
+            </div>
+            <div class="col_grid displa_flex">
+                <span>Días</span>
+            </div>
+            <div class="col_grid">
+                <span>Alertas</span>
+            </div>
+            <div class="col_grid">
+                <span>Detalles</span>
+            </div>
+            <div class="col_grid">
+                <span>Acciones</span>
+            </div>
+        </div>
+        @if (banderaLoader)
+        {
+            @if (RutasRecoleccion != null)
+            {
+                @if (RutasRecoleccion.Count > 0)
+                {
+                    <div class="content_grid_tabla_boddy">
+                        @foreach (var rutasRecoleccion in RutasRecoleccion)
+                        {
+                            <div class="col_grid">
+                                <p class="txt_plano">@rutasRecoleccion.IdRutaRecoleccion</p>
+                            </div>
+                            <div class="col_grid">
+                                <p class="txt_plano">@rutasRecoleccion.NombreRuta</p>
+                            </div>
+                            <div class="col_grid">
+                                <p class="txt_plano">@rutasRecoleccion.Descripcion</p>
+                            </div>
+                            <div class="col_grid">
+                                <p class="txt_plano">@rutasRecoleccion.Horario</p>
+                            </div>
+                            <div class="col_grid">
+                                <p class="txt_plano">
+                                    @if (rutasRecoleccion.DiasRuta != null && rutasRecoleccion.DiasRuta.Count > 0)
+                                    {
+                                        foreach (var dia in rutasRecoleccion.DiasRuta)
+                                        {
+                                            @dia.Dias
+                                            if (dia != rutasRecoleccion.DiasRuta.Last())
+                                            {
+                                                @(" / ")
+                                            }
+                                        }
+                                    }
+                                </p>
+                            </div>
+                            <div class="col_grid">
+                                <div class="content_flex">
+                                    <button class="btn_alert" @onclick="(() => openModalAlertas(rutasRecoleccion.IdRutaRecoleccion))">
+                                        <i class="far fa-bell"></i>
+                                        <span>Alerta</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col_grid">
+                                <div class="content_flex">
+                                    <button class="btn_details" @onclick="(() => openModalDetalles2(rutasRecoleccion.IdRutaRecoleccion))">
+                                        <i class="fas fa-list-ul"></i>
+                                        <span>Ver</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col_grid">
+                                <div class="content_flex">
+                                    <button class="btn_edit" @onclick="(() => IrEditarRutaRecoleccion(rutasRecoleccion.IdRutaRecoleccion))">
+                                        <i class="far fa-edit"></i>
+                                        <span>Editar</span>
+                                    </button>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div class="content_paginado">
+                        @foreach (int i in paginas)
+                        {
+                            <div class="pagina" @onclick="(() => CambiarPaginaActual(i))">
+                                @if (i == paginaActual)
+                                {
+                                    <span class="selected">@i</span>
+                                }
+                                else
+                                {
+                                    <span>@i</span>
+                                }
+                            </div>
+                        }
+                    </div>
+                }
+                else
+                {
+                    @if (alerta != "")
+                    {
+                        <h2 class="no_data">No hay Rutas</h2>
+                    }
+                    else
+                    {
+                        <div class="loader"></div>
+                    }
+                }
+            }
+            else
+            {
+                @if (alerta != "")
+                {
+                    <h2 class="no_data">No hay Rutas</h2>
+                }
+                else
+                {
+                    <h2 class="no_data">@alerta</h2>
+                }
+            }
+        }
+        else
+        {
+            <div class="loader"></div>
+        }
+    </div>
+</div>
+@if (banderamodalDetalles)
+{
+    
+    <CityApp.Client.Components.ModalDetallesRutasComponents.ModalDetallesRutas idRutaRecoleccion="@IdRutaRecoleccion" Sesion="@Sesion" OpenCloseModal2="openCloseModalDetalles2"></CityApp.Client.Components.ModalDetallesRutasComponents.ModalDetallesRutas>
+}
+@if (banderamodal)
+{
+    <CityApp.Client.Components.ModalRutaRecoleccionComponents.ModalRutaRecoleccion idRutaRecoleccion="@IdRutaRecoleccion" Sesion="@Sesion" OpenCloseModalAlertaRuta="openCloseModalAlertas"></CityApp.Client.Components.ModalRutaRecoleccionComponents.ModalRutaRecoleccion>
+    
+}
+
+

@@ -1,0 +1,32 @@
+﻿<div class="content_card">
+    <h1 class="tittle">@ViewString.Keys["RestaurarPass"]</h1>
+    <div class="anim_envio_mail animation"></div>
+    <p class="text">@ViewString.Keys["TextEnvioCorreoRestaurarPass"]</p>
+    <div class="content_relative">
+        <input type="email" class="input_form" placeholder="@ViewString.Keys["Correo"]" value="@correo" @oninput="TxtCorreo"/>
+        @if(correoError != "")
+        {
+            <div class="alert_input">
+                <p class="text_alert">@ViewString.Keys[correoError]</p>
+            </div>
+        }
+    </div>
+    <button class="button_sumit" @onclick="Enviar">
+        @if(btn_enviar == "carga")
+        {
+            <span>
+                <div class="loader"></div>
+            </span>
+        }
+        else
+        {
+            <span>@ViewString.Keys[btn_enviar]</span>
+        }
+    </button>
+    @if(alerta != "")
+    {
+        <div class="alert_bottom">
+            <p class="text_alert">@ViewString.Keys[alerta]</p>
+        </div>
+    }
+</div>

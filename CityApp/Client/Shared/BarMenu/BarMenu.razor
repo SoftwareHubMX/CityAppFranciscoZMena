@@ -1,0 +1,234 @@
+﻿<div class="bar_menu @openClose">
+    <div class="content_top_menu">
+        <button class="btn_menu_top" @onclick="OpenCloseMenu">
+            <span>Menú</span>
+            <i class="oi oi-@icono"></i>
+        </button>
+    </div>
+    <div class="content_options">
+        @if (idRol == 1)
+        {
+            <button class="btn_menu" @onclick="(() => IrPage(1))">
+                <div class="icono_menu">
+                    <i class="fa-solid fa-user-pen"></i>
+                </div>
+                <span>Reporte ciudadano</span>
+                @*<img class="icono_menu" src="Iconografia/reporciudadano.svg" />*@
+            </button>
+            <button class="btn_menu" @onclick="(() => IrPage(2))">
+                <div class="icono_menu">
+                    <i class="fa-solid fa-square-poll-horizontal"></i>
+                </div>
+                @*<img class="icono_menu" src="Iconografia/noticias.svg" />*@
+                <span>Noticias</span>
+            </button>
+            @*<button class="btn_menu" @onclick="(() => IrPage(3))">
+                <img class="icono_menu" src="Iconografia/predial.svg" />
+                <span>Predial</span>
+                </button>
+                <button class="btn_menu" @onclick="(() => IrPage(4))">
+                <img class="icono_menu" src="Iconografia/impuestos.svg" />
+                <span>Pagos</span>
+                </button>*@
+            <button class="btn_menu" @onclick="(() => IrPage(5))">
+                <div class="icono_menu">
+                    <i class="fa-solid fa-calendar-days"></i>
+                </div>
+                @*<img class="icono_menu" src="Iconografia/agenda.svg" />*@
+                <span>Eventos</span>
+            </button>
+            <button class="btn_menu" @onclick="(() => IrPage(6))">
+                <div class="icono_menu">
+                    <i class="fa-solid fa-landmark"></i>
+                </div>
+                @*<img class="icono_menu" src="Iconografia/turismo.svg" />*@
+                <span>Turismo</span>
+            </button>
+            @*<button class="btn_menu" @onclick="(() => IrPage(7))">
+                <img class="icono_menu" src="Iconografia/alerta.svg" />
+                <span>Alertas</span>
+                </button>*@
+            <button class="btn_menu" @onclick="(() => IrPage(8))">
+                <div class="icono_menu">
+                    <i class="fa-solid fa-user-shield"></i>
+                </div>
+                @*<img class="icono_menu" src="Iconografia/seguridadpublica.svg" />*@
+                <span>Seguridad Pública</span>
+            </button>
+            <button class="btn_menu" @onclick="(() => IrPage(9))">
+                <div class="icono_menu">
+                    <i class="fa-solid fa-at"></i>
+                </div>                @*<img class="icono_menu" src="Iconografia/contacto.svg" />*@
+                <span>Contacto Municipio</span>
+            </button>
+            <button class="btn_menu" @onclick="(() => IrPage(10))">
+                <div class="icono_menu">
+                    <i class="fa-solid fa-images"></i>
+                </div>
+                @*<img class="icono_menu" src="Iconografia/Multimedia.svg" />*@
+                <span>Multimedia App</span>
+            </button>
+            <button class="btn_menu" @onclick="(() => IrPage(11))">
+                <div class="icono_menu">
+                    <i class="fa-solid fa-clipboard-list"></i>
+                </div>
+                @*<img class="icono_menu" src="Iconografia/tramites2.svg" />*@
+                <span>Trámites y Servicios</span>
+            </button>
+            <button class="btn_menu" @onclick="(() => IrPage(12))">
+                <div class="icono_menu">
+                    <i class="fa-solid fa-address-book"></i>
+                </div>
+                @*<img class="icono_menu" src="Iconografia/directorio2.svg" />*@
+                <span>Directorio</span>
+            </button>
+            <button class="btn_menu" @onclick="(() => IrPage(13))">
+                <div class="icono_menu">
+                    <i class="fa-solid fa-briefcase"></i>
+                </div>
+                @*<img class="icono_menu" src="Iconografia/bolsatrabajo.svg" />*@
+                <span>Bolsa de trabajo</span>
+            </button>
+            <button class="btn_menu" @onclick="(() => IrPage(14))">
+                <div class="icono_menu">
+                    <i class="fa-solid fa-route"></i>
+                </div>
+                @*<img class="icono_menu" src="Iconografia/rutas.svg" />*@
+                <span>Rutas</span>
+            </button>
+            <button class="btn_menu" @onclick="(() => IrPage(15))">
+                <div class="icono_menu">
+                    <i class="fa-solid fa-bullhorn"></i>
+                </div>
+                @*<img class="icono_menu" src="Iconografia/rutas.svg" />*@
+                <span>Anuncios</span>
+            </button>
+            <button class="btn_menu" @onclick="(() => IrPage(16))">
+                <div class="icono_menu">
+                    <i class="fa-solid fa-user-clock"></i>
+                </div>
+                @*<img class="icono_menu" src="Iconografia/rutas.svg" />*@
+                <span>Citas</span>
+            </button>
+        }
+        else if (idRol == 3)
+        {
+            <button class="btn_menu" @onclick="(() => IrPage(2))">
+                <div class="icono_menu">
+                    <i class="fa-solid fa-square-poll-horizontal"></i>
+                </div>
+                @*<img class="icono_menu" src="Iconografia/noticias.svg" />*@
+                <span>Noticias</span>
+            </button>
+            <button class="btn_menu" @onclick="(() => IrPage(5))">
+                <div class="icono_menu">
+                    <i class="fa-solid fa-calendar-days"></i>
+                </div>
+                @*<img class="icono_menu" src="Iconografia/agenda.svg" />*@
+                <span>Eventos</span>
+            </button>
+            <button class="btn_menu" @onclick="(() => IrPage(10))">
+                <div class="icono_menu">
+                    <i class="fa-solid fa-images"></i>
+                </div>
+                @*<img class="icono_menu" src="Iconografia/Multimedia.svg" />*@
+                <span>Multimedia App</span>
+            </button>
+            <button class="btn_menu" @onclick="(() => IrPage(12))">
+                <div class="icono_menu">
+                    <i class="fa-solid fa-address-book"></i>
+                </div>
+                @*<img class="icono_menu" src="Iconografia/directorio2.svg" />*@
+                <span>Directorio</span>
+            </button>
+        }
+        else if (idRol == 4)
+        {
+            @*<button class="btn_menu" @onclick="(() => IrPage(7))">
+                <img class="icono_menu" src="Iconografia/alerta.svg" />
+                <span>Alertas</span>
+                </button>*@
+            <button class="btn_menu" @onclick="(() => IrPage(8))">
+                <div class="icono_menu">
+                    <i class="fa-solid fa-user-shield"></i>
+                </div>
+                @*<img class="icono_menu" src="Iconografia/seguridadpublica.svg" />*@
+                <span>Seguridad Pública</span>
+            </button>
+        }
+        else if (idRol == 5)
+        {
+            <button class="btn_menu" @onclick="(() => IrPage(6))">
+                <div class="icono_menu">
+                    <i class="fa-solid fa-landmark"></i>
+                </div>
+                @*<img class="icono_menu" src="Iconografia/turismo.svg" />*@
+                <span>Turismo</span>
+            </button>
+        }
+        else if (idRol == 6)
+        {
+            @*<button class="btn_menu" @onclick="(() => IrPage(3))">
+                <img class="icono_menu" src="Iconografia/predial.svg" />
+                <span>Predial</span>
+                </button>
+                <button class="btn_menu" @onclick="(() => IrPage(4))">
+                <img class="icono_menu" src="Iconografia/impuestos.svg" />
+                <span>Pagos</span>
+                </button>*@
+        }
+        else if (idRol == 8)
+        {
+            <button class="btn_menu" @onclick="(() => IrPage(1))">
+                <div class="icono_menu">
+                    <i class="fa-solid fa-user-pen"></i>
+                </div>
+                <span>Reporte ciudadano</span>
+                @*<img class="icono_menu" src="Iconografia/reporciudadano.svg" />*@
+            </button>
+        }
+        else if (idRol == 9)
+        {
+            <button class="btn_menu" @onclick="(() => IrPage(6))">
+                <div class="icono_menu">
+                    <i class="fa-solid fa-landmark"></i>
+                </div>
+                @*<img class="icono_menu" src="Iconografia/turismo.svg" />*@
+                <span>Turismo</span>
+            </button>
+            <button class="btn_menu" @onclick="(() => IrPage(13))">
+                <div class="icono_menu">
+                    <i class="fa-solid fa-briefcase"></i>
+                </div>
+                @*<img class="icono_menu" src="Iconografia/bolsatrabajo.svg" />*@
+                <span>Bolsa de trabajo</span>
+            </button>
+        }
+        else if (idRol == 10)
+        {
+            <button class="btn_menu" @onclick="(() => IrPage(1))">
+                <div class="icono_menu">
+                    <i class="fa-solid fa-user-pen"></i>
+                </div>
+                <span>Reporte ciudadano</span>
+                @*<img class="icono_menu" src="Iconografia/reporciudadano.svg" />*@
+            </button>
+            <button class="btn_menu" @onclick="(() => IrPage(14))">
+                <div class="icono_menu">
+                    <i class="fa-solid fa-route"></i>
+                </div>
+                @*<img class="icono_menu" src="Iconografia/rutas.svg" />*@
+                <span>Rutas</span>
+            </button>
+        }
+    </div>
+    <div class="conten_municipio">
+        @*<a class="action_municipio" href="http://tepeji.gob.mx/" target="_blank" >
+            <img src="Imagenes/LogosMunicipios/Tepeji/Logo_Tepeji_eslogan.png" class="img_municipio" />
+            </a>*@
+        <a class="action_municipio" href="https://www.facebook.com/share/12DspRuNc97/?mibextid=wwXIfr" target="_blank">
+            <img src="Imagenes/LogosMunicipios/Chilapa/ic_chilapa_long.svg" class="img_municipio" />
+            <span class="ver_estilo">ver.1.0. 2023-08-31</span>
+        </a>
+    </div>
+</div>

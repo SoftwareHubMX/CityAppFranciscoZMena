@@ -1,0 +1,105 @@
+﻿using CityApp.Server.Servicios.BDCityApp.QuerysCityApp.ArchivoSliderQuerys;
+using CityApp.Server.Servicios.Fichero;
+using CityApp.Shared.Entities.BDSqlServerCityApp;
+using CityApp.Shared.Helpers;
+using CityApp.Shared.Models.DataValuesModels;
+
+namespace CityApp.Server.Logic.ArchivoSliderLogic
+{
+    public class AgregarArchivoSliderLogic
+    {
+        private ArchivoSliderQuerys ArchivoSliderQuerys;
+
+        private ServicioFicheros ServicioFicheros = new ServicioFicheros();
+
+        private IFormFile File;
+        private int IdCuenta;
+        private ArchivoSlider ArchivoSlider;
+
+        public AgregarArchivoSliderLogic(CityAppContext cityAppContext, IFormFile file, int idSlider, int idCuenta)
+        {
+            ArchivoSliderQuerys = new ArchivoSliderQuerys(cityAppContext);
+
+            File = file;
+            IdCuenta = idCuenta;
+            ArchivoSlider = new ArchivoSlider()
+            {
+                IdSlider = idSlider
+            };
+        }
+
+        public async Task<Response<string>> Guardar()
+        {
+            Response<string> response = new Response<string>();
+
+            if (File != null)
+            {
+                Response<object> responseVerificarCarpeta = VerificarCrearCarpeta();
+                response.Status = responseVerificarCarpeta.Status;
+                if (response.Status.Exito == 1)
+                {
+                    Response<object> responseSaveFile = await SaveFile();
+                    response.Status = responseSaveFile.Status;
+                    if (response.Status.Exito == 1)
+                    {
+                        Response<object> responseInsert = ArchivoSliderQuerys.InsertArchivoSlider(ArchivoSlider);
+                        response.Status = responseInsert.Status;
+                        if (response.Status.Exito == 1)
+                        {
+                            response.Data = ArchivoSlider.Ruta;
+                            Response<object> responseTemp = await SaveFileTemp();//temp
+                            response.Status = responseTemp.Status;//temp
+                        }
+                    }
+                }
+            }
+            else
+            {
+                response.Status.Mensaje = "No se encuentra el archivo";
+                response.Status.Exito = 2;
+            }
+
+            return response;
+        }
+
+        private Response<object> VerificarCrearCarpeta()
+        {
+            string rutaCarpeta = Rutas.RutaMultimediaSliders + ArchivoSlider.IdSlider;
+            return ServicioFicheros.CarpetaCrear(rutaCarpeta);
+        }
+
+        private async Task<Response<object>> SaveFile()
+        {
+            Response<object> response = new Response<object>();
+
+            string[] datosFile = File.FileName.Split('.');
+            string nombreFile = "MultimediaSlider"
+                + "_"
+                + IdCuenta
+                + "_" + DateTime.Now.ToString("yyyy-MM-dd-hh-mm-ss-f-ff")
+                + "." + datosFile[datosFile.Length - 1];
+
+            ArchivoSlider.Ruta = nombreFile;
+            ArchivoSlider.Formato = datosFile[datosFile.Length - 1];
+
+            var filePath = Rutas.RutaMultimediaSliders + ArchivoSlider.IdSlider + "\\" + nombreFile;
+
+            response = await ServicioFicheros.ArchivoGuardar(File, filePath);
+
+            return response;
+        }
+
+        private async Task<Response<object>> SaveFileTemp()//temporal method
+        {
+            Response<object> response = new Response<object>();
+
+            string nombreFile = ArchivoSlider.Ruta;
+
+            var filePath = Rutas.RutaTemporal + nombreFile;
+
+            response = await ServicioFicheros.ArchivoGuardar(File, filePath);
+
+            return response;
+        }//end temporal method
+    }
+}

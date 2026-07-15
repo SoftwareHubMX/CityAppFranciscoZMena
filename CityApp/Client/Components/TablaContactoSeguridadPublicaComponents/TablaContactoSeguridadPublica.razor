@@ -1,0 +1,85 @@
+﻿<div class="content_table">
+    <div class="content_title">
+        <h2 class="title">@ViewString.Keys["ContactoSeguridadPublica"]</h2>
+        <div class="btn_cirquel" @onclick="IrNuevaContactoSeguridadPublica">
+            <i class="fas fa-plus"></i>
+        </div>
+    </div>
+    <div class="content_grid_tabla">
+        <div class="content_grid_tabla_header">
+            <div class="col_grid displa_flex">
+                <span>ID</span>
+            </div>
+            <div class="col_grid displa_flex">
+                <span>Medio de contacto</span>
+            </div>
+            <div class="col_grid displa_flex">
+                <span>Descripción</span>
+            </div>
+            <div class="col_grid">
+                <span>Acciones</span>
+            </div>
+        </div>
+        @if (banderaLoader)
+        {
+            @if (ContactosSeguridadPublica != null)
+            {
+                @if (ContactosSeguridadPublica.Count > 0)
+                {
+                    <div class="content_grid_tabla_boddy">
+                        @foreach (var ContactoSeguridadPublica in ContactosSeguridadPublica)
+                        {
+                            <div class="col_grid">
+                                <p class="txt_plano">@ContactoSeguridadPublica.IdContactoSeguridadPublica</p>
+                            </div>
+                            <div class="col_grid">
+                                <p class="txt_plano">@ContactoSeguridadPublica.Numero</p>
+                            </div>
+                            <div class="col_grid">
+                                <p class="txt_plano">@ContactoSeguridadPublica.Descripcion</p>
+                            </div>
+                            <div class="col_grid">
+                                <div class="content_flex">
+                                    @*<button class="btn_edit" @onclick="(() => IrEditarContactoSeguridadPublica(ContactoSeguridadPublica.IdContactoSeguridadPublica))">
+                    <i class="far fa-edit"></i>
+                    <span>Editar</span>
+                    </button>*@
+                                    <button class="btn_delete" @onclick="(() => EliminarContactoSeguridadPublica(ContactoSeguridadPublica.IdContactoSeguridadPublica))">
+                                        <i class="far fa-trash-alt"></i>
+                                        <span>Eliminar</span>
+                                    </button>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
+                else
+                {
+                    @if (alerta != "")
+                    {
+                        <h2 class="no_data">No hay medios de contacto</h2>
+                    }
+                    else
+                    {
+                        <div class="loader"></div>
+                    }
+                }
+            }
+            else
+            {
+                @if (alerta != "")
+                {
+                    <h2 class="no_data">No hay medios de contacto</h2>
+                }
+                else
+                {
+                    <h2 class="no_data">@alerta</h2>
+                }
+            }
+        }
+        else
+        {
+            <div class="loader"></div>
+        }
+    </div>
+</div>

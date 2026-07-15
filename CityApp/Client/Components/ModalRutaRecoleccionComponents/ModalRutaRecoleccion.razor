@@ -1,0 +1,59 @@
+﻿<div class="content_modal">
+    <i class="fas fa-times icon_x" @onclick="(() => OpenCloseModalAlertaRuta.InvokeAsync())"></i>
+    <div class="card_modal">
+        <div class="content_title">
+            <h2 class="title">Alertas</h2>
+        </div>
+        @if (banderaCargaInfo)
+        {
+            <div class="content_filtros">
+                <div class="content_detalles">
+                    <div class="grid_3">
+                        <div class="content_relative">
+                            <select value="@idTipoAlertaRuta" class="from-control input_form"
+                            @onchange="SelectIdTipoAlertaRuta">
+                                <option value="0">@ViewString.Keys["TipoAlertaRuta"]...</option>
+                                @for (int i = 0; i < TiposAlertaRuta.Count; i++)
+                                {
+                                    <option value="@TiposAlertaRuta[i].IdTipoAlertaRuta">@TiposAlertaRuta[i].TipoAlerta</option>
+                                }
+                            </select>
+                            @if (errorIdTipoAlertaRuta != "")
+                            {
+                                <div class="alert_input">
+                                    <p class="text_alert">@ViewString.Keys[errorIdTipoAlertaRuta]</p>
+                                </div>
+                            }
+                        </div>
+                        <div class="content_relative">
+                            <select value="@idStatusAlertaRuta" class="from-control input_form"
+                            @onchange="SelectIdStatusAlertaRuta">
+                                <option value="0">@ViewString.Keys["StatusAlertaRuta"]...</option>
+                                @for (int i = 0; i < StatusAlertasRuta.Count; i++)
+                                {
+                                    <option value="@StatusAlertasRuta[i].IdStatusAlertaRuta">@StatusAlertasRuta[i].StatusAlerta
+                                    </option>
+                                }
+                            </select>
+                            @if (errorIdStatusAlertaRuta != "")
+                            {
+                                <div class="alert_input">
+                                    <p class="text_alert">@ViewString.Keys[errorIdStatusAlertaRuta]</p>
+                                </div>
+                            }
+                        </div>
+                        <button class="button_sumit" @onclick="limpiarFiltro">
+                            <span>Limpiar</span>
+                        </button>
+                    </div>
+                </div>
+            </div>   
+            <CityApp.Client.Components.TablaAlrtaRutaComponents.TablaAlertaRuta></CityApp.Client.Components.TablaAlrtaRutaComponents.TablaAlertaRuta>
+        }
+        else
+        {
+            <div class="loader"></div>
+        }
+    </div>
+</div>
+

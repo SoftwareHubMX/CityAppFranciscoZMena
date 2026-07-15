@@ -1,0 +1,41 @@
+﻿<div class="col_grid">
+    <p class="txt_plano">@alerta.IdAlerta</p>
+</div>
+<div class="col_grid">
+    @if(alerta.Cuenta != null)
+    {
+        <p class="txt_plano">@alerta.Cuenta.NombreUsuario</p>
+    }
+    else
+    {
+        <p class="txt_plano">---</p>
+    }
+</div>
+<div class="col_grid">
+    <p class="txt_plano">@alerta.FechaAlerta</p>
+</div>
+<div class="col_grid">
+    @if(alerta.DireccionAlerta != null)
+    {
+        <p class="txt_plano">@alerta.DireccionAlerta.Localidad, @alerta.DireccionAlerta.CodigoPostal - @alerta.DireccionAlerta.Colonia, @alerta.DireccionAlerta.Calle @alerta.DireccionAlerta.Numero</p>
+    }
+    else
+    {
+        <p class="txt_plano">---</p>
+    }
+</div>
+<div class="col_grid">
+    <select value="@idEstatusAlerta" class="from-control input_form" @onchange="SelectIdEstatusAlerta">
+        <option value="0">Seleccione...</option>
+        @foreach(var estaus in estatusAlertas)
+        {
+            <option value="@estaus.IdEstatusAlerta">@estaus.Estatus</option>
+        }
+    </select>
+    @if(idEstatusAlertaError != "")
+    {
+        <div class="alert_input">
+            <p class="text_alert">@idEstatusAlertaError</p>
+        </div>
+    }
+</div>

@@ -1,0 +1,91 @@
+﻿<div class="content_table">
+    <div class="content_title">
+        <h2 class="title">@ViewString.Keys["Normatibidad"]</h2>
+        <div class="btn_cirquel" @onclick="IrNuevaNormatividad">
+            <i class="fas fa-plus"></i>
+        </div>
+    </div>
+    <div class="content_grid_tabla">
+        <div class="content_grid_tabla_header">
+            <div class="col_grid displa_flex">
+                <span>ID</span>
+            </div>
+            <div class="col_grid displa_flex">
+                <span>Titulo</span>
+            </div>
+            <div class="col_grid displa_flex">
+                <span>Archivo</span>
+            </div>
+            <div class="col_grid">
+                <span>Acciones</span>
+            </div>
+        </div>
+        @if (banderaLoader)
+        {
+            @if (Normatividades != null)
+            {
+                @if (Normatividades.Count > 0)
+                {
+                    <div class="content_grid_tabla_boddy">
+                        @foreach (var normatividad in Normatividades)
+                        {
+                            <div class="col_grid">
+                                <p class="txt_plano">@normatividad.IdNormatividad</p>
+                            </div>
+                            <div class="col_grid">
+                                <p class="txt_plano">@normatividad.Nombre</p>
+                            </div>
+                            <div class="col_grid">
+                                <button class="btn_edit" @onclick="(() => OpenModalFream(normatividad.Archivo))">
+                                    <i class="far fa-file-pdf"></i>
+                                    <span>@normatividad.Nombre</span>
+                                </button>
+                            </div>
+                            <div class="col_grid">
+                                <div class="content_flex">
+                                    @*<button class="btn_edit" @onclick="(() => IrEditarPatrulla(patrulla.IdPatrulla))">
+                                        <i class="far fa-edit"></i>
+                                        <span>Editar</span>
+                                    </button>*@
+                                    <button class="btn_delete" @onclick="(() => EliminarNormatividad(normatividad.IdNormatividad))">
+                                        <i class="far fa-trash-alt"></i>
+                                        <span>Eliminar</span>
+                                    </button>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
+                else
+                {
+                    @if (alerta != "")
+                    {
+                        <h2 class="no_data">No hay Normatividades</h2>
+                    }
+                    else
+                    {
+                        <div class="loader"></div>
+                    }
+                }
+            }
+            else
+            {
+                @if (alerta != "")
+                {
+                    <h2 class="no_data">No hay Normatividades</h2>
+                }
+                else
+                {
+                    <h2 class="no_data">@alerta</h2>
+                }
+            }
+        }
+        else
+        {
+            <div class="loader"></div>
+        }
+    </div>
+</div>
+@if(modal){
+        <CityApp.Client.Components.ModalFreamComponents.ModalFream Archivo="@archivoSelected" OpenCloseModal="OpenCloseModal"></CityApp.Client.Components.ModalFreamComponents.ModalFream>
+}

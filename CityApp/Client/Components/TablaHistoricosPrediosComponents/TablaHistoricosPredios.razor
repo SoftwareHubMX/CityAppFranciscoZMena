@@ -1,0 +1,229 @@
+﻿<div class="content_table">
+    <div class="content_title">
+        <h2 class="title">@ViewString.Keys["HistoricoPredio"]</h2>
+        @*<div class="btn_cirquel" @onclick="IrNuevaHistoricoPredio">
+            <i class="fas fa-plus"></i>
+        </div>*@
+    </div>
+    <div class="content_filtros">
+        <div class="content_filtro_option span_2">
+            <div class="content_buttons_sections">
+                <h2 class="label_section @section1" @onclick="(() => CambioSection(0))">@ViewString.Keys["FechaEvento"]</h2>
+                <h2 class="label_section @section2" @onclick="(() => CambioSection(1))">@ViewString.Keys["RangoFecha"]</h2>
+                <h2 class="label_section @section3" @onclick="(() => CambioSection(2))">@ViewString.Keys["FechaEspecifica"]</h2>
+            </div>
+            <div class="content_carrusel @carrusel1">
+                <div class="content_relative">
+                    <input type="date" class="input_form" value="@fechaFija.ToString("yyyy-MM-dd")" @onchange="TxtFechaFija" />
+                    @if (fechaFijaError != "")
+                    {
+                        <div class="alert_input">
+                            <p class="text_alert">@ViewString.Keys[fechaFijaError]</p>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="content_carrusel @carrusel2">
+                <div class="content_relative">
+                    <input type="date" class="input_form" value="@fechaInicio.ToString("yyyy-MM-dd")" @onchange="TxtFechaInicio" />
+                    @if (fechaInicioError != "")
+                    {
+                        <div class="alert_input">
+                            <p class="text_alert">@ViewString.Keys[fechaInicioError]</p>
+                        </div>
+                    }
+                </div>
+                <div class="content_relative">
+                    <input type="date" class="input_form" value="@fechaFin.ToString("yyyy-MM-dd")" @onchange="TxtFechaFin" />
+                    @if (fechaFinError != "")
+                    {
+                        <div class="alert_input">
+                            <p class="text_alert">@ViewString.Keys[fechaFinError]</p>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="content_carrusel @carrusel3">
+                <div class="content_relative">
+                    <select value="@year" class="from-control input_form" @onchange="SelectYear">
+                        <option value="0">Seleccione...</option>
+                        @for (int i = 2022; i <= DateTime.UtcNow.AddHours(-6).Year; i++)
+                        {
+                            <option value="@i">@i</option>
+                        }
+                    </select>
+                    @if (yearError != "")
+                    {
+                        <div class="alert_input">
+                            <p class="text_alert">@ViewString.Keys[yearError]</p>
+                        </div>
+                    }
+                </div>
+                <div class="content_relative">
+                    <select value="@month" class="from-control input_form" @onchange="SelectMonth">
+                        <option value="0">Seleccione...</option>
+                        <option value="1">Enero</option>
+                        <option value="2">Febrero</option>
+                        <option value="3">Marzo</option>
+                        <option value="4">Abril</option>
+                        <option value="5">Mayo</option>
+                        <option value="6">Junio</option>
+                        <option value="7">Julio</option>
+                        <option value="8">Agosto</option>
+                        <option value="9">Septiembre</option>
+                        <option value="10">Octubre</option>
+                        <option value="11">Noviembre</option>
+                        <option value="12">Diciembre</option>
+                    </select>
+                    @if (monthError != "")
+                    {
+                        <div class="alert_input">
+                            <p class="text_alert">@ViewString.Keys[monthError]</p>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <button class="button_sumit" @onclick="limpiarFiltro">
+            <span>Limpiar</span>
+        </button>
+    </div>
+    <div class="content_grid_tabla">
+        <div class="content_grid_tabla_header">
+            <div class="col_grid displa_flex" @onclick="(() => CambioOrden(1))">
+                <span>ID</span>
+                @if (FiltroHistoricoPredios.Orden == 1)
+                {
+                    <i class="fas fa-sort-amount-up-alt"></i>
+                }
+                else
+                {
+                    <i class="fas fa-sort-amount-down-alt"></i>
+                }
+            </div>
+            <div class="col_grid displa_flex" @onclick="(() => CambioOrden(2))">
+                <span>Nota</span>
+                @if (FiltroHistoricoPredios.Orden == 3)
+                {
+                    <i class="fas fa-sort-amount-up-alt"></i>
+                }
+                else
+                {
+                    <i class="fas fa-sort-amount-down-alt"></i>
+                }
+            </div>
+            <div class="col_grid displa_flex" @onclick="(() => CambioOrden(3))">
+                <span>Fecha</span>
+                @if (FiltroHistoricoPredios.Orden == 5)
+                {
+                    <i class="fas fa-sort-amount-up-alt"></i>
+                }
+                else
+                {
+                    <i class="fas fa-sort-amount-down-alt"></i>
+                }
+            </div>
+            <div class="col_grid displa_flex" @onclick="(() => CambioOrden(4))">
+                <span>¿Quién noditicó?</span>
+                @if (FiltroHistoricoPredios.Orden == 7)
+                {
+                    <i class="fas fa-sort-amount-up-alt"></i>
+                }
+                else
+                {
+                    <i class="fas fa-sort-amount-down-alt"></i>
+                }
+            </div>
+            @*<div class="col_grid">
+                <span>Acciones</span>
+            </div>*@
+        </div>
+        @if (!banderaLoader)
+        {
+            @if (HistoricoPredios != null)
+            {
+                @if (HistoricoPredios.Count > 0)
+                {
+                    <div class="content_grid_tabla_boddy">
+                        @foreach (var HistoricoPredio in HistoricoPredios)
+                        {
+                            <div class="col_grid">
+                                <p class="txt_plano">@HistoricoPredio.IdHistoricoPredio</p>
+                            </div>
+                            <div class="col_grid">
+                                <p class="txt_plano">@HistoricoPredio.NotaActualizacion</p>
+                            </div>
+                            <div class="col_grid">
+                                <p class="txt_plano">@HistoricoPredio.FechaHistorico.ToString("dd/MM/yyyy")</p>
+                            </div>
+                            <div class="col_grid">
+                                <p class="txt_plano">@((HistoricoPredio.Cuenta != null)? HistoricoPredio.Cuenta.NombreUsuario : "----")</p>
+                            </div>
+                            @*<div class="col_grid">
+                                <div class="content_flex">
+                                    <button class="btn_edit" @onclick="(() => irEditarHistoricoPredio(HistoricoPredio.IdHistoricoPredio))">
+                                        <i class="far fa-edit"></i>
+                                        <span>Editar</span>
+                                    </button>
+                                    <button class="btn_delete" @onclick="(() => EliminarHistoricoPredio(HistoricoPredio.IdHistoricoPredio))">
+                                        <i class="far fa-trash-alt"></i>
+                                        <span>Eliminar</span>
+                                    </button>
+                                </div>
+                                <div class="content_flex">
+                                    <button class="btn_delete" @onclick="(() => irHistoricoPredio(HistoricoPredio.IdHistoricoPredio))">
+                                        <i class="far fa-eye"></i>
+                                        <span>Ver</span>
+                                    </button>
+                                </div>
+                            </div>*@
+                        }
+                    </div>
+                    <div class="content_paginado">
+                        @foreach (int i in paginas)
+                        {
+                            <div class="pagina" @onclick="(() => CambiarPaginaActual(i))">
+                                @if (i == paginaActual)
+                                {
+                                    <span class="selected">@i</span>
+                                }
+                                else
+                                {
+                                    <span>@i</span>
+                                }
+                            </div>
+                        }
+                    </div>
+                }
+                else
+                {
+                    @if (alerta != "")
+                    {
+                        <h2 class="no_data">No hay eventos HistoricoPrediodos</h2>
+                    }
+                    else
+                    {
+                        <div class="loader"></div>
+                    }
+                }
+            }
+            else
+            {
+                @if (alerta != "")
+                {
+                    <h2 class="no_data">No hay eventos HistoricoPrediodos</h2>
+                }
+                else
+                {
+                    <h2 class="no_data">@alerta</h2>
+                }
+            }
+        }
+        else
+        {
+            <div class="loader"></div>
+        }
+
+    </div>
+
+</div>

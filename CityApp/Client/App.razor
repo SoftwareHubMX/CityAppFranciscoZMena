@@ -1,0 +1,12 @@
+﻿<Router AppAssembly="@typeof(App).Assembly">
+    <Found Context="routeData">
+        <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
+        <FocusOnNavigate RouteData="@routeData" Selector="h1" />
+    </Found>
+    <NotFound>
+        <PageTitle>Oops!</PageTitle>
+        <LayoutView Layout="@typeof(MainLayout)">
+            <CityApp.Client.Shared.PageNoFound.PageNoFound></CityApp.Client.Shared.PageNoFound.PageNoFound>
+        </LayoutView>
+    </NotFound>
+</Router>

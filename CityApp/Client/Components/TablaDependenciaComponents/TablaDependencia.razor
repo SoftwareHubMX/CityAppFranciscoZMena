@@ -1,0 +1,95 @@
+﻿<div class="content_table">
+    <div class="content_title">
+        <h2 class="title">@ViewString.Keys["DependenciaList"]</h2>
+        <div class="btn_cirquel" @onclick="IrNuevaDependencia">
+            <i class="fas fa-plus"></i>
+        </div>
+    </div>
+    <div class="content_grid_tabla">
+        <div class="content_grid_tabla_header">
+            <div class="col_grid displa_flex">
+                <span>ID</span>
+            </div>
+            <div class="col_grid displa_flex">
+                <span>Dependencia</span>
+            </div>
+            <div class="col_grid">
+                <span>Acciones</span>
+            </div>
+        </div>
+        @if (banderaLoader)
+        {
+            @if (Dependencias != null)
+            {
+                @if (Dependencias.Count > 0)
+                {
+                    <div class="content_grid_tabla_boddy">
+                        @foreach (var dependencia in Dependencias)
+                        {
+                            <div class="col_grid">
+                                <p class="txt_plano">@dependencia.IdDependencia</p>
+                            </div>
+                            <div class="col_grid">
+                                <p class="txt_plano">@dependencia.NombreDependencia</p>
+                            </div>
+                            <div class="col_grid">
+                                <div class="content_flex">
+                                    <button class="btn_edit" @onclick="(() => IrEditarDependencia(dependencia.IdDependencia))">
+                                        <i class="far fa-edit"></i>
+                                        <span>Editar</span>
+                                    </button>
+                                    <button class="btn_delete" @onclick="(() => EliminarDependencia(dependencia.IdDependencia))">
+                                        <i class="far fa-trash-alt"></i>
+                                        <span>Eliminar</span>
+                                    </button>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div class="content_paginado">
+                        @foreach (int i in paginas)
+                        {
+                            <div class="pagina" @onclick="(() => CambiarPaginaActual(i))">
+                                @if (i == paginaActual)
+                                {
+                                    <span class="selected">@i</span>
+                                }
+                                else
+                                {
+                                    <span>@i</span>
+                                }
+                            </div>
+                        }
+                    </div>
+                }
+                else
+                {
+                    @if (alerta != "")
+                    {
+                        <h2 class="no_data">No hay Dependencias</h2>
+                    }
+                    else
+                    {
+                        <div class="loader"></div>
+                    }
+                }
+            }
+            else
+            {
+                @if (alerta != "")
+                {
+                    <h2 class="no_data">No hay Dependencias</h2>
+                }
+                else
+                {
+                    <h2 class="no_data">@alerta</h2>
+                }
+            }
+        }
+        else
+        {
+            <div class="loader"></div>
+        }
+    </div>
+</div>
+

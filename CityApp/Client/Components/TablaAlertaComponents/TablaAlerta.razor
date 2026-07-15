@@ -1,0 +1,89 @@
+﻿<div class="content_table">
+    <div class="content_title">
+        <h2 class="title">@ViewString.Keys["Alertas"]</h2>
+        @*<div class="btn_cirquel" @onclick="IrNuevaNoticia">
+            <i class="fas fa-plus"></i>
+        </div>*@
+    </div>
+    <div class="content_map">
+        <div class="grid_3_map">
+            <div class="col_grid span_2">
+                @if (Alertas != null)
+                {
+                    <CityApp.Client.Components.MapaAlertaComponents.MapaAlerta alertas="Alertas"></CityApp.Client.Components.MapaAlertaComponents.MapaAlerta>
+                }
+            </div>
+            <div class="col_grid">
+                <div class="content_identificadores">
+                    <h2 class="titles_map">Simbología</h2>
+                    <h3 class="sub_title_map">Estaus del reporte</h3>
+                    <div class="grid_2">
+                        <label class="text_description color_1" @onclick="(() => CambiarEstatusSelect(1))"><span>Reportado</span></label>
+                        <label class="text_description color_3" @onclick="(() => CambiarEstatusSelect(2))"><span>Atendido</span></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content_grid_tabla">
+        <div class="content_grid_tabla_header">
+            <div class="col_grid">
+                <span>ID</span>
+            </div>
+            <div class="col_grid">
+                <span>Usuario</span>
+            </div>
+            <div class="col_grid">
+                <span>Fecha y hora</span>
+            </div>
+            <div class="col_grid">
+                <span>Dirección</span>
+            </div>
+            <div class="col_grid">
+                <span>Estatus</span>
+            </div>
+            
+        </div>
+        @if (!banderaLoader)
+        {
+            @if(Alertas != null)
+            {
+                @if(Alertas.Count > 0)
+                {
+                    <div class="content_grid_tabla_boddy">
+                        @foreach(var alerta in Alertas)
+                        {
+                            <CityApp.Client.Components.RowTablaAlertaComponents.RowTablaAlerta alerta="@alerta" estatusAlertas="@EstatusAlertas" sesion="@Sesion" consultarAlertas="ConsultarAlerta"></CityApp.Client.Components.RowTablaAlertaComponents.RowTablaAlerta>
+                        }
+                    </div>
+                }
+                else
+                {
+                    @if(alerta != "")
+                    {
+                        <h2 class="no_data">No hay alertas</h2>
+                    }
+                    else
+                    {
+                        <h2 class="no_data">@alerta</h2>
+                    }
+                }
+            }
+            else
+            {
+                @if(alerta != "")
+                {
+                    <h2 class="no_data">No hay alertas</h2>
+                }
+                else
+                {
+                    <h2 class="no_data">@alerta</h2>                }
+            }
+        }
+        else
+        {
+            <div class="loader"></div>
+        }
+
+    </div>
+</div>

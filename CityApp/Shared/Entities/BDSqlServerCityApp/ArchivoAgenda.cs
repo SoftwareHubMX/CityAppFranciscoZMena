@@ -1,0 +1,24 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CityApp.Shared.Entities.BDSqlServerCityApp
+{
+    public class ArchivoAgenda
+    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int IdArchivoAgenda { get; set; } = 0;
+        public string Ruta { get; set; } = "NA";
+        public string Formato { get; set; } = "NA";
+        public bool Principal { get; set; } = false;
+        public int IdAgenda { get; set; } = 0;
+
+        [ForeignKey("IdNoticia")]
+        public virtual Agenda? Agenda { get; set; }
+    }
+}

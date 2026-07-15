@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="512px" height="512px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+<radialGradient id="SVGID_1_" cx="256" cy="256.0005" r="250.3469" gradientUnits="userSpaceOnUse">
+	<stop  offset="0" style="stop-color:#5B813C"/>
+	<stop  offset="0.4389" style="stop-color:#5B823E"/>
+	<stop  offset="0.597" style="stop-color:#598444"/>
+	<stop  offset="0.7097" style="stop-color:#56874F"/>
+	<stop  offset="0.8008" style="stop-color:#528C5C"/>
+	<stop  offset="0.8789" style="stop-color:#4B926C"/>
+	<stop  offset="0.9467" style="stop-color:#40987E"/>
+	<stop  offset="1" style="stop-color:#2F9C90"/>
+</radialGradient>
+<circle fill="none" stroke="url(#SVGID_1_)" stroke-width="40" stroke-miterlimit="10" cx="256" cy="256" r="230.347"/>
+<g>
+	<path fill="#319186" d="M342.694,140.409H183.755c-3.74,0-6.773,3.032-6.773,6.773v29.801h-7.676c-3.741,0-6.773,3.033-6.773,6.773
+		c0,3.741,3.032,6.773,6.773,6.773h7.676v22.577h-7.676c-3.741,0-6.773,3.032-6.773,6.773s3.032,6.773,6.773,6.773h7.676v22.577
+		h-7.676c-3.741,0-6.773,3.032-6.773,6.773s3.032,6.773,6.773,6.773h7.676v22.577h-7.676c-3.741,0-6.773,3.031-6.773,6.772
+		c0,3.74,3.032,6.773,6.773,6.773h7.676v22.576h-7.676c-3.741,0-6.773,3.032-6.773,6.773c0,3.739,3.032,6.772,6.773,6.772h7.676
+		v29.801c0,3.74,3.033,6.773,6.773,6.773h158.939c3.74,0,6.772-3.033,6.772-6.773V147.182
+		C349.467,143.441,346.435,140.409,342.694,140.409z M299.347,309.733c-3.74,0-6.772-3.033-6.772-6.773
+		c0-17.979-10.979-36.574-29.35-36.574c-18.372,0-29.35,18.596-29.35,36.574c0,3.74-3.032,6.773-6.773,6.773
+		s-6.773-3.033-6.773-6.773c0-17.208,7.856-35.037,22.242-44.14c-6.968-5.886-11.405-14.679-11.405-24.493
+		c0-17.677,14.381-32.059,32.059-32.059c17.677,0,32.059,14.382,32.059,32.059c0,9.814-4.438,18.607-11.406,24.493
+		c14.387,9.103,22.243,26.929,22.243,44.14C306.12,306.7,303.087,309.733,299.347,309.733z"/>
+	<circle fill="#319186" cx="263.225" cy="234.327" r="18.513"/>
+</g>
+</svg>

@@ -1,0 +1,41 @@
+﻿<div class="content_table">
+    <div class="content_title">
+        <h2 class="title">@ViewString.Keys["NewPatrulla"]</h2>
+    </div>
+    @if(alerta != ""){
+        <p class="text_alerta">@ViewString.Keys[alerta]</p>
+    }
+    <div class="content_grid_form">
+        <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Palaca"]" value="@placa" @onchange="TxtPlaca" />
+            @if (errorPlaca != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[errorPlaca]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["NumeroEco"]" value="@numero" @onchange="TxtNumero" />
+            @if (errorNumero != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[errorNumero]</p>
+                </div>
+            }
+        </div>
+
+        <div class="content_btn span_2">
+            <div class="content_relative span_3">
+                <button class="button_sumit" @onclick="Crear">
+                    @if(banderaBoton){
+                        <div class="loader"></div>
+                    }
+                    else{
+                        <span>Siguiente</span>
+                    }
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

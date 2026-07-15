@@ -1,0 +1,68 @@
+﻿<div class="content_table">
+    <div class="content_title">
+        <h2 class="title">@ViewString.Keys["EditDirectorio"]</h2>
+    </div>
+    @if(alerta != ""){
+        <p class="text_alerta">@ViewString.Keys[alerta]</p>
+    }
+    <div class="content_grid_form @section1">
+        <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["NomDirectorio"]" value="@nombreDirectorio" @onchange="TxtNombreDirectorio" />
+            @if (errorDirectorio != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[errorDirectorio]</p>
+                </div>
+            }
+        </div>
+         <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Puesto"]" value="@puesto" @onchange="TxtPuesto" />
+            @if (errorPuesto != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[errorPuesto]</p>
+                </div>
+            }
+        </div>
+         <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["MetdoCon"]" value="@metodoContacto" @onchange="TxtMetodoContacto" />
+            @if (errorMetodoCon != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[errorMetodoCon]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative ">
+            <button class="button_sumit" @onclick="ActualizarDirectorio">
+                <span>Siguiente</span>
+            </button>
+        </div>
+    </div>
+    <div class="content_carrusel @section2">
+          <div class="grid_3 span_2">
+            @if (Directorio.ArchivosDirectorio != null)
+            {
+                @foreach (var archivo in Directorio.ArchivosDirectorio)
+                {
+                    <div class="comctemt_image">
+                        <img class="img_archivo" src="data:image/png;base64, @archivo.Ruta" />
+                        <i class="oi oi-x icon_delete" @onclick="(() => EliminarArchivo(archivo))"></i>
+                    </div>
+                    
+                }
+            }
+        </div>
+        <div class="content_relative">
+            <button class="button_sumit" onclick="document.getElementById('input1').click()">
+                <span>Cargar</span>
+            </button>
+        </div>
+          <div class="content_relative">
+            <button class="button_sumit" @onclick="Guardar">
+                <span>Guardar</span>
+            </button>
+        </div>
+    </div>
+</div>
+<CityApp.Client.Shared.Modals.ModalCropper GuardarImagen="saveImage"></CityApp.Client.Shared.Modals.ModalCropper>

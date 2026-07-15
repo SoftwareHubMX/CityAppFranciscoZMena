@@ -1,0 +1,64 @@
+﻿<div class="content_table">
+    <div class="content_grid_tabla">
+        <div class="content_grid_tabla_header">
+            <div class="col_grid">
+                <span>ID</span>
+            </div>
+            <div class="col_grid">
+                <span>Descripcion</span>
+            </div>
+            <div class="col_grid">
+                <span>Fecha y hora</span>
+            </div>
+            <div class="col_grid">
+                <span>Tipo</span>
+            </div>
+            <div class="col_grid">
+                <span>Estatus</span>
+            </div>
+
+        </div>
+        @if (!banderaLoader)
+        {
+            @if (AlertasRuta != null)
+            {
+                @if (AlertasRuta.Count > 0)
+                {
+                    <div class="content_grid_tabla_boddy">
+                        @foreach (var alertaRuta in AlertasRuta)
+                        {
+                            <CityApp.Client.Components.RowTablaAlertaRutaComponents.RowTablaAlertaRuta alertaRuta="@alertaRuta" statusAlertasRutas="@StatusAlertasRutas" sesion="@Sesion" consultarAlertasRuta="ConsultarAlertaRuta"></CityApp.Client.Components.RowTablaAlertaRutaComponents.RowTablaAlertaRuta>
+                        }
+                    </div>
+                }
+                else
+                {
+                    @if (alerta != "")
+                    {
+                        <h2 class="no_data">No hay alertas</h2>
+                    }
+                    else
+                    {
+                        <h2 class="no_data">@alerta</h2>
+                    }
+                }
+            }
+            else
+            {
+                @if (alerta != "")
+                {
+                    <h2 class="no_data">No hay alertas</h2>
+                }
+                else
+                {
+                    <h2 class="no_data">@alerta</h2>
+                }
+            }
+        }
+        else
+        {
+            <div class="loader"></div>
+        }
+
+    </div>
+</div>

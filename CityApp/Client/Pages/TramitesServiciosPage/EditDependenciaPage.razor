@@ -1,0 +1,12 @@
+﻿@page "/TramitesServicios/Dependencias/Editar/{idDependencia:int}"
+
+<CityApp.Client.Shared.NavBar.NavBar></CityApp.Client.Shared.NavBar.NavBar>
+
+<div class="content_page">
+    <CityApp.Client.Shared.BarMenu.BarMenu></CityApp.Client.Shared.BarMenu.BarMenu>
+    <CityApp.Client.Components.CardEditDependenciaComponents.CardEditDependencia idDependencia="@idDependencia"></CityApp.Client.Components.CardEditDependenciaComponents.CardEditDependencia> 
+</div>
+
+@code{
+    [Parameter] public int idDependencia { get; set; } = 0;
+}

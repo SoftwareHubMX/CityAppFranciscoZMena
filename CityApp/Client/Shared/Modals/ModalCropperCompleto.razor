@@ -1,0 +1,39 @@
+﻿<div class="file_oculto">
+    <InputFile id="@idFile" OnChange="OnInputFileChange"></InputFile>
+</div>
+
+@if (file != null)
+{
+    <div class="content_modal">
+        <div class="_relative">
+            <div class="content_close">
+                <p class="popper_close">Cerrar</p>
+                <i class="oi oi-x close" @onclick="cancelar"></i>
+            </div>
+            <div class="card_modal">
+                <div class="content_title">
+                    <h1 class="title">Subir imagen</h1>
+                </div>
+                <div class="content_body">
+                    <div class="box_preview">
+                        <img src="@previewUrl" />
+                    </div>
+                    <div class="buttons">
+                        <button class="button_sumit" @onclick="DoneCrop">
+                            @if (guardado)
+                            {
+                                <span>
+                                    <div class="loader"></div>
+                                </span>
+                            }
+                            else
+                            {
+                                <span>Guardar</span>
+                            }
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

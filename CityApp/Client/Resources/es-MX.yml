@@ -1,0 +1,197 @@
+﻿#---Shared---
+Enviar: Enviar
+ProcesoEjecucion: Ya hay un proceso en ejecución, espere a que termine antes de continuar
+
+#---Accesos---
+InicioSesion: Inicio de sesión
+Registro: Registro
+Usuario: Usuario
+Pass: Contraseña
+Correo: Correo
+ConfirmarPass: Confirmar contraseña
+Iniciar: Iniciar
+RestaurarPass: Restaurar contraseña
+Registrar: Registrar
+
+#---Alertas Accesos---
+CampoRequerido: Campo requerido
+ingreseDato: Ingrese un dato
+NoCaracteresEspeciales: No se permiten caracteres especiales como ; y comillas dobles
+UsuarioMaximoCAracteres: El nombre de usuario tiene que tener un máximo de 13 caracteres
+UsuarioMinimoCAracteres: El nombre de usuario tiene que tener un mínimo de 3 caracteres
+IngreseUsuario: Ingrese su nombre de usuario
+IngreseCorreo: Ingrese su correo
+CorreoValido: Ingrese un correo válido
+FormatoPass: Ingrese una contraseña de al menos 8 caracteres, con al menos una mayúscula, un número y alguno de los siguientes caracteres especiales (_-.@&()!<>=+%$#¿?)
+IngresePass: Ingrese su contraseña
+PassNoCoinsiden: Las contraseñas no coinciden
+ConfirmePass: Confirme su contraseña
+NombreUsuarioCorreo: Ingrese su nombre de usuario o correo
+UsuarioMaximoCAracteresCorreo: El nombre de usuario tiene que tener un máximo de 13 caracteres o ingrese su correo;
+
+#---Restaurar Password---
+TextEnvioCorreoRestaurarPass: Ingrese el correo electrónico relacionado con su cuenta, al cual enviaremos la liga para poder restaurar su contraseña
+NewRestaurarPass: Ingrese su nueva contraseña para poder restaurarla
+
+#---ResetLogin---
+ResetLogin: Restauración inicio de sesión
+MsResetLogin: Se está restaurando sus intentos de inicio de sesión, en breve podrá reintentar iniciar sesión
+
+#---Validar Correo---
+ValidarCorreo: Validar correo
+ValidandoCorreo: Su correo está siendo validado, este proceso puede demorar un momento, de favor espere a que termine el proceso
+
+#---Menu---
+ReporteCiudadano: Reporte ciudadano
+Noticias: Noticias
+NewNoticias: Nueva noticia
+FechaPublicacion: Fecha de publicación
+RangoFecha: Rango de fechas
+FechaEspecifica: Fecha específica
+EditNoticias: Editar noticia
+Titulo: Título
+Descripcion: Descripción
+
+#---Oops---
+Oops: Oops!
+OopsTexto1: La página no funciona
+OopsTexto2: Este módulo no está disponible por el momento, estamos trabajando para traérselo en la brevedad.
+
+codigoPostal: Código postal
+NumeroConcurrencia: Concurrencia del reporte
+Id: Id del reporte.
+
+RangoConcurrencia: Rango de concurrencia
+MaxConcurrencia: Concurrencia maxima
+MinConcurrencia: Concurrencia minima
+
+Predios: Predios
+ClaveCatastrla: Clave catastral
+
+Agenda: Eventos
+FechaEvento: Fecha del evento
+NewAgenda: Nuevo evento
+EditAgenda: Editar evento
+
+NewLugarTuristico: Nuevo lugar turístico
+EditLugarTuristico: Actualizar lugar turístico
+TiposLugarTuristico: Tipo de lugar turístico
+# Descripcion: Descripción
+Direccion: Dirección
+Numero: Número
+CodigoPostal: Código postal
+LuageresTuristicos: Lugares turísticos
+CaracteristicaData: Descripción de la característica
+Caracteristica: Característica
+DescripcionCaracteristica: Descripción de la característica
+NombreCaracteristica: Característica
+
+DashBoard: Dash Board
+
+NewPatrulla: Nueva Patrulla
+Palaca: Placa
+NumeroEco: Número Económico
+# ------Noticia--------
+Autor: Url Facebook
+Fuente: Url Instagram
+
+
+ContactoSeguridadPublica: Medios de Contacto
+NewContactoSeguridadPublica: Nuevo medio de contacto
+MediContacto: Medio de contacto
+TiposAtenciones: Tipo de atención del contacto
+
+Normatibidad: Normatividad
+NewNormatividad: Nueva Normatividad
+
+NewContactoMunicipio: Contacto del municipio
+DireccionPalacio: Dirección palacio municipal
+Telefono: Teléfono
+SeleccioneOpcion: Seleccione una opción
+UsuarioRed: Enlace del perfil de la red social
+TiposRedSocial: Red Social
+ContactoMunicipio: Contacto del Municipio
+EditContactoMunicipio: Editar contacto del municipio
+
+NewSlider: Nueva multimedia
+TiposSlider: Módulo de la multimedia
+Multimedia: Multimedia de la App
+
+EditSecretaria: Editar Noticia
+NewSecretaria: Nueva Secretaría
+secr: Secretaría
+secretariasLis: Secretarías
+TipoTram: Tipo trámite
+Tramite: Trámite
+TramiteList: Trámites
+NewTramite: Nuevo Trámite
+EditTramite: Actualizar trámite
+
+Dependencia: Dependencia
+DependenciaList: Dependencias
+NewDependencia: Nueva Dependencia
+Concepto: Concepto
+Desc: Descripción
+Direc: Dirección
+
+MaximoTelefono: Máximo 10 dígitos y solo números en el teléfono
+
+NewDirectorio: Agregar Nuevo Directorio
+Directorio: Directorios
+NomDirectorio: Nombre completo
+Puesto: Puesto 
+MetdoCon: Método de contacto
+EditDirectorio: Actualizar datos.
+
+TipoDirectorio: Seleccione un Directorio.
+BolsaTrabajo: Agregar nueva bolsa de trabajo
+BolsaTrabajoList: Bolsa de trabajo
+Postulacion: Lista de postulaciones
+NewBolsaTrabajo: Agregar Nueva Bolsa de Trabajo
+EdadObligaroria: Debe ingresar una edad.
+Giro: Seleccione un giro.
+PuestoBolsa: Ingrese un Puesto
+Empresa: Nombre de la empresa
+Escolaridad: Escolaridad Requerida
+Especialidad: Especialidad Requerida
+Edad: Edad
+Sexo: Sexo
+Experiencia: Experiencia Requerida
+Conocimiento: Conocimientos Requeridos
+Habilidades: Habilidades Requeridas
+Funciones: Funciones a Desempeñar
+Jornada: Jornada Laboral
+Sueldo: Sueldo
+Prestaciones: Prestaciones de ley
+OtrasPrestaciones: Otras Prestaciones
+Requisitos: Requisitos indispensables para el puesto
+Entrevisata: Días de la entrevista
+Contacto: Contacto
+Calle: Calle
+NumeroInt: Número Interior
+Colonia: Colonia
+Localidad: Localidad
+Telefono1: Teléfono Opción 1
+Telefono2: Teléfono Opción 2
+ActividadPrincipal: Actividad principal 
+Rfc: Rfc de la empresa
+Plaza: Plaza
+
+NewRuta: Agregar nueva Ruta
+NewRutaList: Rutas
+EditRuta: Actualizar ruta
+SelectDia: Selecciona los días.
+SelectColonia: Selecciona una colonia.
+SelectCuenta: Seleccione una Cuenta.
+alerta: Cargar una Imagen.
+Respuesta: Respuesta del Minicipio.
+Req: Requisitos para el trámite.
+Url: Url/Web/Facebbok.
+NewAnuncio: Nuevo Anuncio
+AnuncioList: Anuncios
+TiposCita: Tipo de cita
+
+
+#Tabla cuentas
+TipoRol: Rol
+

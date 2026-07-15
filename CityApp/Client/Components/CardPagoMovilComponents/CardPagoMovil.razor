@@ -1,0 +1,59 @@
+﻿@using System.Globalization
+
+<div class="content_card">
+    <div class="content_title">
+        <h2 class="title">Pago servicio</h2>
+    </div>
+    <div class="content_pago">
+        <img class="img_card" src="Imagenes/SharedImagenes/Logo_CityApp_completo.png" title="Logo_CityApp" alt="Logo_CityApp" />
+        
+            @if (banderaPagoPredio)
+            {
+                @if(alerta == "")
+                {
+                    <div class="card_content">
+                        <label class="text_plano _aling_start">Concepto:</label>
+                        <label class="text_plano _aling_end">Pago de predial</label>
+                        <label class="text_plano _aling_start">Referencia:</label>
+                        <label class="text_plano _aling_end">CityApp-Pago-Servicio</label>
+                        <label class="text_plano _aling_start">Propietario:</label>
+                        <label class="text_plano _aling_end">@InformacionPagoPredio.PropietarioPagoPredio.Propietario</label>
+                        <label class="text_plano _aling_start">Valor catastral:</label>
+                        <label class="text_plano _aling_end">@InformacionPagoPredio.ValorCatastral</label>
+                        <label class="text_plano _aling_start">Valor fiscal:</label>
+                        <label class="text_plano _aling_end">@InformacionPagoPredio.ValorFiscal</label>
+                        <label class="text_plano _aling_start">Total:</label>
+                    <label class="text_plano _aling_end">$ @InformacionPagoPredio.Total.ToString("0,0.00", CultureInfo.InvariantCulture) MXN</label>
+                    </div>
+                    <a class="button_sumit" href="#"><span>Pagar</span></a>
+                }
+                else
+                {
+                    <div class="content_center  _aling_cemter">
+                        <MudAlert Severity="Severity.Error" Variant="Variant.Filled">@alerta</MudAlert>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="content_center  _aling_cemter _non_border _interliner">
+                    <MudSkeleton SkeletonType="SkeletonType.Rectangle" Width="200px" Height="15px" />
+                </div>
+                <div class="content_center  _aling_cemter _non_border _interliner">
+                    <MudSkeleton SkeletonType="SkeletonType.Rectangle" Width="200px" Height="15px" />
+                </div>
+                <div class="content_center  _aling_cemter _non_border _interliner">
+                    <MudSkeleton SkeletonType="SkeletonType.Rectangle" Width="200px" Height="15px" />
+                </div>
+                <div class="content_center  _aling_cemter _non_border _interliner">
+                    <MudSkeleton SkeletonType="SkeletonType.Rectangle" Width="200px" Height="15px" />
+                </div>
+                <div class="content_center  _aling_cemter _non_border _interliner">
+                    <MudSkeleton SkeletonType="SkeletonType.Rectangle" Width="200px" Height="15px" />
+                </div>
+                <div class="content_center  _aling_cemter _non_border _interliner">
+                    <MudSkeleton SkeletonType="SkeletonType.Rectangle" Width="200px" Height="15px" />
+                </div>
+            }
+    </div>
+</div>

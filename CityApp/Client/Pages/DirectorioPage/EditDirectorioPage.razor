@@ -1,0 +1,12 @@
+﻿@page "/Directorios/Editar/{idDirectorio:int}"
+
+<CityApp.Client.Shared.NavBar.NavBar></CityApp.Client.Shared.NavBar.NavBar>
+
+<div class="content_page">
+    <CityApp.Client.Shared.BarMenu.BarMenu></CityApp.Client.Shared.BarMenu.BarMenu>
+    <CityApp.Client.Components.CardEditarDirectorioComponents.CardEditarDirectorio idDirectorio="@idDirectorio"></CityApp.Client.Components.CardEditarDirectorioComponents.CardEditarDirectorio> 
+</div>
+
+@code{
+    [Parameter] public int idDirectorio { get; set; } = 0;
+}

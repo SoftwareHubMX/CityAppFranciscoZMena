@@ -1,0 +1,49 @@
+﻿<div class="content_table">
+    <div class="content_title">
+        <h2 class="title">@ViewString.Keys["NewSlider"]</h2>
+    </div>
+    <div class="content_grid_form @section1">
+        <div class="content_relative">
+            <select value="@idTipoSlider" class="from-control input_form" @onchange="TxtIdTipoSlider">
+                <option value="0">@ViewString.Keys["TiposSlider"]...</option>
+                @for (int i = 0; i < TiposSliders.Count; i++)
+                {
+                    <option value="@TiposSliders[i].IdTipoSlider">@TiposSliders[i].Slider</option>
+                }
+            </select>
+            @if (idTipoSliderError != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[idTipoSliderError]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative ">
+            <button class="button_sumit" @onclick="InsertarSlider">
+                <span>Siguiente</span>
+            </button>
+        </div>
+    </div>
+    <div class="content_carrusel @section2">
+        <div class="grid_3 span_2">
+            @if (Archivos != null)
+            {
+                @foreach (var archivo in Archivos)
+                {
+                    <img class="img_archivo" src="data:image/png;base64, @archivo" />
+                }
+            }
+        </div>
+        <div class="content_relative">
+            <button class="button_sumit" onclick="document.getElementById('input1').click()">
+                <span>Cargar</span>
+            </button>
+        </div>
+        <div class="content_relative">
+            <button class="button_sumit" @onclick="Guardar">
+                <span>Guardar</span>
+            </button>
+        </div>
+    </div>
+</div>
+<CityApp.Client.Shared.Modals.ModalCropper GuardarImagen="saveImage"></CityApp.Client.Shared.Modals.ModalCropper>

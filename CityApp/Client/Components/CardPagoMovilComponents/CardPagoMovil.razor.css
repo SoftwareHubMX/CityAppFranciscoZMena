@@ -1,0 +1,124 @@
+﻿.content_card {
+    position: relative;
+    z-index: 100;
+    width: 80%;
+    margin: auto;
+    background-color: #fff;
+    border-radius: 10px;
+    /*border: 2px solid #CD2272;*/
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 2rem #6b6b6b92;
+}
+
+.content_title {
+    width: 100%;
+    text-align: center;
+    border-bottom: 2px solid #CD2272;
+    margin: auto;
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #232323;
+    margin: .5rem 0;
+}
+
+.content_pago {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.img_card {
+    width: 80%;
+    margin: 1rem auto;
+}
+
+.card_content {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    border-bottom: 2px solid #CD2272;
+    margin: 1rem auto;
+}
+
+.text_plano {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.button_sumit {
+    display: inline-flex;
+    position: relative;
+    text-decoration: none;
+    width: 90%;
+    margin: .5rem auto;
+    color: #fff;
+    background-color: #1753A3;
+    border: none;
+    outline: none;
+    border-radius: .5rem;
+    padding: .5rem;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: all .3s ease-in-out;
+}
+
+    .button_sumit span {
+        position: relative;
+        z-index: 2;
+    }
+
+    .button_sumit:after {
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        bottom: 100%;
+        left: 0;
+        margin: auto;
+        content: "";
+        background-color: #CD2272;
+        transition: all .3s ease-in-out;
+        z-index: 1;
+    }
+
+    .button_sumit:hover:after {
+        bottom: 0;
+    }
+
+._aling_start {
+    text-align: start;
+}
+
+._aling_end {
+    text-align: end;
+}
+
+._aling_cemter {
+    text-align: center;
+}
+
+.span_2 {
+    grid-column: span 2;
+}
+
+.content_center {
+    width: auto;
+    margin: 1rem auto;
+    border: 2px solid #CD2272
+}
+
+._non_border {
+    border: none;
+}
+
+._interliner {
+    margin: 1rem auto;
+}

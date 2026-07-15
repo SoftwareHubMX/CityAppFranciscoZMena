@@ -1,0 +1,26 @@
+﻿@page "/FueraServicio2"
+
+<CityApp.Client.Shared.NavBar.NavBar></CityApp.Client.Shared.NavBar.NavBar>
+
+<div class="content_page">
+    <CityApp.Client.Shared.BarMenu.BarMenu></CityApp.Client.Shared.BarMenu.BarMenu>
+    <div class="content_table">
+        <div class="content_title">
+            <h2 class="title">Predios</h2>
+        </div>
+        <div class="content_grid_3">
+            <div class="col_grid" @onclick="(() => IrMenu(0))">
+                <img class="icono_menu" src="Iconografia/predial.svg" />
+                <span>Predios</span>
+            </div>
+            <div class="col_grid" @onclick="(() => IrMenu(1))">
+                <img class="icono_menu" src="Iconografia/historico.svg" />
+                <span>Historico</span>
+            </div>
+            <div class="col_grid" @onclick="(() => IrMenu(2))">
+                <img class="icono_menu" src="Iconografia/descuento.svg" />
+                <span>Descuentos</span>
+            </div>
+        </div>
+    </div>
+</div>

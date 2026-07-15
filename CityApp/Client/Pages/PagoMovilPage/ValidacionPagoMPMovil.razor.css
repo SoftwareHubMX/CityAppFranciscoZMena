@@ -1,0 +1,41 @@
+﻿.content_page {
+    width: 100%;
+    height: calc(100vh - 56px);
+    display: flex;
+}
+
+.fondo_1 {
+    position: fixed;
+    background-color: #08B38B;
+    width: 50vh;
+    height: 20vh;
+    bottom: 0;
+    right: -30vh;
+    transform: rotateZ(-55deg);
+    z-index: 2;
+    box-shadow: -1rem -1rem 2rem #6b6b6b92;
+}
+
+.fondo_2 {
+    position: fixed;
+    background-color: #08B38B;
+    width: 50vh;
+    height: 20vh;
+    bottom: -10vh;
+    left: -25vh;
+    transform: rotateZ(35deg);
+    z-index: 2;
+    box-shadow: -1rem -1rem 2rem #6b6b6b92;
+}
+
+.fondo_3 {
+    position: fixed;
+    background-color: #007C5E;
+    width: 100vh;
+    height: 10vh;
+    bottom: 51vh;
+    right: -55vh;
+    transform: rotateZ(85deg);
+    z-index: 1;
+    box-shadow: 1rem 1rem 2rem #6b6b6b92;
+}

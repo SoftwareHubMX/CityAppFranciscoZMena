@@ -1,0 +1,22 @@
+﻿<div class="content_loading">
+    <h2 class="title">Validacion de pago</h2>
+    @if (!banderComprobacionPago)
+    {
+        <p class="text_plano">Estamos procesando su pago, espere un momento</p>
+        <div class="loader_loading">
+            <span>Cargando</span>
+        </div>
+    }
+    else
+    {
+        @if(alerta == "")
+        {
+            <MudAlert Severity="Severity.Success">Su pago fue validado, ya puede regresar a la app</MudAlert>
+        }
+        else
+        {
+            <MudAlert Severity="Severity.Info">No se ha podido validar su pago en este momento, su pagó puede verse reflejado dentro de las próximas 48 hrs.</MudAlert>
+
+        }
+    }
+</div>

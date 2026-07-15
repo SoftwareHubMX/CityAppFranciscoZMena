@@ -1,0 +1,88 @@
+﻿<div class="content_table">
+    <div class="content_title">
+        <h2 class="title">@ViewString.Keys["NewAgenda"]</h2>
+    </div>
+    <div class="content_grid_form @section1">
+        <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Titulo"]" value="@titulo" @onchange="TxtTitulo"/>
+            @if(tituloError != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[tituloError]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative">
+                    <input type="date" class="input_form" value="@fecha.ToString("yyyy-MM-dd")" @onchange="TxtFecha"/>
+                    @if(fechaError != "")
+                    {
+                        <div class="alert_input">
+                            <p class="text_alert">@ViewString.Keys[fechaError]</p>
+                        </div>
+                    }
+                </div>
+        <div class="content_relative">
+            <input type="time" class="input_form" placeholder="@ViewString.Keys["Hora"]" value="@hora" @onchange="TxtHora"/>
+            @if(horaError != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[horaError]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Lugar"]" value="@lugar" @onchange="TxtLugar"/>
+            @if(lugarError != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[lugarError]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative span_2">
+            <textarea rows="5" class="input_form" placeholder="@ViewString.Keys["Descripcion"]" value="@descripcion" @onchange="TxtDescripcion"/>
+            @if(descripcionError != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[descripcionError]</p>
+                </div>
+            }
+        </div>
+        <div class="content_btn span_2">
+            <div class="content_relative span_2">
+                <button class="button_sumit" @onclick="InsertarAgenda">
+                    <span>Siguiente</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="content_carrusel @section2">
+        <div class="grid_3 span_2">
+            @if(Archivos != null)
+            {
+                @foreach(var archivo in Archivos)
+                {
+                    <img class="img_archivo" src="data:image/png;base64, @archivo" />
+                }
+            }
+        </div>
+        <div class="content_relative">
+            <button class="button_sumit" onclick="document.getElementById('input1').click()">
+                <span>Cargar</span>
+            </button>
+        </div>
+        <div class="content_relative">
+            <button class="button_sumit" @onclick="Guardar">
+                <span>Guardar</span>
+            </button>
+        </div>
+        @if (alerta != "")
+        {
+            <div class="alert_bottom">
+                <p class="text_alert">@ViewString.Keys[alerta]</p>
+            </div>
+        }
+    </div>
+</div>
+@* <CityApp.Client.Shared.Modals.ModalCropper GuardarImagen="saveImage"></CityApp.Client.Shared.Modals.ModalCropper> *@
+<CityApp.Client.Shared.Modals.ModalCropperCompleto GuardarImagen="saveImage"></CityApp.Client.Shared.Modals.ModalCropperCompleto>

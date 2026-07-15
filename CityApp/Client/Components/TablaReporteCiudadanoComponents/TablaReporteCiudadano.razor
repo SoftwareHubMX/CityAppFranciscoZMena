@@ -1,0 +1,126 @@
+﻿<div class="content_table">
+    <div class="content_title">
+        <h2 class="title">@ViewString.Keys["ReporteCiudadano"]</h2>
+        @*<div class="btn_cirquel" @onclick="IrNuevaNoticia">
+            <i class="fas fa-plus"></i>
+            </div>*@
+    </div>
+    <CityApp.Client.Components.MapaReporteCiudadanoComponents.MapaReporteCiudadano reportes="@ReportesCiudadanos" Sesion="@Sesion"></CityApp.Client.Components.MapaReporteCiudadanoComponents.MapaReporteCiudadano>
+    <CityApp.Client.Components.FiltrosReporteCiudadanoComponents.FiltrosReporteCiudadano Filtro="@FiltroReportesCiudadanos" TiposReportesCiudadanos="@TiposReportesCiudadanos" estatusReporteCiudadanos="@EstatusReporteCiudadanos" ActualizarFiltros="ActualizarFiltro"></CityApp.Client.Components.FiltrosReporteCiudadanoComponents.FiltrosReporteCiudadano>
+   @* <div class="content_relative">
+        <button class="button_sumit" @onclick="@(() => DescargarArchivosExcel(ReportesCiudadanos))">
+            <span>Descargar Excel</span>
+        </button>
+    </div>
+*@
+    <div class="content_grid_tabla">
+        <div class="content_grid_tabla_header">
+            <div class="col_grid">
+                <span>ID</span>
+            </div>
+            <div class="col_grid">
+                <span>Tipo reporte</span>
+            </div>
+            <div class="col_grid">
+                <span>Descripción</span>
+            </div>
+            <div class="col_grid">
+                <span>Fecha</span>
+            </div>
+            <div class="col_grid">
+                <span>Evidencias</span>
+            </div>
+            <div class="col_grid">
+                <span>Evidencia Solución</span>
+            </div>
+            <div class="col_grid">
+                <span>Dirección</span>
+            </div>
+            <div class="col_grid">
+                <span>Concurrencia</span>
+            </div>
+            <div class="col_grid">
+                <span>Detalles</span>
+            </div>
+            <div class="col_grid">
+                <span>Estatus</span>
+            </div>
+        </div>
+        @if (!banderaLoader)
+        {
+            @if (ReportesCiudadanos != null)
+            {
+                @if (ReportesCiudadanos.Count > 0)
+                {
+                    @foreach (var reporte in ReportesCiudadanos)
+                    {
+                        <CityApp.Client.Components.RowTablaReportesCiudadanosComponents.RowTablaReportesCiudadanos Sesion="@Sesion" reporte="@reporte" EstatusReporteCiudadanos="@EstatusReporteCiudadanos" openModalDetalles="openModalDetalles" DescargarImagenes="ConsultarReporteCiudadano" ActualizarvistaEstatus="ActualizacionVistaEstatus"></CityApp.Client.Components.RowTablaReportesCiudadanosComponents.RowTablaReportesCiudadanos>
+                    }
+                    <div class="content_paginado">
+                        @foreach (int i in paginas)
+                        {
+                            <div class="pagina" @onclick="(() => CambiarPaginaActual(i))">
+                                @if (i == paginaActual)
+                                {
+                                    <span class="selected">@i</span>
+                                }
+                                else
+                                {
+                                    <span>@i</span>
+                                }
+                            </div>
+                        }
+                    </div>
+                }
+                else
+                {
+                    @if (alerta != "")
+                    {
+                        <h2 class="no_data">No hay reportes</h2>
+                    }
+                    else
+                    {
+                        <h2 class="no_data">@alerta</h2>
+                    }
+                }
+            }
+            else
+            {
+                @if (alerta != "")
+                {
+                    <h2 class="no_data">No hay reportes</h2>
+                }
+                else
+                {
+                    <h2 class="no_data">@alerta</h2>
+                }
+            }
+        }
+        else
+        {
+            <div class="loader"></div>
+        }
+
+    </div>
+</div>
+@if (alertaDescarga != "")
+{
+    @if (alertaDescarga == "Exito")
+    {
+        <div class="content__alerta -exito">
+            <span>Descarga exitosa</span>
+        </div>
+    }
+    else
+    {
+        <div class="content__alerta -error">
+            <span>@alertaDescarga</span>
+        </div>
+    }
+}
+
+
+@if (banderamodal)
+{
+    <CityApp.Client.Components.ModalDetallesReporteCiudadanoComponents.ModalDetallesReporteCiudadano idReporteCiudadano="@idReporteCiudadano" Sesion="@Sesion" OpenCloseModal="openCloseModalDetalles"></CityApp.Client.Components.ModalDetallesReporteCiudadanoComponents.ModalDetallesReporteCiudadano>
+}

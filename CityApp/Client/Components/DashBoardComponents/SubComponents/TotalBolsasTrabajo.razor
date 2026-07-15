@@ -1,0 +1,88 @@
+﻿<div class="col_grid ">
+    <h3 class="title_section">Bolsas Trabajo</h3>
+    @if (!banderaLoader)
+    {
+        <div class="content_carrusel">
+            <div class="content_relative">
+                <select value="@year" class="from-control input_form" @onchange="SelectYear">
+                    <option value="0">Seleccione...</option>
+                    @for (int i = 2021; i <= DateTime.UtcNow.AddHours(-6).Year; i++)
+                    {
+                        <option value="@i">@i</option>
+                    }
+                </select>
+                @if (yearError != "")
+                {
+                    <div class="alert_input">
+                        <p class="text_alert">@yearError</p>
+                    </div>
+                }
+            </div>
+            <div class="content_relative">
+                <select value="@mes" class="from-control input_form" @onchange="SelectMonth">
+                    <option value="0">Seleccione...</option>
+                    <option value="1">Enero</option>
+                    <option value="2">Febrero</option>
+                    <option value="3">Marzo</option>
+                    <option value="4">Abril</option>
+                    <option value="5">Mayo</option>
+                    <option value="6">Junio</option>
+                    <option value="7">Julio</option>
+                    <option value="8">Agosto</option>
+                    <option value="9">Septiembre</option>
+                    <option value="10">Octubre</option>
+                    <option value="11">Noviembre</option>
+                    <option value="12">Diciembre</option>
+                </select>
+                @if (mesError != "")
+                {
+                    <div class="alert_input">
+                        <p class="text_alert">@mesError</p>
+                    </div>
+                }
+            </div>
+        </div>
+        @if (alerta == "")
+        {
+            @if (Series != null)
+            {
+                <div class="content_data">
+                    <div class="content_item">
+                         <i class="fa-solid fa-briefcase icono_menu"></i>
+                        @*<img class="icono_menu" src="Iconografia/bolsaTrabajoBolsaTrabajo.svg">*@
+                        <label class="text_data">@totalBolsasTrabajo</label>
+                    </div>
+                    @foreach (var serie in Series)
+                    {
+                        <div class="content_item">
+                            @if (serie.Name.Contains("Activa"))
+                            {
+                                 <i class="fa-solid fa-briefcase icono_menu_1"></i>
+                                 @*<img class="icono_menu" src="Iconografia/bolsatrabajo.svg">*@
+                            }
+                            else if (serie.Name.Contains("Inactiva"))
+                            {
+                                 <i class="fa-solid fa-briefcase icono_menu_2"></i>
+                                 @*<img class="icono_menu" src="Iconografia/bolsatrabajo.svg">*@
+                            }
+                            <label class="text_data">@serie.Name</label>
+                        </div>
+                    }
+                    
+                </div>
+            }
+
+
+            @*<MudChart ChartType="ChartType.Line" ChartSeries="@Series" @bind-SelectedIndex="Index" XAxisLabels="@XAxisLabels" Width="100%" Height="350px"></MudChart>*@
+
+        }
+        else
+        {
+            <p class="alerta">@alerta</p>
+        }
+    }
+    else
+    {
+        <div class="loader"></div>
+    }
+</div>

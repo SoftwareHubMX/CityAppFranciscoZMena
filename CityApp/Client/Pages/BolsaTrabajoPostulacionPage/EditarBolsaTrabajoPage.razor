@@ -1,0 +1,12 @@
+﻿@page "/BolsaTrabajos/BolsasTrabajos/Editar/{idBolsaTrabajo:int}"
+
+<CityApp.Client.Shared.NavBar.NavBar></CityApp.Client.Shared.NavBar.NavBar>
+
+<div class="content_page">
+    <CityApp.Client.Shared.BarMenu.BarMenu></CityApp.Client.Shared.BarMenu.BarMenu>
+    <CityApp.Client.Components.CardEditarBolsaTrabajoComponents.CardEditarBolsaTrabajo idBolsaTrabajo="@idBolsaTrabajo"></CityApp.Client.Components.CardEditarBolsaTrabajoComponents.CardEditarBolsaTrabajo>
+</div>
+
+@code{
+    [Parameter] public int idBolsaTrabajo { get; set; } = 0;
+}

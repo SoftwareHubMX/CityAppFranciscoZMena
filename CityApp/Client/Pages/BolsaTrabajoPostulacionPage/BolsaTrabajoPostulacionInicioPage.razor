@@ -1,0 +1,24 @@
+﻿@page "/BolsaTrabajos"
+
+<CityApp.Client.Shared.NavBar.NavBar></CityApp.Client.Shared.NavBar.NavBar>
+
+<div class="content_page">
+    <CityApp.Client.Shared.BarMenu.BarMenu></CityApp.Client.Shared.BarMenu.BarMenu>
+    <div class="content_table">
+        <div class="content_title">
+            <h2 class="title">Bolsa de Trabajo</h2>
+        </div>
+        <div class="content_grid_3">
+            <div class="col_grid" @onclick="(() => IrMenu(0))">
+                 <i class="fa-solid fa-briefcase icono_menu"></i>
+                @*<img class="icono_menu" src="Iconografia/bolsaTrabajoBolsaTrabajo.svg" />*@
+                <span>Bolsa de trabajo</span>
+            </div>
+            <div class="col_grid" @onclick="(() => IrMenu(1))">
+                <i class="fa-solid fa-hand icono_menu"></i>
+                @*<img class="icono_menu" src="Iconografia/bolsaTrabajoPostulaciones.svg" />*@
+                <span>Postulaciones</span>
+            </div>
+        </div>
+    </div>
+</div>

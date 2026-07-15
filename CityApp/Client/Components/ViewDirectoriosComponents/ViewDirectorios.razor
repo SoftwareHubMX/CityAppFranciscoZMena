@@ -1,0 +1,101 @@
+﻿<div class="content_table">
+    <div class="content_title">
+        <h2 class="title">@ViewString.Keys["Directorio"]</h2>
+        <div class="btn_cirquel" @onclick="IrNuevoDirectorio">
+            <i class="fas fa-plus"></i>
+        </div>
+    </div> 
+    <div class="content_grid">
+        @if (banderaLoader)
+        {
+            @if (Directorios != null)
+            {
+                @if (Directorios.Count > 0)
+                {                   
+                    @foreach (var directorio in ArchivosDirectorios)
+                    {
+                        <div class="card_Slider">
+                            <div class="content_slider">
+                                @if(ArchivosDirectorios.Count > 0)
+                                {
+                                    @if (directorio.Item1 != null && directorio.Item1.Count > 0)
+                                    {
+                                        <MudCarousel Class="mud-width-full" @ref="_carousel" ItemsSource="@directorio.Item1" Style="width:100%; height:100%;" ShowArrows="false" ShowBullets="false" AutoCycle="true">
+                                            <ItemTemplate>
+                                                <div class="d-flex flex-column flex-column justify-center" style="width:100%; height:100%">
+                                                    <img class="img_noticia" src="data:image/png;base64, @context">
+                                                </div>
+                                            </ItemTemplate>
+                                        </MudCarousel>
+                                    }
+                                }
+                            </div>
+                            <div class="content_info">
+                                <p class="title_card">@directorio.Item2.NombreDirecctorio.ToUpper()</p>
+                                <p class="puesto_card">@directorio.Item2.Puesto.ToUpper()</p>
+                                <p class="contact_card">@directorio.Item2.MetodoContacto.ToUpper()</p>
+                                <div class="col_grid">
+                                    <div class="content_flex">
+                                <button class="btn_edit" @onclick="(() => IrEditarDirectorio(directorio.Item2.IdDirectorio))">
+                                        <i class="far fa-edit"></i>
+                                        <span>Editar</span>
+                                </button>
+                                <button class="btn_delete" @onclick="(() => EliminarDirectorio(directorio.Item2.IdDirectorio))">
+                                    <i class="far fa-trash-alt"></i>
+                                    <span>Eliminar</span>
+                                </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                  
+                    
+                }
+                else
+                {
+                    @if (alerta != "")
+                    {
+                        <h2 class="no_data">No hay directorios creados</h2>
+                    }
+                    else
+                    {
+                        <div class="loader"></div>
+                    }
+                }
+                
+            }
+            else
+            {
+                @if (alerta != "")
+                {
+                    <h2 class="no_data">No hay directorios creados</h2>
+                }
+                else
+                {
+                    <h2 class="no_data">@alerta</h2>
+                }
+            }
+        }
+        else
+        {
+            <div class="loader"></div>
+        }
+    </div>
+    <div class="content_paginado">
+        @foreach (int i in paginas)
+        {
+            <div class="pagina" @onclick="(() => CambiarPaginaActual(i))">
+                @if (i == paginaActual)
+                {
+                    <span class="selected">@i</span>
+                }
+                else
+                {
+                    <span>@i</span>
+                }
+            </div>
+        }
+   </div>
+</div>
+

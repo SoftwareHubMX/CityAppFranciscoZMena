@@ -1,0 +1,22 @@
+﻿<div class="col_grid">
+    <h3 class="title_section">Ultimos Ingresos</h3>
+    <div class="content_center">
+        @if(!banderaCarga)
+        {
+            <div class="list_ingresos">
+                @foreach(var d in Data)
+                {
+                    <div class="gid_list_ingreso">
+                        <label class="text_pincipal">@d.Nombre</label>
+                        <label class="text_pincipal">$@d.Total</label>
+                        <label class="text_secundario">@d.Consepto</label>
+                        <label class="text_secundario">@d.Fecha.ToString("dd/MM/yyyy")</label>
+                    </div>
+                }
+            </div>
+        }
+        else{
+            <div class="loader"></div>
+        }
+    </div>
+</div>

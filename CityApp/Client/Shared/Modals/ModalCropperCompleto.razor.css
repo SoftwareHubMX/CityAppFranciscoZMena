@@ -1,0 +1,239 @@
+﻿.content_modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #2222229c;
+    backdrop-filter: blur(1vw);
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+    padding: 0;
+}
+
+._relative {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+
+.content_close {
+    position: absolute;
+    display: flex;
+    top: 5%;
+    right: 0%;
+    width: 10vw;
+}
+
+.popper_close {
+    background-color: #fff;
+    padding: .5vw;
+    font-size: 1vw;
+    text-align: center;
+    border-radius: 1vw;
+    margin: auto 1vw;
+    opacity: 0;
+    transform: scale(.5);
+    transition: all .3s ease-in-out;
+}
+
+.close {
+    font-size: 1.2vw;
+    margin: auto 0;
+    color: #b4b4b4;
+    transition: all .2s ease-in-out;
+    cursor: pointer;
+}
+
+    .close:hover {
+        color: #fff;
+    }
+
+        .close:hover ~ .popper_close {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+.card_modal {
+    width: 70%;
+    margin: auto;
+    background-color: #fff;
+    border-radius: 2vw;
+    padding: 1vw 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.content_title {
+    width: 80%;
+    margin: 0 auto;
+    border-bottom: .2vw solid #2222229c;
+    text-align: center;
+}
+
+.title {
+    font-size: 2.5vw;
+    font-weight: 600;
+    margin: 0;
+}
+
+.content_body, .buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    margin-top: 1vw;
+}
+
+.buttons {
+    width: 80%;
+}
+
+.box_preview {
+    width: 100%;
+    max-height: 60vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: flex; /* Activamos flexbox */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center;
+}
+
+    .box_preview img {
+        max-width: 100%; /* Ajusta al ancho del contenedor */
+        max-height: 100%; /* Ajusta al alto máximo de la caja */
+        height: auto; /* Mantiene proporción */
+    }
+
+.margin_auto {
+    margin: 0 auto;
+}
+
+.btn_save {
+    background-color: rgb(81 200 233);
+    border: none;
+    border-radius: 1vw;
+    font-size: 1.5vw;
+    color: #fff;
+    outline: none;
+    margin: 0 auto;
+    margin-top: 1vw;
+}
+
+.file_oculto {
+    opacity: 0;
+    transform: scale(0);
+    pointer-events: none;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+.txt_plano {
+    margin: 0;
+}
+
+.loading {
+    margin: auto;
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% {
+        transform: rotateZ(0);
+    }
+
+    25% {
+        transform: rotateZ(90deg);
+    }
+
+    50% {
+        transform: rotateZ(180deg);
+    }
+
+    75% {
+        transform: rotateZ(270deg);
+    }
+
+    100% {
+        transform: rotateZ(360deg);
+    }
+}
+
+.button_sumit {
+    display: inline-flex;
+    position: relative;
+    width: 90%;
+    margin: .5vw auto;
+    color: #fff;
+    background-color: #08B38B;
+    border: none;
+    outline: none;
+    border-radius: .5vw;
+    padding: .5vw;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: all .3s ease-in-out;
+}
+
+    .button_sumit span {
+        position: relative;
+        z-index: 2;
+    }
+
+    .button_sumit:after {
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        bottom: 100%;
+        left: 0;
+        margin: auto;
+        content: "";
+        background-color: #007C5E;
+        transition: all .3s ease-in-out;
+        z-index: 1;
+    }
+
+    .button_sumit:hover:after {
+        bottom: 0;
+    }
+
+.loader {
+    width: 1.5vw;
+    height: 1.5vw;
+    border-top: .2vw solid transparent;
+    border-bottom: .2vw solid transparent;
+    border-right: .2vw solid #fff;
+    border-left: .2vw solid #fff;
+    border-radius: 50%;
+    animation: loading 1s infinite;
+}
+
+@keyframes loading {
+    0% {
+        transform: rotateZ(0);
+    }
+
+    25% {
+        transform: rotateZ(90deg);
+    }
+
+    50% {
+        transform: rotateZ(180deg);
+    }
+
+    75% {
+        transform: rotateZ(270deg);
+    }
+
+    100% {
+        transform: rotateZ(360deg);
+    }
+}

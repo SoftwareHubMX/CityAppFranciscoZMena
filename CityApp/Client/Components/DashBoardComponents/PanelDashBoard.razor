@@ -1,0 +1,60 @@
+﻿<div class="content_table">
+    <div class="content_title">
+        <h2 class="title">@ViewString.Keys["DashBoard"]</h2>
+    </div>
+    <div class="content_grid">
+        @{
+            switch (idRol)
+            {
+                case 1:
+                    // Rol Administrador: Mostrar todos
+                    <CityApp.Client.Components.DashBoardComponents.SubComponents.DonutsReportesCiudadanos></CityApp.Client.Components.DashBoardComponents.SubComponents.DonutsReportesCiudadanos>
+                    <CityApp.Client.Components.DashBoardComponents.SubComponents.Comunicacion></CityApp.Client.Components.DashBoardComponents.SubComponents.Comunicacion>
+                    <CityApp.Client.Components.DashBoardComponents.SubComponents.Turismo></CityApp.Client.Components.DashBoardComponents.SubComponents.Turismo>
+                    <CityApp.Client.Components.DashBoardComponents.SubComponents.Tramites></CityApp.Client.Components.DashBoardComponents.SubComponents.Tramites>
+                    <CityApp.Client.Components.DashBoardComponents.SubComponents.TotalBolsasTrabajo></CityApp.Client.Components.DashBoardComponents.SubComponents.TotalBolsasTrabajo>
+                    break;
+                case 2:
+                    // Rol 2: No mostrar nada
+                    break;
+                case 3:
+                    // Rol Comunicación: Mostrar el componente de Comunicación
+                    <CityApp.Client.Components.DashBoardComponents.SubComponents.Comunicacion></CityApp.Client.Components.DashBoardComponents.SubComponents.Comunicacion>
+                    break;
+                case 4:
+                    // Rol Seguridad Pública: No mostrar nada
+                    break;
+                case 5:
+                    // Rol Turismo: Mostrar el componente de Turismo
+                    <CityApp.Client.Components.DashBoardComponents.SubComponents.Turismo></CityApp.Client.Components.DashBoardComponents.SubComponents.Turismo>
+                    break;
+                case 6:
+                    // Rol 6: No mostrar nada
+                    break;
+                case 7:
+                    // Rol 7: No mostrar nada
+                    break;
+                case 8:
+                    // Rol obras: Mostrar los componentes reporte ciudadano
+                    <CityApp.Client.Components.DashBoardComponents.SubComponents.DonutsReportesCiudadanos></CityApp.Client.Components.DashBoardComponents.SubComponents.DonutsReportesCiudadanos>
+                    break;
+                case 9:
+                    // Rol 9: Mostrar el componente de Turismo y bolsa trabajo
+                    <CityApp.Client.Components.DashBoardComponents.SubComponents.Turismo></CityApp.Client.Components.DashBoardComponents.SubComponents.Turismo>
+                    <CityApp.Client.Components.DashBoardComponents.SubComponents.TotalBolsasTrabajo></CityApp.Client.Components.DashBoardComponents.SubComponents.TotalBolsasTrabajo>
+                    break;
+                case 10:
+                    // Rol Servicios Municipales: Mostrar el componente de Reportes Ciudadano
+                    <CityApp.Client.Components.DashBoardComponents.SubComponents.DonutsReportesCiudadanos></CityApp.Client.Components.DashBoardComponents.SubComponents.DonutsReportesCiudadanos>
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        @*<CityApp.Client.Components.DashBoardComponents.SubComponents.UltimosIngresos></CityApp.Client.Components.DashBoardComponents.SubComponents.UltimosIngresos>
+            <CityApp.Client.Components.DashBoardComponents.SubComponents.LinesIngresos></CityApp.Client.Components.DashBoardComponents.SubComponents.LinesIngresos>*@
+
+
+    </div>
+</div>

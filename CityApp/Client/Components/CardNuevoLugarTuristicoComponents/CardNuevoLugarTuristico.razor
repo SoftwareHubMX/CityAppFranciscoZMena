@@ -1,0 +1,211 @@
+﻿<div class="content_table">
+    <div class="content_title">
+        <h2 class="title">@ViewString.Keys["NewLugarTuristico"]</h2>
+    </div>
+    <div class="content_grid_form @section1">
+        <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Nombre"]" value="@nombre" @onchange="TxtNombre"/>
+            @if(nombreError != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[nombreError]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative">
+            <input type="date" class="input_form" value="@fecha.ToString("yyyy-MM-dd")" @onchange="TxtFecha"/>
+            @if(fechaError != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[fechaError]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative">
+            <select value="@idTipoLugarTuristico" class="from-control input_form" @onchange="TxtIdTipoLugarTuristico">
+                <option value="0">@ViewString.Keys["TiposLugarTuristico"]...</option>
+                @for(int i = 0; i < TiposLugarTuristico.Count; i++)
+                {
+                    <option value="@TiposLugarTuristico[i].IdTipoLugarTuristico">@TiposLugarTuristico[i].Tipo</option>
+                }
+            </select>
+            @if(idTipoLugarTuristicoError != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[idTipoLugarTuristicoError]</p>
+                </div>
+            }
+        </div>
+         <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Telefono"]" value="@telefono" @onchange="TxtTelefono"/>
+            @if(telefonoError != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[telefonoError]</p>
+                </div>
+            }
+        </div>
+         <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Url"]" value="@urlWebFacebook" @onchange="TxtUrlWebFacebbok"/>
+            @if(urlError != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[urlError]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative span_3">
+            <textarea rows="5" class="input_form" placeholder="@ViewString.Keys["Descripcion"]" value="@descripcion" @onchange="TxtDescripcion"/>
+            @if(descripcionError != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[descripcionError]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative span_3">
+            <h2 class="title">@ViewString.Keys["Direccion"]</h2>
+        </div>
+        <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Localidad"]" value="@localidad" @onchange="TxtLocalidad"/>
+            @if(localidadError != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[localidadError]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Colonia"]" value="@colonia" @onchange="TxtColonia"/>
+            @if(coloniaError != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[coloniaError]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Calle"]" value="@calle" @onchange="TxtCalle"/>
+            @if(calleError != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[calleError]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Numero"]" value="@numero" @onchange="TxtNumero"/>
+            @if(numeroError != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[numeroError]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["CodigoPostal"]" value="@codigoPostal" @onchange="TxtCodigoPostal"/>
+            @if(codigoPostalError != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[codigoPostalError]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Latitud"]" value="@latitud" @onchange="TxtLatitud"/>
+            @if(latitudError != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[latitudError]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Longitud"]" value="@longitud" @onchange="TxtLongitud"/>
+            @if(longitudError != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[longitudError]</p>
+                </div>
+            }
+        </div>
+
+        <div class="content_btn span_2">
+            <div class="content_relative span_3">
+                <button class="button_sumit" @onclick="InsertarLugarTuristico">
+                    <span>Siguiente</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    @*<div class="content_grid_form @section2">
+        <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["NombreCaracteristica"]" value="@caracteristica" @onchange="TxtCaracteristica"/>
+            @if(caracteristicaError != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[caracteristicaError]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative span_2">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["DescripcionCaracteristica"]" value="@caracteristicaData" @onchange="TxtCaracteristicaData"/>
+            @if(caracteristicaDataError != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[caracteristicaDataError]</p>
+                </div>
+            }
+        </div>
+        <div class="content_btn span_3">
+            <div class="content_relative">
+                <button class="button_sumit" @onclick="saveCaracteristica">
+                    <span>Agregar</span>
+                </button>
+            </div>
+            <div class="content_relative">
+            </div>
+            <div class="content_relative">
+                <button class="button_sumit" @onclick="siguienteAtras">
+                    <span>Siguiente</span>
+                </button>
+            </div>
+        </div>
+        @for(int i = 0; i < CaracteristicasLugarTuristico.Count; i++)
+        {
+            <div class="card_carac">
+                <h4 class="title_card">@CaracteristicasLugarTuristico[i].NombreCaracteristica</h4>
+                <label class="text_plano">@CaracteristicasLugarTuristico[i].Caracteristica</label>
+            </div>
+        }
+    </div>*@
+    <div class="content_carrusel @section3">
+        <div class="grid_3 span_2">
+            @if(Archivos != null)
+            {
+                @foreach(var archivo in Archivos)
+                {
+                    <img class="img_archivo" src="data:image/png;base64, @archivo" />
+                }
+            }
+        </div>
+        <div class="content_relative">
+            <button class="button_sumit" onclick="document.getElementById('input1').click()">
+                <span>Cargar</span>
+            </button>
+        </div>
+        <div class="content_relative">
+            <button class="button_sumit" @onclick="Guardar">
+                <span>Guardar</span>
+            </button>
+        </div>
+        @if (alerta != "")
+        {
+            <div class="alert_bottom">
+                <p class="text_alert">@ViewString.Keys[alerta]</p>
+            </div>
+        }
+    </div>
+</div>
+@* <CityApp.Client.Shared.Modals.ModalCropper GuardarImagen="saveImage" AspectWidth="9" AspectHeight="16"></CityApp.Client.Shared.Modals.ModalCropper> *@
+<CityApp.Client.Shared.Modals.ModalCropperCompleto GuardarImagen="saveImage"></CityApp.Client.Shared.Modals.ModalCropperCompleto>

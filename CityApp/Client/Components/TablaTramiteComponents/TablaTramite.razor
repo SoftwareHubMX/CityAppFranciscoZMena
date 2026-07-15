@@ -1,0 +1,173 @@
+﻿<div class="content_table">
+    <div class="content_title">
+        <h2 class="title">@ViewString.Keys["TramiteList"]</h2>
+        <div class="btn_cirquel" @onclick="IrNuevoTramite">
+            <i class="fas fa-plus"></i>
+        </div>
+    </div>
+    <div class="content_filtros">
+        <div class="content_relative">
+            <select value="@idSecretarias" class="from-control input_form" @onchange="TxtIdSecretaria">
+                <option value="0">@ViewString.Keys["secr"]...</option>
+               @for (int i = 0; i < Secretarias.Count; i++)
+                {
+                    <option value="@Secretarias[i].IdSecretaria">@Secretarias[i].NombreSecretaria</option>
+                }
+            </select>
+            @if (errorIdSecretaria != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[errorIdSecretaria]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative">
+            <select value="@idDependencias" class="from-control input_form" @onchange="TxtIdDependencia">
+                <option value="0">@ViewString.Keys["Dependenicias"]...</option>
+               @for (int i = 0; i < Dependencias.Count; i++)
+                {
+                    <option value="@Dependencias[i].IdDependencia">@Dependencias[i].NombreDependencia</option>
+                }
+            </select>
+            @if (errorIdDependencia != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[errorIdDependencia]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Concepto"]" value="@concepto" @onchange="TxtConcepto"/>
+            @if(errorConcepto != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[errorConcepto]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Descripcion"]" value="@descripcion" @onchange="TxtDescipcion"/>
+            @if(errorDescripcion != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[errorDescripcion]</p>
+                </div>
+            }
+        </div>
+         <button class="button_sumit" @onclick="limpiarFiltro">
+            <span>Limpiar</span>
+        </button>
+    </div>
+    <div class="content_grid_tabla">
+        <div class="content_grid_tabla_header">
+            <div class="col_grid displa_flex">
+                <span>ID</span>
+            </div>
+            <div class="col_grid displa_flex">
+                <span>Concepto</span>
+            </div>
+            <div class="col_grid displa_flex">
+                <span>Descripción</span>
+            </div>
+            <div class="col_grid displa_flex">
+                <span>Dirección</span>
+            </div>
+            <div class="col_grid displa_flex">
+                <span>Tipo Trámite</span>
+            </div>
+            <div class="col_grid">
+                <span>Acciones</span>
+            </div>
+        </div>
+        @if (banderaLoader)
+        {
+            @if (Tramites != null)
+            {
+                @if (Tramites.Count > 0)
+                {
+                    <div class="content_grid_tabla_boddy">
+                        @foreach (var tramites in Tramites)
+                        {
+                            <div class="col_grid">
+                                <p class="txt_plano">@tramites.IdTramite</p>
+                            </div>
+                            <div class="col_grid">
+                                <p class="txt_plano">@tramites.Concepto</p>
+                            </div>
+                            <div class="col_grid">
+                                <p class="txt_plano">@tramites.Descripcion</p>
+                            </div>
+                            <div class="col_grid">
+                                <p class="txt_plano">@tramites.Direccion</p>
+                            </div>
+                            <div class="col_grid">
+                                <p class="txt_plano">@tramites.TipoTramite.NombreTramite</p>
+                            </div>
+                            <div class="col_grid">
+                                <div class="content_flex">                                   
+                                    <button class="btn_delete" @onclick="(() => EliminarTramite(tramites.IdTramite))">
+                                        <i class="far fa-trash-alt"></i>
+                                        <span>Eliminar</span>
+                                    </button>
+                                    <button class="btn_detalle" @onclick="(() => openModalDetalles(tramites.IdTramite))">
+                                        <i class="far fa-eye"></i>
+                                        <span>Ver</span>
+                                    </button>
+                                    <button class="btn_edit" @onclick="(() => IrEditarTramite(tramites.IdTramite))">
+                                        <i class="far fa-edit"></i>
+                                        <span>Editar</span>
+                                    </button>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div class="content_paginado">
+                        @foreach (int i in paginas)
+                        {
+                            <div class="pagina" @onclick="(() => CambiarPaginaActual(i))">
+                                @if (i == paginaActual)
+                                {
+                                    <span class="selected">@i</span>
+                                }
+                                else
+                                {
+                                    <span>@i</span>
+                                }
+                            </div>
+                        }
+                    </div>
+                }
+                else
+                {
+                    @if (alerta != "")
+                    {
+                        <h2 class="no_data">No hay Trámites</h2>
+                    }
+                    else
+                    {
+                        <div class="loader"></div>
+                    }
+                }
+            }
+            else
+            {
+                @if (alerta != "")
+                {
+                    <h2 class="no_data">No hay Trámites</h2>
+                }
+                else
+                {
+                    <h2 class="no_data">@alerta</h2>
+                }
+            }
+        }
+        else
+        {
+            <div class="loader"></div>
+        }
+    </div>
+</div>
+@if(banderamodal)
+{
+    <CityApp.Client.Components.ModalDetallesTramiteComponents.ModalDetallesTramite idTramite="@IdTramite" Sesion="@Sesion" OpenCloseModal="openCloseModalDetalles"></CityApp.Client.Components.ModalDetallesTramiteComponents.ModalDetallesTramite>
+}

@@ -1,0 +1,66 @@
+﻿<div class="content_table">
+    <div class="content_title">
+        <h2 class="title">@ViewString.Keys["NewDescuentoPredio"]</h2>
+    </div>
+    <div class="content_grid_form">
+        <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["TituloDescuento"]" value="@tituloDescuento" @onchange="TxtTituloDescuento" />
+            @if (tituloDescuentoError != "")
+            {
+                    <div class="alert_input">
+                        <p class="text_alert">@ViewString.Keys[tituloDescuentoError]</p>
+                    </div>
+            }
+        </div>
+        <div class="content_relative">
+            <input type="number" class="input_form" placeholder="@ViewString.Keys["YearResago"]" value="@yearResago" @onchange="TxtYearResago" />
+            @if (yearResagoError != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[yearResagoError]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative">            
+            <input type="date" class="input_form" placeholder="@ViewString.Keys["FechaInicio"]" value="@fechaInicio.ToString("yyyy-MM-dd")" @onchange="TxtFechaInicio" />
+            @if (fechaInicioError != "")
+            {
+                    <div class="alert_input">
+                        <p class="text_alert">@ViewString.Keys[fechaInicioError]</p>
+                    </div>
+            }
+        </div>
+        <div class="content_relative">
+            <input type="date" class="input_form" placeholder="@ViewString.Keys["FechaFin"]" value="@fechaFin.ToString("yyyy-MM-dd")" @onchange="TxtFechaFin" />
+            @if (fechaFinError != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[fechaFinError]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative">
+            <div class="display_flex">
+                <p class="btn_checket @((porsentajeMonto)? "btn_select":"")" @onclick="CambiarPorcentajeMonto">Monto de descuento</p>
+                <p class="btn_checket @((!porsentajeMonto)? "btn_select":"")" @onclick="CambiarPorcentajeMonto">Porsentaje de descuento</p>
+            </div>
+        </div>
+        <div class="content_relative">
+            <input type="number" class="input_form" placeholder="@ViewString.Keys["Descuento"]" value="@descuento" @onchange="TxtDescuento" />
+            @if (descuentoError != "")
+            {
+                    <div class="alert_input">
+                        <p class="text_alert">@ViewString.Keys[descuentoError]</p>
+                    </div>
+            }
+        </div>
+
+        <div class="content_btn span_2">
+            <div class="content_relative span_3">
+                <button class="button_sumit" @onclick="InsertarContacto">
+                    <span>Siguiente</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

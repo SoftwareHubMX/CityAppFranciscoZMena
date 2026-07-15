@@ -1,0 +1,49 @@
+﻿<div class="content_modal">
+    <i class="fas fa-times icon_x" @onclick="(() => OpenCloseModal2.InvokeAsync())"></i>
+    <div class="card_modal">
+        <div class="content_title">
+            <h2 class="title">Detalles rutas</h2>
+        </div>
+
+        @if (banderaCargaInfo)
+        {
+            <div class="content_detalles">
+                <p class="text_labal">Colonias</p>
+                <div class="content_verciones">
+                    @if (RutaRecoleccion.ColoniaRutaRecolecciones != null)
+                    {
+                        @foreach (var colonia in RutaRecoleccion.ColoniaRutaRecolecciones)
+                        {
+                            <div class="content_card_repo">
+                                <div class="display_flex">
+                                    @if (colonia.Colonia != null)
+                                    {
+                                        <p class="text_plano margi_null">@colonia.Colonia.NombreColonia</p>
+                                    }
+                                    else
+                                    {
+                                        <p class="text_plano">---</p>
+                                    }
+                                </div>
+                            </div>
+                        }
+
+                    }
+                    else
+                    {
+                        <p class="text_plano">0</p>
+                    }
+                </div>
+
+            </div>
+
+        }
+        else
+        {
+            <div class="loader"></div>
+        }
+
+
+    </div>
+</div>
+

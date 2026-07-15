@@ -1,0 +1,62 @@
+﻿<div class="file_oculto">
+    <InputFile id="@idFile" OnChange="OnInputFileChange"></InputFile>
+    <img id="my-img" />
+</div>
+
+@if(file != null)
+{
+    <div class="content_modal">
+        <div class="_relative">
+            <div class="content_close">
+                <p class="popper_close">Cerrar</p>
+                <i class="oi oi-x close" @onclick="cancelar"></i>
+            </div>
+            <div class="card_modal">
+                <div class="content_title">
+                    <h1 class="title">Recortar imagen</h1>
+                </div>
+                <div class="content_body">
+                    <div class="box_preview">
+                        <Cropper 
+                            MaxCropedHeight="@InitH" 
+                            CropperHeight="400" 
+                            MaxCropedWidth="@InitW" 
+                            @ref="cropper" 
+                            AspectRatio="1"
+                            RequireAspectRatio="true" 
+                            InputId="@idFile" 
+                            ImageFile="file" 
+                            @bind-Ratio="ratio"
+                            AnimeGifEnable="true"
+                            OffsetX="offsetx"
+                            OffsetY="offsety"
+                            InitCropWidth="InitW"
+                            InitCropHeight="InitH"
+                            PureCSharpProcessing="false"
+                            IsCropLocked="false"
+                            IsImageLocked="false"
+                            OnSizeChanged="t=>{ width = t.Item1; height = t.Item2; }"></Cropper>
+                    </div>
+                    <div class="buttons">
+                        @if (cropper != null)
+                        {
+                            <input type="range" class="form-range margin_auto" min="@(cropper.MinRatio*100)" max="@(200)" value="@(ratio*100)" @oninput="OnRatioChange" />
+                        }
+                        <button class="button_sumit" @onclick="DoneCrop">
+                            @if(guardado)
+                            {
+                                <span>
+                                    <div class="loader"></div>
+                                </span>
+                            }
+                            else
+                            {
+                                <span>Guardar</span>
+                            }
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,72 @@
+﻿<div class="content_table">
+    <div class="content_title">
+        <h2 class="title">@ViewString.Keys["Multimedia"]</h2>
+        <div class="btn_cirquel" @onclick="IrNuevaSlider">
+            <i class="fas fa-plus"></i>
+        </div>
+    </div>
+    <div class="content_grid">
+        @if (banderaLoader)
+        {
+            @if (Sliders != null)
+            {
+                @if (Sliders.Count > 0)
+                {
+                    @foreach (var slider in ArchivosSliders)
+                    {
+                        <div class="card_Slider">
+                            <div class="content_slider">
+                                @if(ArchivosSliders.Count > 0)
+                                {
+                                    @if (slider.Item1 != null && slider.Item1.Count > 0)
+                                    {
+                                        <MudCarousel Class="mud-width-full" @ref="_carousel" ItemsSource="@slider.Item1" Style="width:100%; height:100%;" ShowArrows="false" ShowBullets="true" AutoCycle="true">
+                                            <ItemTemplate>
+                                                <div class="d-flex flex-column flex-column justify-center" style="width:100%; height:100%">
+                                                    <img class="img_noticia" src="data:image/png;base64, @context">
+                                                </div>
+                                            </ItemTemplate>
+                                        </MudCarousel>
+                                    }
+                                }
+                            </div>
+                            <div class="content_info">
+                                <p class="title_card">@slider.Item2.Titulo.ToUpper()</p>
+                                <button class="btn_delete" @onclick="(() => EliminarSlider(slider.Item2.IdSlider))">
+                                    <i class="far fa-trash-alt"></i>
+                                    <span>Eliminar</span>
+                                </button>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    @if (alerta != "")
+                    {
+                        <h2 class="no_data">No hay multimedia creada</h2>
+                    }
+                    else
+                    {
+                        <div class="loader"></div>
+                    }
+                }
+            }
+            else
+            {
+                @if (alerta != "")
+                {
+                    <h2 class="no_data">No hay multimedia creada</h2>
+                }
+                else
+                {
+                    <h2 class="no_data">@alerta</h2>
+                }
+            }
+        }
+        else
+        {
+            <div class="loader"></div>
+        }
+    </div>
+</div>

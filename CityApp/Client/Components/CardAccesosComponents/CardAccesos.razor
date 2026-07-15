@@ -1,0 +1,101 @@
+﻿<div class="card_login">
+    <div class="content_buttons_sections">
+        <h2 class="label_section @section1" @onclick="(() => CambioSection(0))">@ViewString.Keys["InicioSesion"]</h2>
+        <h2 class="label_section @section2" @onclick="(() => CambioSection(1))">@ViewString.Keys["Registro"]</h2>
+    </div>
+    <div class="content_form">
+        @*<img class="img_logo" src="Imagenes/SharedImagenes/Logo_CityApp_completo.png" title="Logo_CityApp_completo" alt="Logo_CityApp_completo" />*@
+        <img class="img_logo" src="Imagenes/LogosMunicipios/Chilapa/ic_chilapa.svg" title="Logo_CityApp_completo" alt="Logo_CityApp_completo" />
+        <div class="content_carrusel @carrusel1">
+            <div class="content_relative">
+                <input type="text" class="input_form" placeholder="@ViewString.Keys["Usuario"]" value="@usuario" @oninput="TxtUsuario"/>
+                @if(usuarioError != "")
+                {
+                    <div class="alert_input">
+                        <p class="text_alert">@ViewString.Keys[usuarioError]</p>
+                    </div>
+                }
+            </div>
+            <div class="content_relative">
+                <input type="password" class="input_form" placeholder="@ViewString.Keys["Pass"]" value="@password" @oninput="TxtPassword"/>
+                @if(passwordError != "")
+                {
+                    <div class="alert_input">
+                        <p class="text_alert">@ViewString.Keys[passwordError]</p>
+                    </div>
+                }
+            </div>
+            <button class="button_sumit" @onclick="LogIn">
+                @if(btn_login == "carga")
+                {
+                    <span>
+                        <div class="loader"></div>
+                    </span>
+                }
+                else
+                {
+                    <span>@ViewString.Keys["Iniciar"]</span>
+                }
+            </button>
+            <div class="content_bottom">
+                <h3 class="ticked" @onclick="irRestaurarContraseña">@ViewString.Keys["RestaurarPass"]</h3>
+            </div>
+        </div>
+        <div class="content_carrusel @carrusel2">
+            <div class="content_relative">
+                <input type="text" class="input_form" placeholder="@ViewString.Keys["Usuario"]" value="@registroUsusario" @oninput="TxtUsuarioRegistro"/>
+                @if(registroUsusariError != "")
+                {
+                    <div class="alert_input">
+                        <p class="text_alert">@ViewString.Keys[registroUsusariError]</p>
+                    </div>
+                }
+            </div>
+            <div class="content_relative">
+                <input type="email" class="input_form" placeholder="@ViewString.Keys["Correo"]" value="@correo" @oninput="TxtCorreoRegistro"/>
+                @if(correoError != "")
+                {
+                    <div class="alert_input">
+                        <p class="text_alert">@ViewString.Keys[correoError]</p>
+                    </div>
+                }
+            </div>
+            <div class="content_relative">
+                <input type="password" class="input_form" placeholder="@ViewString.Keys["Pass"]" value="@registroPassword" @oninput="TxtPasswordRegistro"/>
+                @if(registroPasswordError != "")
+                {
+                    <div class="alert_input">
+                        <p class="text_alert">@ViewString.Keys[registroPasswordError]</p>
+                    </div>
+                }
+            </div>
+            <div class="content_relative">
+                <input type="password" class="input_form" placeholder="@ViewString.Keys["ConfirmarPass"]" value="@confirmacionPassword" @oninput="TxtPasswordConfirmacionRegistro"/>
+                @if(confirmacionPasswordError != "")
+                {
+                    <div class="alert_input">
+                        <p class="text_alert">@ViewString.Keys[confirmacionPasswordError]</p>
+                    </div>
+                }
+            </div>
+            <button class="button_sumit" @onclick="Registrar">
+                @if(btn_registro == "carga")
+                {
+                    <span>
+                        <div class="loader"></div>
+                    </span>
+                }
+                else
+                {
+                    <span>@ViewString.Keys["Registrar"]</span>
+                }
+            </button>
+        </div>
+    </div>
+    @if(alerta != "")
+    {
+        <div class="alert_bottom">
+            <p class="text_alert">@ViewString.Keys[alerta]</p>
+        </div>
+    }
+</div>

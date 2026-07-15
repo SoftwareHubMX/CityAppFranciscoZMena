@@ -1,0 +1,153 @@
+﻿<div class="content_table">
+    <div class="content_title">
+        <h2 class="title">@ViewString.Keys["EditTramite"]</h2>
+    </div>
+    @if(alerta != ""){
+        <p class="text_alerta">@ViewString.Keys[alerta]</p>
+    }
+    <div class="content_grid_form">
+       <div class="content_relative">
+            <select value="@idSecretarias" class="from-control input_form" @onchange="TxtIdSecretaria">
+                <option value="0">@ViewString.Keys["secr"]...</option>
+               @for (int i = 0; i < Secretarias.Count; i++)
+                {
+                    <option value="@Secretarias[i].IdSecretaria">@Secretarias[i].NombreSecretaria</option>
+                }
+            </select>
+            @if (errorIdSecretaria != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[errorIdSecretaria]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative">
+            <select value="@idDependencias" class="from-control input_form" @onchange="TxtIdDependencia">
+                <option value="0">@ViewString.Keys["Dependencia"]...</option>
+               @for (int i = 0; i < Dependencias.Count; i++)
+                {
+                    <option value="@Dependencias[i].IdDependencia">@Dependencias[i].NombreDependencia</option>
+                }
+            </select>
+            @if (errorIdDependencia != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[errorIdDependencia]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative">
+            <select value="@idTiposTramite" class="from-control input_form" @onchange="TxtIdTipoTramite">
+                <option value="0">@ViewString.Keys["TipoTram"]...</option>
+               @for (int i = 0; i < TiposTramite.Count; i++)
+                {
+                    <option value="@TiposTramite[i].IdTipoTramite">@TiposTramite[i].NombreTramite</option>
+                }
+            </select>
+            @if (errorIdTipoTramite != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[errorIdTipoTramite]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Concepto"]" value="@concepto" @onchange="TxtConcepto" />
+            @if (errorConcepto != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[errorConcepto]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Desc"]" value="@descripcion" @onchange="TxtDescipcion" />
+            @if (errorDescripcion != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[errorDescripcion]</p>
+                </div>
+            }
+        </div>
+         <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Direc"]" value="@direccion" @onchange="TxtDireccion" />
+            @if (errorDireccion != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[errorDireccion]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative">
+            <input type="tel" class="input_form" placeholder="@ViewString.Keys["Telefono"]" value="@telefono" @onchange="TxtTelefono" />
+            @if (telefonoError != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[telefonoError]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative">
+            <labal class="text_plano">Costo:</labal>
+            <input type="number" class="input_form" placeholder="@ViewString.Keys["Costo"]" value="@costo" @onchange="TxtCosto" />
+            @if (costoError != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[costoError]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative">
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Observaciones"]" value="@observaciones" @onchange="TxtObservaciones" />
+            @if (ObservacionesError != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[ObservacionesError]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative span_2">
+            <textarea rows="5" class="input_form" placeholder="@ViewString.Keys["Req"]" value="@requisitos" @onchange="TxtRequisitos" />
+            @if (requisitosError != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[requisitosError]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative">
+            <labal class="text_plano">Latitud:</labal>
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Latitud"]" value="@latitud" @onchange="TxtLatitud" />
+            @if (latitudError != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[latitudError]</p>
+                </div>
+            }
+        </div>
+        <div class="content_relative">
+            <labal class="text_plano">Longitud:</labal>
+            <input type="text" class="input_form" placeholder="@ViewString.Keys["Longitud"]" value="@longitud" @onchange="TxtLongitud" />
+            @if (longitudError != "")
+            {
+                <div class="alert_input">
+                    <p class="text_alert">@ViewString.Keys[longitudError]</p>
+                </div>
+            }
+        </div>
+
+        <div class="content_btn span_2">
+            <div class="content_relative span_3">
+                <button class="button_sumit" @onclick="ActualizarTramite">
+                    @if(banderaBoton){
+                        <div class="loader"></div>
+                    }
+                    else{
+                        <span>Guardar</span>
+                    }
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
