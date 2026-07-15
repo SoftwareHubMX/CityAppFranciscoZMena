@@ -49,7 +49,8 @@ namespace CityApp.Server.Servicios.BDCityApp.QuerysCityApp.TramiteQuerys
         //Select
         public Response<Tramite> SelectTramiteIdTramite(int idTramite)
         {
-            return TramiteSelect.SelectTramiteIdTramite(idTramite);
+            return TramiteSelect.SelectTramiteIdTramiteCompleto(idTramite);
+
         }
         public Response<Tramite> SelectTramiteIdTipoTramite(int idTipoTramite)
         {

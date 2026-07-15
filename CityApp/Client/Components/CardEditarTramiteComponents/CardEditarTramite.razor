@@ -116,8 +116,13 @@
             }
         </div>
         <div class="content_relative">
-            <labal class="text_plano">Latitud:</labal>
-            <input type="text" class="input_form" placeholder="@ViewString.Keys["Latitud"]" value="@latitud" @onchange="TxtLatitud" />
+            <input type="number"
+                   step="0.00000001"
+                   class="input_form"
+                   placeholder="@ViewString.Keys["Latitud"]"
+                   @bind="latitud"
+                   @bind:event="oninput"
+                   @onblur="ActualizarLatitud" />
             @if (latitudError != "")
             {
                 <div class="alert_input">
@@ -125,9 +130,15 @@
                 </div>
             }
         </div>
+
         <div class="content_relative">
-            <labal class="text_plano">Longitud:</labal>
-            <input type="text" class="input_form" placeholder="@ViewString.Keys["Longitud"]" value="@longitud" @onchange="TxtLongitud" />
+            <input type="number"
+                   step="0.00000001"
+                   class="input_form"
+                   placeholder="@ViewString.Keys["Longitud"]"
+                   @bind="longitud"
+                   @bind:event="oninput"
+                   @onblur="ActualizarLongitud" />
             @if (longitudError != "")
             {
                 <div class="alert_input">

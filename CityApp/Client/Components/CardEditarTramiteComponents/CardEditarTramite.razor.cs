@@ -33,7 +33,9 @@ namespace CityApp.Client.Components.CardEditarTramiteComponents
         private string alerta = "";
 
         private int idSecretarias = 0;
+        private string nombreSecretaria = "";
         private int idDependencias = 0;
+        private string nombreDependencia = "";
         private int idTiposTramite = 0;
 
         private string observaciones = "";
@@ -66,9 +68,10 @@ namespace CityApp.Client.Components.CardEditarTramiteComponents
         protected override async Task OnInitializedAsync()
         {
 
-            ConsultarSecretarias();
-            ConsultarDependencias();
-            ConsultarTiposTramite();
+            await ConsultarSecretarias();
+            //ConsultarDependencias();
+            await ConsultarTiposTramite();
+            await ConsultarTramite();
         }
 
         protected override async Task OnAfterRenderAsync(bool firtsRender)
@@ -96,7 +99,7 @@ namespace CityApp.Client.Components.CardEditarTramiteComponents
             }
         }
 
-        private async void ConsultarSecretarias()
+        private async Task ConsultarSecretarias()
         {
             Response<List<Secretaria>> response = new Response<List<Secretaria>>();
             SelectSecretariasLogic selectSecretariasLogic = new SelectSecretariasLogic(Cliente);
@@ -108,8 +111,14 @@ namespace CityApp.Client.Components.CardEditarTramiteComponents
             StateHasChanged();
         }
 
-        private async void ConsultarDependencias()
+        private async Task ConsultarDependencias()
         {
+            if (idSecretarias <= 0)
+            {
+                Dependencias = new List<Dependencia>();
+                return;
+            }
+
             Dependencias = new List<Dependencia>();
             Response<List<Dependencia>> response = new Response<List<Dependencia>>();
             SelectDependenciasLogic selectDependenciasLogic = new SelectDependenciasLogic(Cliente);
@@ -120,7 +129,7 @@ namespace CityApp.Client.Components.CardEditarTramiteComponents
             }
             StateHasChanged();
         }
-        private async void ConsultarTiposTramite()
+        private async Task ConsultarTiposTramite()
         {
             Response<List<TipoTramite>> response = new Response<List<TipoTramite>>();
             SelectTiposTramiteLogic selectTiposTramiteLogic = new SelectTiposTramiteLogic(Cliente);
@@ -132,7 +141,7 @@ namespace CityApp.Client.Components.CardEditarTramiteComponents
             StateHasChanged();
         }
 
-        private async void ConsultarTramite()
+        private async Task ConsultarTramite()
         {
             Response<Tramite> response = new Response<Tramite>();
             SelectTramiteLogic selectBolsaTrabajoLogic = new SelectTramiteLogic(Cliente);
@@ -147,18 +156,26 @@ namespace CityApp.Client.Components.CardEditarTramiteComponents
                 requisitos = Tramite.Requisitos;
                 costo = Tramite.Costo;
                 observaciones = Tramite.Observaciones;
-                latitud = Tramite.Latitud;
-                longitud = Tramite.Longitud;
+
+                // IMPORTANTE: Inicializar coordenadas correctamente
+                latitud = Tramite.Latitud > 0 ? Tramite.Latitud : 0;
+                longitud = Tramite.Longitud != 0 ? Tramite.Longitud : 0;
+
                 idTiposTramite = Tramite.IdTipoTramite;
-                
-                //if (Tramite.Dependencia != null && Tramite.Dependencia.Secretaria != null)
-                //{
-                //    idDependencias = Tramite.Dependencia.IdDependencia;
-                //    idSecretarias = Tramite.Dependencia.Secretaria.IdSecretaria;
-                //}
+                idDependencias = Tramite.IdDependencia;
 
+                if (Tramite.Dependencia != null)
+                {
+                    nombreDependencia = Tramite.Dependencia.NombreDependencia;
+                    idSecretarias = Tramite.Dependencia.IdSecretaria;
 
+                    await ConsultarDependencias();
 
+                    if (Tramite.Dependencia.Secretaria != null)
+                    {
+                        nombreSecretaria = Tramite.Dependencia.Secretaria.NombreSecretaria;
+                    }
+                }
             }
             else
             {
@@ -257,38 +274,58 @@ namespace CityApp.Client.Components.CardEditarTramiteComponents
 
         private void TxtIdSecretaria(ChangeEventArgs args)
         {
-            idSecretarias = int.Parse(args.Value.ToString());
-            if (idSecretarias != 0)
+            try
             {
-                errorIdSecretaria = "";
-                ConsultarDependencias();
+                int nuevoId = int.Parse(args.Value?.ToString() ?? "0");
+                if (nuevoId != idSecretarias)
+                {
+                    idSecretarias = nuevoId;
+                    if (idSecretarias != 0)
+                    {
+                        errorIdSecretaria = "";
+                        idDependencias = 0;
+                        Tramite.IdDependencia = 0;
+                        _ = ConsultarDependencias();
+                    }
+                    else
+                    {
+                        errorIdSecretaria = "SeleccioneOpcion";
+                        Dependencias = new List<Dependencia>();
+                        idDependencias = 0;
+                        Tramite.IdDependencia = 0;
+                    }
+                    StateHasChanged();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                errorIdSecretaria = "SeleccioneOpcion";
-                Dependencias = new List<Dependencia>();
-                idDependencias = 0;
-                Tramite.IdDependencia = 0;
+                errorIdSecretaria = "Error al seleccionar secretaria: " + ex.Message;
+                StateHasChanged();
             }
-
-            StateHasChanged();
         }
 
         private void TxtIdDependencia(ChangeEventArgs args)
         {
-            idDependencias = int.Parse(args.Value.ToString());
-            if (idDependencias != 0)
+            try
             {
-                errorIdDependencia = "";
-                Tramite.IdDependencia = idDependencias;
+                idDependencias = int.Parse(args.Value?.ToString() ?? "0");
+                if (idDependencias != 0)
+                {
+                    errorIdDependencia = "";
+                    Tramite.IdDependencia = idDependencias;
+                }
+                else
+                {
+                    errorIdDependencia = "SeleccioneOpcion";
+                    Tramite.IdDependencia = 0;
+                }
+                StateHasChanged();
             }
-            else
+            catch (Exception ex)
             {
-                errorIdDependencia = "SeleccioneOpcion";
-                Tramite.IdDependencia = 0;
+                errorIdDependencia = "Error al seleccionar dependencia: " + ex.Message;
+                StateHasChanged();
             }
-
-            StateHasChanged();
         }
 
         private void TxtIdTipoTramite(ChangeEventArgs args)
@@ -399,39 +436,71 @@ namespace CityApp.Client.Components.CardEditarTramiteComponents
             StateHasChanged();
         }
 
-        private void TxtLatitud(ChangeEventArgs args)
+        private void ActualizarLatitud()
         {
             try
             {
-                latitud = double.Parse(args.Value.ToString());
-                latitudError = "";
-                Tramite.Latitud = latitud;
+                // Si está vacío o es 0, dejar pasar
+                if (latitud == 0 || double.IsNaN(latitud))
+                {
+                    latitudError = "";
+                    Tramite.Latitud = 0;
+                    return;
+                }
+
+                // Validar rango
+                if (latitud >= -90 && latitud <= 90)
+                {
+                    latitudError = "";
+                    Tramite.Latitud = latitud;
+                }
+                else
+                {
+                    latitudError = "Latitud debe estar entre -90 y 90";
+                    Tramite.Latitud = 0;
+                }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                latitudError = "Ingresa un valor";
+                latitudError = "Error: " + ex.Message;
                 Tramite.Latitud = 0;
             }
             StateHasChanged();
         }
 
-        private void TxtLongitud(ChangeEventArgs args)
+        private void ActualizarLongitud()
         {
             try
             {
-                longitud = double.Parse(args.Value.ToString());
-                longitudError = "";
-                Tramite.Longitud = longitud;
+                // Si está vacío o es 0, dejar pasar
+                if (longitud == 0 || double.IsNaN(longitud))
+                {
+                    longitudError = "";
+                    Tramite.Longitud = 0;
+                    return;
+                }
+
+                // Validar rango
+                if (longitud >= -180 && longitud <= 180)
+                {
+                    longitudError = "";
+                    Tramite.Longitud = longitud;
+                }
+                else
+                {
+                    longitudError = "Longitud debe estar entre -180 y 180";
+                    Tramite.Longitud = 0;
+                }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                longitudError = "Ingresa un valor";
+                longitudError = "Error: " + ex.Message;
                 Tramite.Longitud = 0;
             }
             StateHasChanged();
         }
 
-        
+
 
         private async void ActualizarTramite()
         {
@@ -439,6 +508,10 @@ namespace CityApp.Client.Components.CardEditarTramiteComponents
             {
                 banderaBoton = true;
                 StateHasChanged();
+
+                Tramite.Latitud = latitud;
+                Tramite.Longitud = longitud;
+
                 if (Tramite.Concepto != "NA" && Tramite.Concepto != "")
                 {
                     if (Tramite.Descripcion != "NA" && Tramite.Descripcion != "")
@@ -478,7 +551,7 @@ namespace CityApp.Client.Components.CardEditarTramiteComponents
                 else
                 {
                     errorConcepto = "CampoRequerido";
-                }  
+                }
             }
             else
             {

@@ -356,37 +356,69 @@ namespace CityApp.Client.Components.CardNuevoTramiteComponents
             StateHasChanged();
         }
 
-        private void TxtLatitud(ChangeEventArgs args)
+
+
+        private void ActualizarLatitud()
         {
             try
             {
-                latitud = double.Parse(args.Value.ToString());
-                latitudError = "";
-                Tramite.Latitud = latitud;
+                if (latitud == 0 || double.IsNaN(latitud))
+                {
+                    latitudError = "";
+                    Tramite.Latitud = 0;
+                    return;
+                }
+
+                if (latitud >= -90 && latitud <= 90)
+                {
+                    latitudError = "";
+                    Tramite.Latitud = latitud;
+                }
+                else
+                {
+                    latitudError = "Latitud debe estar entre -90 y 90";
+                    Tramite.Latitud = 0;
+                }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                latitudError = "Ingresa un valor";
+                latitudError = "Error: " + ex.Message;
                 Tramite.Latitud = 0;
             }
             StateHasChanged();
         }
 
-        private void TxtLongitud(ChangeEventArgs args)
+        private void ActualizarLongitud()
         {
             try
             {
-                longitud = double.Parse(args.Value.ToString());
-                longitudError = "";
-                Tramite.Longitud = longitud;
+                if (longitud == 0 || double.IsNaN(longitud))
+                {
+                    longitudError = "";
+                    Tramite.Longitud = 0;
+                    return;
+                }
+
+                if (longitud >= -180 && longitud <= 180)
+                {
+                    longitudError = "";
+                    Tramite.Longitud = longitud;
+                }
+                else
+                {
+                    longitudError = "Longitud debe estar entre -180 y 180";
+                    Tramite.Longitud = 0;
+                }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                longitudError = "Ingresa un valor";
+                longitudError = "Error: " + ex.Message;
                 Tramite.Longitud = 0;
             }
             StateHasChanged();
         }
+
+
 
         private async void AgregarTramite()
         {
@@ -394,6 +426,10 @@ namespace CityApp.Client.Components.CardNuevoTramiteComponents
             {
                 banderaBoton = true;
                 StateHasChanged();
+
+                Tramite.Latitud = latitud;
+                Tramite.Longitud = longitud;
+
                 if (Tramite.Concepto != "NA" && Tramite.Concepto != "")
                 {
                     if(Tramite.Descripcion != "NA" && Tramite.Descripcion != "")
