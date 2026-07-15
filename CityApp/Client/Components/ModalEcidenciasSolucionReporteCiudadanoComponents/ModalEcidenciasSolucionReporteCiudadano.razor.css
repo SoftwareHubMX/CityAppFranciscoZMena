@@ -43,7 +43,7 @@
     font-size: 2vw;
     font-weight: 600;
     margin: auto;
-    color: #CD2272;
+    color: #AB9572;
 }
 
 .content_detalles {
@@ -107,7 +107,7 @@
 .content_card_repo {
     width: 80%;
     margin: 1vw auto;
-    border: .1vw solid #1753A3;
+    border: .1vw solid #1F2937;
     border-radius: .5vw;
     padding: 1vw;
 }
@@ -168,11 +168,11 @@
 }
 
 .btn_edit {
-    background-color: #1753A3;
+    background-color: #1F2937;
 }
 
 .btn_delete {
-    background-color: #CD2272;
+    background-color: #AB9572;
 }
 
     .btn_edit span, .btn_delete span {

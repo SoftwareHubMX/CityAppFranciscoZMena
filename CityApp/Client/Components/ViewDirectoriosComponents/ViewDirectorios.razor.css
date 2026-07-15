@@ -30,7 +30,7 @@
     width: 2.5vw;
     height: 2.5vw;
     border-radius: 50%;
-    background-color: #CD2272;
+    background-color: #AB9572;
     color: #fff;
     margin: auto 0;
     cursor: pointer;
@@ -39,7 +39,7 @@
 
 
     .btn_cirquel:hover {
-        background-color: #1753A3;
+        background-color: #1F2937;
     }
 
     .btn_cirquel i {
@@ -79,7 +79,7 @@
 }
 
     .label_section:hover, .ticked:hover {
-        color: #CD2272;
+        color: #AB9572;
     }
 
     .label_section:after, .ticked:after {
@@ -87,7 +87,7 @@
         width: 0;
         height: .2vw;
         margin: auto;
-        background-color: #1753A3;
+        background-color: #1F2937;
         content: "";
         transition: all .2s ease-in-out;
     }
@@ -101,7 +101,7 @@
     width: 100%;
     height: .2vw;
     margin: auto;
-    background-color: #1753A3;
+    background-color: #1F2937;
     content: "";
     transition: all .2s ease-in-out;
 }
@@ -146,7 +146,7 @@
 }
 
     .input_form:focus {
-        border-bottom: .2vw solid #1753A3;
+        border-bottom: .2vw solid #1F2937;
     }
 
 .button_sumit {
@@ -155,7 +155,7 @@
     width: 90%;
     margin: auto;
     color: #fff;
-    background-color: #1753A3;
+    background-color: #1F2937;
     border: none;
     outline: none;
     border-radius: .5vw;
@@ -181,7 +181,7 @@
         left: 0;
         margin: auto;
         content: "";
-        background-color: #CD2272;
+        background-color: #AB9572;
         transition: all .3s ease-in-out;
         z-index: 1;
     }
@@ -283,7 +283,7 @@
 }
 
 .content_grid_tabla_header {
-    background-color: #CD2272;
+    background-color: #AB9572;
     color: #fff;
 }
 
@@ -325,7 +325,7 @@
     column-span: all;
     font-size: 2.5vw;
     font-weight: 600;
-    color: #1753A3;
+    color: #1F2937;
     margin: 1vw auto;
     grid-column: span 3;
 }
@@ -403,7 +403,7 @@
     }
 
 .btn_edit:after {
-    background-color: #1A54A2;
+    background-color: #1A2536;
 }
 
 .btn_delete:after {
@@ -443,8 +443,8 @@
 }
 
     .pagina:hover {
-        color: #CD2272;
-        background-color: #1753A312;
+        color: #AB9572;
+        background-color: #1F293712;
     }
 
     .pagina:after {
@@ -455,7 +455,7 @@
         bottom: 0;
         left: 50%;
         margin: auto;
-        background-color: #1753A3;
+        background-color: #1F2937;
         content: "";
         transition: all .2s ease-in-out;
     }
@@ -471,7 +471,7 @@
     padding: 1vw 2vw;
     text-align: center;
     background-color: #fff;
-    border: .1vw solid #1753A3;
+    border: .1vw solid #1F2937;
     border-radius: 1vw;
     font-size: 1.5vw;
     top: 40%;
@@ -539,7 +539,7 @@
 .title_card {
     font-size: 2vw;
     font-weight: 600;
-    color: #1753A3;
+    color: #1F2937;
     text-align: center;
     margin: 0 auto;
     margin-bottom: 1vw;

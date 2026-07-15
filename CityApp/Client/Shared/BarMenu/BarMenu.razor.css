@@ -16,7 +16,7 @@
 .content_top_menu {
     width: 100%;
     padding: 1vw;
-    background-color: #1A54A2;
+    background-color: #1A2536;
     color: #fff;
     display: flex;
 }
@@ -72,7 +72,7 @@
     z-index: 2;
     color: #6D6D6D;
     background-color: white;
-    border: 5px solid #CD2272;
+    border: 5px solid #AB9572;
     border-radius: 90%;
     width: 3vw;
     height: 3vw;
@@ -87,7 +87,7 @@
     position: absolute;
     width: calc(100% + 2vw);
     height: 100%;
-    background-color: #1A54A2;
+    background-color: #1A2536;
     top: 0;
     right: calc(100% + 2vw);
     content: "";

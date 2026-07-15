@@ -8,7 +8,7 @@
 
 .fondo_1 {
     position: fixed;
-    background-color: #1a54a2;
+    background-color: #1A2536;
     width: 50vw;
     height: 20vw;
     bottom: 0;
@@ -20,7 +20,7 @@
 
 .fondo_2 {
     position: fixed;
-    background-color: #4A7AB7;
+    background-color: #2F3C4E;
     width: 50vw;
     height: 20vw;
     bottom: -10vw;
@@ -32,7 +32,7 @@
 
 .fondo_3 {
     position: fixed;
-    background-color: #002E7F;
+    background-color: #253956;
     width: 70vw;
     height: 20vw;
     bottom: 25vw;

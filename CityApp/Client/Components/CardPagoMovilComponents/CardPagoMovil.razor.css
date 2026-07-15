@@ -5,7 +5,7 @@
     margin: auto;
     background-color: #fff;
     border-radius: 10px;
-    /*border: 2px solid #CD2272;*/
+    /*border: 2px solid #AB9572;*/
     padding: 10px;
     display: flex;
     flex-direction: column;
@@ -15,7 +15,7 @@
 .content_title {
     width: 100%;
     text-align: center;
-    border-bottom: 2px solid #CD2272;
+    border-bottom: 2px solid #AB9572;
     margin: auto;
 }
 
@@ -42,7 +42,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
-    border-bottom: 2px solid #CD2272;
+    border-bottom: 2px solid #AB9572;
     margin: 1rem auto;
 }
 
@@ -58,7 +58,7 @@
     width: 90%;
     margin: .5rem auto;
     color: #fff;
-    background-color: #1753A3;
+    background-color: #1F2937;
     border: none;
     outline: none;
     border-radius: .5rem;
@@ -84,7 +84,7 @@
         left: 0;
         margin: auto;
         content: "";
-        background-color: #CD2272;
+        background-color: #AB9572;
         transition: all .3s ease-in-out;
         z-index: 1;
     }
@@ -112,7 +112,7 @@
 .content_center {
     width: auto;
     margin: 1rem auto;
-    border: 2px solid #CD2272
+    border: 2px solid #AB9572
 }
 
 ._non_border {

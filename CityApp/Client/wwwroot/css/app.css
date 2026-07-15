@@ -14,7 +14,7 @@ a, .btn-link {
 
 .btn-primary {
     color: #fff;
-    background-color: #1b6ec2;
+    background-color: #303A54;
     border-color: #1861ac;
 }
 
@@ -81,7 +81,7 @@ a, .btn-link {
 
 .fondo_1 {
     position: fixed;
-    background-color: #1a54a2;
+    background-color: #1A2536;
     width: 50vw;
     height: 20vw;
     bottom: 0;
@@ -93,7 +93,7 @@ a, .btn-link {
 
 .fondo_2 {
     position: fixed;
-    background-color: #4A7AB7;
+    background-color: #2F3C4E;
     width: 50vw;
     height: 20vw;
     bottom: -10vw;
@@ -105,7 +105,7 @@ a, .btn-link {
 
 .fondo_3 {
     position: fixed;
-    background-color: #002E7F;
+    background-color: #253956;
     width: 70vw;
     height: 20vw;
     bottom: 25vw;
@@ -128,7 +128,7 @@ a, .btn-link {
     .loader_loading span {
         position: relative;
         font-size: 3vw;
-        color: #002E7F;
+        color: #253956;
         font-weight: 600;
         margin: auto;
         z-index: 2;
@@ -158,32 +158,32 @@ a, .btn-link {
 @keyframes loading {
     0% {
         transform: rotateZ(0);
-        border-right: 2vw solid #002E7F;
-        border-left: 2vw solid #002E7F;
+        border-right: 2vw solid #253956;
+        border-left: 2vw solid #253956;
     }
 
     25% {
         transform: rotateZ(72deg);
-        border-right: 2vw solid #CD2272;
-        border-left: 2vw solid #CD2272;
+        border-right: 2vw solid #AB9572;
+        border-left: 2vw solid #AB9572;
     }
 
     50% {
         transform: rotateZ(144deg);
-        border-right: 2vw solid #4A7AB7;
-        border-left: 2vw solid #4A7AB7;
+        border-right: 2vw solid #2F3C4E;
+        border-left: 2vw solid #2F3C4E;
     }
 
     75% {
         transform: rotateZ(216deg);
-        border-right: 2vw solid #4A7AB7;
-        border-left: 2vw solid #4A7AB7;
+        border-right: 2vw solid #2F3C4E;
+        border-left: 2vw solid #2F3C4E;
     }
 
     100% {
         transform: rotateZ(3600deg);
-        border-right: 2vw solid #002E7F;
-        border-left: 2vw solid #002E7F;
+        border-right: 2vw solid #253956;
+        border-left: 2vw solid #253956;
     }
 }
 
@@ -212,7 +212,7 @@ a, .btn-link {
 @media screen and (max-width: 600px){
     .fondo_1 {
         position: fixed;
-        background-color: #CD2272;
+        background-color: #AB9572;
         width: 50vh;
         height: 20vh;
         bottom: 0;
@@ -224,7 +224,7 @@ a, .btn-link {
 
     .fondo_2 {
         position: fixed;
-        background-color: #CD2272;
+        background-color: #AB9572;
         width: 50vh;
         height: 20vh;
         bottom: -10vh;
@@ -236,7 +236,7 @@ a, .btn-link {
 
     .fondo_3 {
         position: fixed;
-        background-color: #002E7F;
+        background-color: #253956;
         width: 100vh;
         height: 10vh;
         bottom: 51vh;

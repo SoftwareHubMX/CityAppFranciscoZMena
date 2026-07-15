@@ -54,7 +54,7 @@
     font-size: 2.5vw;
     text-align: center;
     margin: 1vw auto;
-    color: #002E7F;
+    color: #253956;
     width: 100%;
 }
 
@@ -89,9 +89,9 @@
 .icono_menu {
     width: 3vw;
     margin: auto;
-    color: #002E7F;
+    color: #253956;
     background-color: white;
-    border: 5px solid #CD2272;
+    border: 5px solid #AB9572;
     border-radius: 90%;
     width: 4vw;
     height: 4vw;
@@ -106,7 +106,7 @@
     margin: auto;
     color: #0f7e11;
     background-color: white;
-    border: 5px solid #002E7F;
+    border: 5px solid #253956;
     border-radius: 90%;
     width: 4vw;
     height: 4vw;
@@ -121,7 +121,7 @@
     margin: auto;
     color: #cc0c0c;
     background-color: white;
-    border: 5px solid #002E7F;
+    border: 5px solid #253956;
     border-radius: 90%;
     width: 4vw;
     height: 4vw;
@@ -197,7 +197,7 @@
 }
 
     .input_form:focus {
-        border-bottom: .2vw solid #002E7F;
+        border-bottom: .2vw solid #253956;
     }
 
 .content_relative {
@@ -332,7 +332,7 @@
     font-size: 2.5vw;
     text-align: center;
     margin: 1vw auto;
-    color: #002E7F;
+    color: #253956;
 }
 
 .content_data {

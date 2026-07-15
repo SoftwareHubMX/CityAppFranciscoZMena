@@ -84,7 +84,7 @@
 }
 
     .label_section:hover, .ticked:hover {
-        color: #CD2272;
+        color: #AB9572;
     }
 
     .label_section:after, .ticked:after {
@@ -92,7 +92,7 @@
         width: 0;
         height: .2vw;
         margin: auto;
-        background-color: #1753A3;
+        background-color: #1F2937;
         content: "";
         transition: all .2s ease-in-out;
     }
@@ -106,7 +106,7 @@
     width: 100%;
     height: .2vw;
     margin: auto;
-    background-color: #1753A3;
+    background-color: #1F2937;
     content: "";
     transition: all .2s ease-in-out;
 }
@@ -152,7 +152,7 @@
 }
 
     .input_form:focus {
-        border-bottom: .2vw solid #1753A3;
+        border-bottom: .2vw solid #1F2937;
     }
 
 .text_plano {
@@ -166,7 +166,7 @@
     width: 90%;
     margin: auto;
     color: #fff;
-    background-color: #1753A3;
+    background-color: #1F2937;
     border: none;
     outline: none;
     border-radius: .5vw;
@@ -192,7 +192,7 @@
         left: 0;
         margin: auto;
         content: "";
-        background-color: #CD2272;
+        background-color: #AB9572;
         transition: all .3s ease-in-out;
         z-index: 1;
     }
@@ -243,7 +243,7 @@
     margin: 0;
     font-size: 1.2vw;
     margin: 1vw auto;
-    color: #1753A3;
+    color: #1F2937;
 }
 
 .loader {
@@ -300,7 +300,7 @@
 }
 
 .content_grid_tabla_header {
-    background-color: #CD2272;
+    background-color: #AB9572;
     color: #fff;
 }
 
@@ -325,7 +325,7 @@
     column-span: all;
     font-size: 2.5vw;
     font-weight: 600;
-    color: #1753A3;
+    color: #1F2937;
     margin: 1vw auto;
 }
 

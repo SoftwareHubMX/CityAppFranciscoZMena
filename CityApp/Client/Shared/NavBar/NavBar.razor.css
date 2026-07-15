@@ -7,7 +7,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    background-color: #002E7F;
+    background-color: #253956;
     z-index: 101;
 }
 
@@ -89,7 +89,7 @@
     }
 /*-------------------------------submenu--------------------------------------------*/
 .content_submenu {
-    background-color: #1a54a2;
+    background-color: #1A2536;
     width: 16rem;
     height: 10rem;
     padding: 1rem;
@@ -137,7 +137,7 @@
     display: flex;
     align-items: center;
     text-decoration: none;
-    color: #1A54A2;
+    color: #1A2536;
     background: #ffffff;
     padding: 0.5rem 1rem;
     border-radius: 20px;
@@ -154,7 +154,7 @@
 .icon {
     width: 40px;
     height: 40px;
-    background-color: #CD2272;
+    background-color: #AB9572;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -168,7 +168,7 @@
 }
 
 li:hover a {
-    background-color: #CD2272;
+    background-color: #AB9572;
     color: white;
 }
 .config-text {

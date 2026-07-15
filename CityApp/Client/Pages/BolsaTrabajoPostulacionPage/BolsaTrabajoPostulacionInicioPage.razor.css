@@ -41,7 +41,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    border: .2vw solid #1753A3;
+    border: .2vw solid #1F2937;
     padding: 1vw;
     border-radius: 2vw;
     z-index: 1;
@@ -81,7 +81,7 @@
     margin: auto;
     /*color: #6E1D3A;*/
     background-color: white;
-    border: 20px solid #1753A3;
+    border: 20px solid #1F2937;
     border-radius: 90%;
     width: 15vw;
     height: 15vw;

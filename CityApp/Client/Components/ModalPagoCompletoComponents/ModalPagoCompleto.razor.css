@@ -33,7 +33,7 @@
     background-color: #FFF;
     border-radius: 2vw;
     padding: 1vw;
-    border: .2vw solid #1753A3;
+    border: .2vw solid #1F2937;
     margin: auto;
 }
 
@@ -102,7 +102,7 @@
     }
 
 .btn_edit:after {
-    background-color: #1753A3;
+    background-color: #1F2937;
 }
 
 .btn_delete:after {
@@ -120,7 +120,7 @@
     font-size: 2vw;
     font-weight: 600;
     margin: 0 auto;
-    color: #CD2272;
+    color: #AB9572;
 }
 
 .content_info {
@@ -151,7 +151,7 @@
     text-align: center;
     margin: auto;
     font-size: 1.2vw;
-    color: #1753A3;
+    color: #1F2937;
 }
 
 .loader {

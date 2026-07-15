@@ -9,7 +9,7 @@
 .tittle {
     font-size: 2.5vw;
     font-weight: 600;
-    color: #CD2272;
+    color: #AB9572;
     text-align: center;
     margin: 1vw auto;
 }
@@ -42,7 +42,7 @@
 }
 
     .input_form:focus {
-        border-bottom: .2vw solid #1753A3;
+        border-bottom: .2vw solid #1F2937;
     }
 
 .button_sumit {
@@ -51,7 +51,7 @@
     width: 90%;
     margin: .5vw auto;
     color: #fff;
-    background-color: #1753A3;
+    background-color: #1F2937;
     border: none;
     outline: none;
     border-radius: .5vw;
@@ -77,7 +77,7 @@
         left: 0;
         margin: auto;
         content: "";
-        background-color: #CD2272;
+        background-color: #AB9572;
         transition: all .3s ease-in-out;
         z-index: 1;
     }
